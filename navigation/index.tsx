@@ -18,6 +18,7 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
+import ChatRoomScreen from "../screens/ChatRoomScreen/ChatRoomScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -38,6 +39,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator  screenOptions={{headerShown: false}}>
+      <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       {/*<Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />*/}
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />

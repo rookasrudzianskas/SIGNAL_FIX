@@ -18,6 +18,7 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
   HomeScreen: undefined;
+  ChatRoomScreen: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -29,6 +30,7 @@ export type RootTabParamList = {
   TabOne: undefined;
   TabTwo: undefined;
   HomeScreen: undefined;
+  ChatRoomScreen: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
