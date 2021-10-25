@@ -3,6 +3,7 @@ import {Image, StyleSheet, TouchableOpacity, View, Text} from 'react-native';
 import { RootTabScreenProps } from '../../types';
 import tw from "tailwind-react-native-classnames";
 import styles from "./style";
+import moment from 'moment';
 
 const ChatRoomItem = ({chatRoom}) => {
     const user = chatRoom.users[1];
@@ -22,7 +23,7 @@ const ChatRoomItem = ({chatRoom}) => {
                             <Text style={tw`text-xl font-bold`}>{user?.name}</Text>
                         </View>
                         <View style={tw``}>
-                            <Text style={tw`text-lg text-gray-500`}>{chatRoom?.lastMessage?.createdAt}</Text>
+                            <Text style={tw`text-lg text-gray-500`}>{moment(chatRoom?.lastMessage?.createdAt).fromNow()}</Text>
                         </View>
                     </View>
                     <Text numberOfLines={1} style={tw`text-lg text-gray-500 mb-5`}>{chatRoom?.lastMessage?.content}</Text>
