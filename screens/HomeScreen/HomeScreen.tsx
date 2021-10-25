@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {FlatList, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { Text, View } from '../../components/Themed';
 import { RootTabScreenProps } from '../../types';
 import tw from "tailwind-react-native-classnames";
@@ -14,7 +14,10 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
     const chatRoom2 = ChatRoomsData[1];
   return (
         <View style={styles.page}>
-            <ChatRoomItem chatRoom={chatRoom1} />
+
+            <FlatList data={ChatRoomsData} renderItem={({item}) => (
+                <ChatRoomItem key={item} chatRoom={item} />
+            )} />
 
         </View>
   );
