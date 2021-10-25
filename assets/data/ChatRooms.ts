@@ -2,8 +2,8 @@ export default [{
   id: '1',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u2',
     name: 'Elon Musk',
@@ -18,8 +18,8 @@ export default [{
   id: '2',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u3',
     name: 'Jeff',
@@ -34,8 +34,8 @@ export default [{
   id: '3',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u4',
     name: 'Zuck',
@@ -50,8 +50,8 @@ export default [{
   id: '4',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u5',
     name: 'Graham',
@@ -66,8 +66,8 @@ export default [{
   id: '5',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u6',
     name: 'Biahaze',
@@ -82,8 +82,8 @@ export default [{
   id: '6',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u7',
     name: 'Sus?',
@@ -98,8 +98,8 @@ export default [{
   id: '7',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u8',
     name: 'Daniel',
@@ -114,8 +114,8 @@ export default [{
   id: '8',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u9',
     name: 'Carlos',
@@ -130,8 +130,8 @@ export default [{
   id: '9',
   users: [{
     id: 'u1',
-    name: 'Vadim',
-    imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    name: 'Rokas',
+    imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   }, {
     id: 'u10',
     name: 'Angelina Jolie',
