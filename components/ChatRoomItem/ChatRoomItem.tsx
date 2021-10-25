@@ -5,6 +5,7 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 
 const ChatRoomItem = (props) => {
+
     return (
         <TouchableOpacity activeOpacity={0.6}>
             <View style={tw`flex-row px-3`}>
