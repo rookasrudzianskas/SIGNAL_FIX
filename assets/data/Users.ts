@@ -1,7 +1,7 @@
 export default [{
   id: 'u1',
-  name: 'Vadim',
-  imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+  name: 'Rokas',
+  imageUri: 'https://avatars.githubusercontent.com/u/38469892?v=4',
   status: "Hello there, how are you"
 }, {
   id: 'u2',
