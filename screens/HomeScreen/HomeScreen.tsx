@@ -11,8 +11,8 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
               <View style={tw`flex-row px-3`}>
                     <View style={tw`p-3`}>
                         <Image source={{uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/elon.png'}} style={styles.image}/>
-                        <View style={[tw``, {}]}>
-                            <Text style={[tw``, {}]}>4</Text>
+                        <View style={[tw`bg-blue-500 flex items-center justify-center`, {width: 20, height: 20, borderRadius: 20,}]}>
+                            <Text style={[tw`text-white  font-bold`, {}]}>4</Text>
                         </View>
                     </View>
                           <View style={tw`flex-1 justify-center mt-4`}>
