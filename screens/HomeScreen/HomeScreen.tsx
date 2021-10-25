@@ -21,7 +21,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
                                         <Text style={tw`text-lg text-gray-500`}>11:11AM</Text>
                                   </View>
                               </View>
-                              <Text style={tw`text-lg text-gray-500 mb-5`}>Hola Hola Hola Ola!fsdfsafdsfsdfsdfdsfsdfsdhfsdkfsdjkfjsdklf</Text>
+                              <Text numberOfLines={1} style={tw`text-lg text-gray-500 mb-5`}>Hola Hola Hola Ola!fsdfsafdsfsdfsdfdsfsdfsdhfsdkfsdjkfjsdklf</Text>
                           </View>
                   </View>
         </View>
