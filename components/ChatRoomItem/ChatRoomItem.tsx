@@ -13,9 +13,11 @@ const ChatRoomItem = ({chatRoom}) => {
             <View style={tw`flex-row px-3`}>
                 <View style={tw`p-3`}>
                     <Image source={{uri: user?.imageUri}} style={styles.image}/>
-                    <View style={[tw`bg-blue-500 flex items-center justify-center`, {width: 20, height: 20, borderRadius: 20, position: 'absolute', left: 54, top: 10, borderWidth: 1, borderColor: 'white'}]}>
-                        <Text style={[tw`text-white  font-bold`, {}]}>{chatRoom?.newMessages}</Text>
-                    </View>
+                    {chatRoom.newMessages && (
+                        <View style={[tw`bg-blue-500 flex items-center justify-center`, {width: 20, height: 20, borderRadius: 20, position: 'absolute', left: 54, top: 10, borderWidth: 1, borderColor: 'white'}]}>
+                            <Text style={[tw`text-white  font-bold`, {}]}>{chatRoom?.newMessages}</Text>
+                        </View>
+                    )}
                 </View>
                 <View style={tw`flex-1 justify-center mt-4`}>
                     <View style={tw`flex-row items-center`}>
