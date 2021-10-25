@@ -16,7 +16,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
         <View style={styles.page}>
 
             <FlatList data={ChatRoomsData} renderItem={({item}) => (
-                <ChatRoomItem key={item} chatRoom={item} />
+                <ChatRoomItem key={item.id} chatRoom={item} />
             )} />
 
         </View>
