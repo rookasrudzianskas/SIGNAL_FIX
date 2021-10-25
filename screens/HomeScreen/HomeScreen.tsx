@@ -8,7 +8,7 @@ import ChatRoomItem from "../../components/ChatRoomItem";
 
 const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
   return (
-        <View>
+        <View style={styles.page}>
             <ChatRoomItem />
         </View>
   );
