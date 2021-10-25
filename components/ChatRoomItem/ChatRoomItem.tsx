@@ -5,6 +5,7 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 
 const ChatRoomItem = (props) => {
+    const chatRoom = props.chatRoom;
 
     return (
         <TouchableOpacity activeOpacity={0.6}>
