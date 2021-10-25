@@ -5,6 +5,7 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import moment from 'moment';
 
+// @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
     const user = chatRoom.users[1];
 

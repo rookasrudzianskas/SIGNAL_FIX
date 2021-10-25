@@ -15,6 +15,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
   return (
         <View style={styles.page}>
             <ChatRoomItem chatRoom={chatRoom1} />
+
         </View>
   );
 }
