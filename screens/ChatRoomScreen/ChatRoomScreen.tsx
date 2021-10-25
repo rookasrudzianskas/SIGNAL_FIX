@@ -4,10 +4,18 @@ import Message from "../../components/Message";
 
 const ChatRoomScreen = () => {
     return (
-        <View>
+        <View style={styles.container}>
             <Message />
         </View>
     );
 };
 
 export default ChatRoomScreen;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+    }
+
+})
