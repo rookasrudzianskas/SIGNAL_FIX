@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#3777f0',
         padding: 10,
         margin: 10,
+        borderRadius: 10,
     }
 });
 

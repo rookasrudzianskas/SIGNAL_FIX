@@ -6,8 +6,8 @@ import tw from "tailwind-react-native-classnames";
 const Message = () => {
     return (
         <View style={styles.container}>
-            <Text style={tw``}>
-                byrookas 🚀
+            <Text style={tw`text-gray-100`}>
+                Message 🚀
             </Text>
         </View>
     );
