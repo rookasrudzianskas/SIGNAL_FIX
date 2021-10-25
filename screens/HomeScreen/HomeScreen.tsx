@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
     const chatRoom2 = ChatRoomsData[1];
   return (
         <View style={styles.page}>
-            <ChatRoomItem />
+            <ChatRoomItem chatRoom={chatRoom1} />
         </View>
   );
 }
