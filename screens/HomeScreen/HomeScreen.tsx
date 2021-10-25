@@ -7,8 +7,10 @@ import styles from "./style";
 
 const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
   return (
-    <View style={styles.container}>
-      <Text style={tw`text-xl font-bold`}>Signal 🔥</Text>
+    <View>
+      <View style={tw`flex-1`}>
+
+      </View>
     </View>
   );
 }
