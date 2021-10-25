@@ -14,8 +14,12 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
         </View>
           <View style={tw`pl-2`}>
               <View style={tw`flex-row items-center`}>
-                  <Text style={tw`text-xl font-bold mr-12`}>Rokas Rudzianskas</Text>
-                  <Text style={tw`text-lg text-gray-500`}>11:11AM</Text>
+                  <View>
+                    <Text style={tw`text-xl font-bold mr-12`}>Rokas Rudzianskas</Text>
+                  </View>
+                  <View>
+                    <Text style={tw`text-lg text-gray-500`}>11:11AM</Text>
+                  </View>
               </View>
               <Text style={tw`text-lg text-gray-500`}>Hola Hola Hola Ola!</Text>
           </View>
