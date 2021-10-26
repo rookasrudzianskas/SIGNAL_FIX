@@ -6,7 +6,7 @@ import ChatRoomData from "../../assets/data/Chats";
 const ChatRoomScreen = () => {
     return (
         <View style={styles.container}>
-            <Message message={ChatRoomData.messages[2]} />
+            <Message message={ChatRoomData.messages[0]} />
         </View>
     );
 };
