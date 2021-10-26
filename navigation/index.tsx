@@ -36,7 +36,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: true }} />
-        <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen} options={{ headerShown: true }} />
+        <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen} options={{ headerShown: false }} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
