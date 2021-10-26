@@ -3,7 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import styles from './style';
 import tw from "tailwind-react-native-classnames";
 
-const Message = () => {
+const Message = ({message}) => {
     const isMe = true;
     const blue = '#3777f0';
     const grey = 'lightgrey';
@@ -14,7 +14,7 @@ const Message = () => {
             marginLeft: isMe ? 'auto' : 10,
         }]}>
             <Text style={{color: isMe ? 'black' : 'white'}}>
-                Message 🚀
+                {message?.content}
             </Text>
         </View>
     );
