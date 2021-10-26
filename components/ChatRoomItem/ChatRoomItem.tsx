@@ -12,7 +12,10 @@ const ChatRoomItem = ({chatRoom}) => {
 
     const navigation = useNavigation();
     const onPress = () => {
-        navigation.navigate('ChatRoomScreen');
+        // @ts-ignore
+        navigation.navigate('ChatRoomScreen', {
+            id: chatRoom.id,
+        });
     }
 
     return (
