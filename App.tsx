@@ -7,6 +7,7 @@ import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 import Amplify from 'aws-amplify';
 import config from './src/aws-exports';
+// @ts-ignore
 import { withAuthenticator } from 'aws-amplify-react-native';
 
 Amplify.configure({
