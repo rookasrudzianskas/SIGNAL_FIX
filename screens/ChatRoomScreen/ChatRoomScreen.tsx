@@ -9,6 +9,7 @@ import {useNavigation, useRoute} from "@react-navigation/native";
 const ChatRoomScreen = () => {
     const route = useRoute();
     const navigation = useNavigation();
+    navigation.setOptions({title: 'Rokas Rudzianskas'});
 
     return (
         <>
