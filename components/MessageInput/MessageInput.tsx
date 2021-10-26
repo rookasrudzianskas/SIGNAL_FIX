@@ -7,6 +7,23 @@ import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} f
 const MessageInput = () => {
     const [message, setMessage] = useState('');
 
+    const onPress = () => {
+        if(message) {
+            sendMessage();
+        } else {
+            onPlusClicked();
+        }
+    }
+
+    const sendMessage = () => {
+        // send message
+        console.warn("Sending the message", message);
+        setMessage('');
+    }
+
+    const onPlusClicked = () => {
+        console.warn('On plus clicked');
+    }
 
     return (
         <View style={styles.root}>
@@ -23,7 +40,7 @@ const MessageInput = () => {
                 <Feather name="camera" size={24} color="#595959" />
                 <MaterialCommunityIcons style={{marginHorizontal: 5,}} name="microphone-outline" size={24} color="#595959" />
             </View>
-            <TouchableOpacity  style={styles.buttonContainer}>
+            <TouchableOpacity onPress={onPress}  style={styles.buttonContainer}>
                 {message ? (
                     <Ionicons name="ios-send" size={18} color="white" />
                 ) : (
