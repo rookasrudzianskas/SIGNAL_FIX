@@ -4,10 +4,11 @@ import Message from "../../components/Message";
 import chatRoomData from "../../assets/data/Chats";
 import MessageInput from "../../components/MessageInput";
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import {useRoute} from "@react-navigation/native";
+import {useNavigation, useRoute} from "@react-navigation/native";
 
 const ChatRoomScreen = () => {
     const route = useRoute();
+    const navigation = useNavigation();
 
     return (
         <>

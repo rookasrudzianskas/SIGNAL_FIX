@@ -41,7 +41,7 @@ function RootNavigator() {
             options={{ headerTitle: props => <HomeHeader /> }}
         />
         <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen}
-                      options={{ headerTitle: ChatHeader, headerBackTitleVisible: false }}
+                      options={{ headerTitle: ChatHeader, headerBackTitleVisible: false, }}
         />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
@@ -63,7 +63,7 @@ const HomeHeader = (props) => {
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width, paddingHorizontal: 10, alignItems: 'center'}}>
             <Image source={{uri: 'https://avatars.githubusercontent.com/u/38469892?v=4'}} style={{width: 30, height: 30, borderRadius: 30}} />
-            <Text style={{flex: 1, textAlign: 'center', fontSize: 20, fontWeight: '600', marginLeft: 40,}}>{props?.title}</Text>
+            <Text style={{flex: 1, textAlign: 'center', fontSize: 20, fontWeight: '600', marginLeft: 40,}}>Signal</Text>
             <View style={tw`mr-6 flex-row`}>
                 <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
                 <Feather name="edit-2" size={24} color="black" />
@@ -80,7 +80,7 @@ const ChatHeader = (props) => {
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>
             <Image source={{uri: 'https://avatars.githubusercontent.com/u/38469892?v=4'}} style={{width: 30, height: 30, borderRadius: 30, marginRight: -200}} />
-            <Text style={{flex: 1, textAlign: 'right', marginRight: 70, fontSize: 20, fontWeight: '600',}}>Rokas Rudzianskas</Text>
+            <Text style={{flex: 1, textAlign: 'right', marginRight: 70, fontSize: 20, fontWeight: '600',}}>{props?.children}</Text>
             <View style={tw`mr-6 flex-row mr-16`}>
                 <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
                 <Feather name="edit-2" size={24} color="black" />
