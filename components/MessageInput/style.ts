@@ -6,9 +6,15 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     inputContainer: {
-        backgroundColor: 'lightgrey',
+        backgroundColor: '#f2f2f2',
         flex: 1,
         marginRight: 10,
+        borderRadius: 25,
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderColor: '#dedede',
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     buttonContainer: {
         width: 50,
