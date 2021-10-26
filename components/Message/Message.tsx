@@ -2,19 +2,17 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 
+const blue = '#3777f0';
+const grey = 'lightgrey';
+const myID = 'u1';
+
 // @ts-ignore
 const Message = ({message}) => {
-    const myID = 'u1';
     const isMe = message.user.id === myID;
-    const blue = '#3777f0';
-    const grey = 'lightgrey';
+
 
     return (
-        <View style={[styles.container, {
-            backgroundColor: isMe ? grey : blue,
-            marginLeft: isMe ? 'auto' : 10,
-            marginRight: isMe ? 10 : 'auto',
-        }]}>
+        <View style={[styles.container, isMe ? styles.leftContainer : styles.rightContainer]}>
             <Text style={{color: isMe ? 'black' : 'white'}}>
                 {message?.content}
             </Text>
@@ -32,13 +30,15 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         maxWidth: '75%',
     },
-    leftContainerMe: {
-        backgroundColor: ,
-        marginLeft: ,
-        marginRight: ,
+    leftContainer: {
+        backgroundColor: blue,
+        marginLeft: 10,
+        marginRight: 'auto',
     },
     rightContainer: {
-        marginRight: ,
+        backgroundColor: grey,
+        marginLeft: 'auto',
+        marginRight: 10,
     }
 });
 
