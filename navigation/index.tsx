@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import {ColorSchemeName, Image, Pressable, View} from 'react-native';
+import {ColorSchemeName, Image, Pressable, useWindowDimensions, View} from 'react-native';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
@@ -52,8 +52,11 @@ function TabBarIcon(props: {
 
 //@ts-ignore
 const HomeHeader = (props) => {
+
+    const {width, height} = useWindowDimensions();
+
     return (
-        <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '90%'}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', width}}>
             <Image source={{uri: 'https://avatars.githubusercontent.com/u/38469892?v=4'}} style={{width: 30, height: 30, borderRadius: 30}} />
             <Text style={{}}>Home</Text>
             <Feather name="camera" size={24} color="black" />
