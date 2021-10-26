@@ -14,6 +14,7 @@ import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ChatRoomScreen from "../screens/ChatRoomScreen/ChatRoomScreen";
+import {Text} from 'react-native';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -30,7 +31,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator  initialRouteName={'HomeScreen'} >
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{ headerTitle: props => <HomeHeader /> }}
+        />
         <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
@@ -42,4 +47,12 @@ function TabBarIcon(props: {
   color: string;
 }) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+}
+
+const HomeHeader = (props) => {
+    return (
+        <Text>
+            Home
+        </Text>
+    )
 }
