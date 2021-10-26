@@ -3,6 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import styles from './style';
 import tw from "tailwind-react-native-classnames";
 
+// @ts-ignore
 const Message = ({message}) => {
     const myID = 'u1';
     const isMe = message.user.id === myID;
