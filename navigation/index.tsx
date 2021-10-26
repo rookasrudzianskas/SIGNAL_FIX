@@ -53,7 +53,7 @@ function TabBarIcon(props: {
 //@ts-ignore
 const HomeHeader = (props) => {
     return (
-        <View style={{flexDirection: 'row', justifyContent: 'space-between',}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', width: '90%'}}>
             <Image source={{uri: 'https://avatars.githubusercontent.com/u/38469892?v=4'}} style={{width: 30, height: 30, borderRadius: 30}} />
             <Text style={{}}>Home</Text>
             <Feather name="camera" size={24} color="black" />
