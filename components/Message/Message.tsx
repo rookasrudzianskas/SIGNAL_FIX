@@ -14,6 +14,7 @@ const Message = ({message}) => {
         <View style={[styles.container, {
             backgroundColor: isMe ? grey : blue,
             marginLeft: isMe ? 'auto' : 10,
+            marginRight: isMe ? 10 : 'auto',
         }]}>
             <Text style={{color: isMe ? 'black' : 'white'}}>
                 {message?.content}
