@@ -12,7 +12,7 @@ const Message = ({message}) => {
 
 
     return (
-        <View style={[styles.container, isMe ? styles.leftContainer : styles.rightContainer]}>
+        <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer]}>
             <Text style={{color: isMe ? 'black' : 'white'}}>
                 {message?.content}
             </Text>
