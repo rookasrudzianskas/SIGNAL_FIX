@@ -9,7 +9,10 @@ const Message = () => {
     const grey = 'lightgrey';
 
     return (
-        <View style={[styles.container, {backgroundColor: isMe ? grey : blue}]}>
+        <View style={[styles.container, {
+            backgroundColor: isMe ? grey : blue,
+            marginLeft: isMe ? 'auto' : 10,
+        }]}>
             <Text style={{color: isMe ? 'black' : 'white'}}>
                 Message 🚀
             </Text>
