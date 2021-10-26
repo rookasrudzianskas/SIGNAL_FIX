@@ -14,6 +14,8 @@ Amplify.configure({
     disabled: true,
   },
 });
+
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
