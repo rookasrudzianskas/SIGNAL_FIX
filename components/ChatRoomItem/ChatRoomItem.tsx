@@ -4,13 +4,19 @@ import { RootTabScreenProps } from '../../types';
 import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import moment from 'moment';
+import {useNavigation} from "@react-navigation/native";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
     const user = chatRoom.users[1];
 
+    const navigation = useNavigation();
+    const onPress = () => {
+        navigation.navigate('ChatRoomScreen');
+    }
+
     return (
-        <TouchableOpacity activeOpacity={0.6}>
+        <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
             <View style={tw`flex-row px-3`}>
                 <View style={tw`p-3`}>
                     <Image source={{uri: user?.imageUri}} style={styles.image}/>
