@@ -16,6 +16,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import ChatRoomScreen from "../screens/ChatRoomScreen/ChatRoomScreen";
 import {Text} from 'react-native';
 import {Component} from "react";
+import tw from "tailwind-react-native-classnames";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -56,11 +57,13 @@ const HomeHeader = (props) => {
     const {width, height} = useWindowDimensions();
 
     return (
-        <View style={{flexDirection: 'row', justifyContent: 'space-between', width}}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between', width, paddingHorizontal: 10,}}>
             <Image source={{uri: 'https://avatars.githubusercontent.com/u/38469892?v=4'}} style={{width: 30, height: 30, borderRadius: 30}} />
-            <Text style={{}}>Home</Text>
-            <Feather name="camera" size={24} color="black" />
-            <Feather name="edit-2" size={24} color="black" />
+            <Text style={{flex: 1}}>Home</Text>
+            <View style={tw`mr-6 flex-row`}>
+                <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
+                <Feather name="edit-2" size={24} color="black" />
+            </View>
         </View>
     )
 }
