@@ -8,7 +8,7 @@ const Message = () => {
 
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container]}>
             <Text style={tw`text-gray-100`}>
                 Message 🚀
             </Text>
