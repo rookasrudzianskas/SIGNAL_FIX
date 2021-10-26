@@ -9,7 +9,7 @@ const MessageInput = () => {
 
             </View>
             <View style={styles.buttonContainer}>
-
+                <Text>+</Text>
             </View>
         </View>
     );
