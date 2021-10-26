@@ -6,7 +6,7 @@ import chatRoomData from "../../assets/data/Chats";
 const ChatRoomScreen = () => {
     return (
         <View style={styles.container}>
-            <FlatList data={chatRoomData.messages} renderItem={({item}) => (
+            <FlatList style={{backgroundColor: 'red'}} inverted data={chatRoomData.messages} renderItem={({item}) => (
                 <Message message={item} />
             )} />
         </View>
