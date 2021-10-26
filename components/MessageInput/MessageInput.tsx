@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform} from 'react-native';
 import styles from "./style";
 import tw from "tailwind-react-native-classnames";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
@@ -26,7 +26,7 @@ const MessageInput = () => {
     }
 
     return (
-        <View style={styles.root}>
+        <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.root}>
             <View style={styles.inputContainer}>
                 <SimpleLineIcons name="emotsmile" size={24} color="#595959" style={{marginHorizontal: 5,}} />
 
@@ -47,7 +47,7 @@ const MessageInput = () => {
                     <AntDesign name="plus" size={24} color="white" />
                 )}
             </TouchableOpacity>
-        </View>
+        </KeyboardAvoidingView>
     );
 };
 
