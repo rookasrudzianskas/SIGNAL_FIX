@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import styles from "./style";
 import tw from "tailwind-react-native-classnames";
 import {AntDesign, Feather, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 
 const MessageInput = () => {
+    const [message, setMessage] = useState('');
+
+
     return (
         <View style={styles.root}>
             <View style={styles.inputContainer}>
