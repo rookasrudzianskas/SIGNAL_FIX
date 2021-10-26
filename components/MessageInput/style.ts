@@ -15,10 +15,11 @@ const styles = StyleSheet.create({
         borderColor: '#dedede',
         flexDirection: 'row',
         alignItems: 'center',
+        padding: 5,
     },
     buttonContainer: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         backgroundColor: '#3777f0',
         borderRadius: 60,
         alignItems: 'center',

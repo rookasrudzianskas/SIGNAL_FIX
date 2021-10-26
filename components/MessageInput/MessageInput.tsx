@@ -1,19 +1,21 @@
 import React from 'react';
-import {Text, View, StyleSheet, TextInput} from 'react-native';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import styles from "./style";
 import tw from "tailwind-react-native-classnames";
-import {SimpleLineIcons} from "@expo/vector-icons";
+import {AntDesign, Feather, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 
 const MessageInput = () => {
     return (
         <View style={styles.root}>
             <View style={styles.inputContainer}>
-                <SimpleLineIcons name="emotsmile" size={24} color="grey" />
-                <TextInput style={{flex: 1,}} />
+                <SimpleLineIcons name="emotsmile" size={24} color="#595959" style={{marginHorizontal: 5,}} />
+                <TextInput style={{flex: 1, marginHorizontal: 5,}} />
+                <Feather name="camera" size={24} color="#595959" />
+                <MaterialCommunityIcons style={{marginLeft: 5,}} name="microphone-outline" size={24} color="#595959" />
             </View>
-            <View style={styles.buttonContainer}>
-                <Text style={tw`text-4xl text-white`}>+</Text>
-            </View>
+            <TouchableOpacity  style={styles.buttonContainer}>
+                <AntDesign name="plus" size={24} color="white" />
+            </TouchableOpacity>
         </View>
     );
 };
