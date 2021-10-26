@@ -16,6 +16,8 @@ const MessageInput = () => {
                 <TextInput
                     style={{flex: 1, marginHorizontal: 5,}}
                     placeholder="Type a message here"
+                    value={message}
+                    onChangeText={(text) => setMessage(text)}
                 />
 
                 <Feather name="camera" size={24} color="#595959" />
