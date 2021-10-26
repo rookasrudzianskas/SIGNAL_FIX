@@ -10,7 +10,7 @@ const Message = () => {
 
     return (
         <View style={[styles.container, {backgroundColor: isMe ? grey : blue}]}>
-            <Text style={[tw`text-gray-100`]}>
+            <Text style={{color: isMe ? 'black' : 'white'}}>
                 Message 🚀
             </Text>
         </View>
