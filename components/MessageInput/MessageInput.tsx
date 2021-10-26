@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import styles from "./style";
 import tw from "tailwind-react-native-classnames";
-import {AntDesign, Feather, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
+import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 
 const MessageInput = () => {
     const [message, setMessage] = useState('');
@@ -21,10 +21,14 @@ const MessageInput = () => {
                 />
 
                 <Feather name="camera" size={24} color="#595959" />
-                <MaterialCommunityIcons style={{marginLeft: 5,}} name="microphone-outline" size={24} color="#595959" />
+                <MaterialCommunityIcons style={{marginHorizontal: 5,}} name="microphone-outline" size={24} color="#595959" />
             </View>
             <TouchableOpacity  style={styles.buttonContainer}>
-                <AntDesign name="plus" size={24} color="white" />
+                {message ? (
+                    <Ionicons name="ios-send" size={18} color="white" />
+                ) : (
+                    <AntDesign name="plus" size={24} color="white" />
+                )}
             </TouchableOpacity>
         </View>
     );
