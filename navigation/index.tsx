@@ -59,7 +59,7 @@ const HomeHeader = (props) => {
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width, paddingHorizontal: 10, alignItems: 'center'}}>
             <Image source={{uri: 'https://avatars.githubusercontent.com/u/38469892?v=4'}} style={{width: 30, height: 30, borderRadius: 30}} />
-            <Text style={{flex: 1, }}>Home</Text>
+            <Text style={{flex: 1, textAlign: 'center', fontSize: 20, fontWeight: '600', marginLeft: 40,}}>Signal</Text>
             <View style={tw`mr-6 flex-row`}>
                 <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
                 <Feather name="edit-2" size={24} color="black" />
