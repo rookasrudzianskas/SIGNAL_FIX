@@ -9,7 +9,12 @@ const MessageInput = () => {
         <View style={styles.root}>
             <View style={styles.inputContainer}>
                 <SimpleLineIcons name="emotsmile" size={24} color="#595959" style={{marginHorizontal: 5,}} />
-                <TextInput style={{flex: 1, marginHorizontal: 5,}} />
+
+                <TextInput
+                    style={{flex: 1, marginHorizontal: 5,}}
+                    placeholder="Type a message here"
+                />
+
                 <Feather name="camera" size={24} color="#595959" />
                 <MaterialCommunityIcons style={{marginLeft: 5,}} name="microphone-outline" size={24} color="#595959" />
             </View>
