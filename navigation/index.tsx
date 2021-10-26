@@ -37,10 +37,7 @@ function RootNavigator() {
     <Stack.Navigator  screenOptions={{headerShown: false}}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: true }} />
         <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen} options={{ headerShown: true }} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
+        <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
 }
