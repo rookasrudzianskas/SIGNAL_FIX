@@ -32,5 +32,3 @@ const styles = StyleSheet.create({
     }
 
 });
-
-// done
