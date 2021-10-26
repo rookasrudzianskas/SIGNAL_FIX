@@ -4,7 +4,8 @@ import styles from './style';
 import tw from "tailwind-react-native-classnames";
 
 const Message = ({message}) => {
-    const isMe = true;
+    const myID = 'u1';
+    const isMe = message.user.id === myID;
     const blue = '#3777f0';
     const grey = 'lightgrey';
 
