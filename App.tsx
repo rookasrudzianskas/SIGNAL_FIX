@@ -9,6 +9,8 @@ import Amplify from 'aws-amplify';
 import config from './src/aws-exports';
 // @ts-ignore
 import { withAuthenticator } from 'aws-amplify-react-native';
+import {Picker} from '@react-native-picker/picker';
+
 
 Amplify.configure({
   ...config,
