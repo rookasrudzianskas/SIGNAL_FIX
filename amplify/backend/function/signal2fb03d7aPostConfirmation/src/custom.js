@@ -25,6 +25,8 @@ exports.handler = (event, context, callback) => {
     name: { S: event.request.userAttributes.email },
   }
 
+  ddb.putItem
+
   //save a new user into DynamoDB
 
   callback(null, event);
