@@ -23,6 +23,7 @@ const ChatRoomScreen = () => {
     );
 };
 
+
 export default ChatRoomScreen;
 
 const styles = StyleSheet.create({
