@@ -30,6 +30,8 @@ exports.handler = async (event, context, callback) => {
     TableName: tableName
   };
 
+  //save a new user into DynamoDB
+
   try {
     await ddb.putItem(params).promise();
     console.log("success");
@@ -37,7 +39,4 @@ exports.handler = async (event, context, callback) => {
     console.log(e);
   }
 
-  //save a new user into DynamoDB
-
-  callback(null, event);
 };
