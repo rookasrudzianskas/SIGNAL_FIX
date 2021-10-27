@@ -7,7 +7,7 @@ exports.handler = async (event, context, callback) => {
   // event event.request.userAttributes.sub
   // insert code to be executed by your lambda trigger
 
-  if (!event?.request?.userAttributes?.sub) {
+  if (!event?.request?.userAttributes?.sub){
     console.log("No sub provided");
     return;
   }
