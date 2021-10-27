@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import {ColorSchemeName, Image, Pressable, useWindowDimensions, View} from 'react-native';
+import {ColorSchemeName, Image, Pressable, TouchableOpacity, useWindowDimensions, View} from 'react-native';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
@@ -17,6 +17,7 @@ import ChatRoomScreen from "../screens/ChatRoomScreen/ChatRoomScreen";
 import {Text} from 'react-native';
 import {Component} from "react";
 import tw from "tailwind-react-native-classnames";
+import {Auth} from "aws-amplify";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -60,9 +61,15 @@ const HomeHeader = (props) => {
 
     const {width, height} = useWindowDimensions();
 
+    const onPress = () => {
+        Auth.signOut();
+    }
+
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width, paddingHorizontal: 10, alignItems: 'center'}}>
-            <Image source={{uri: 'https://avatars.githubusercontent.com/u/38469892?v=4'}} style={{width: 30, height: 30, borderRadius: 30}} />
+            <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
+                <Image source={{uri: 'https://avatars.githubusercontent.com/u/38469892?v=4'}} style={{width: 30, height: 30, borderRadius: 30}} />
+            </TouchableOpacity>
             <Text style={{flex: 1, textAlign: 'center', fontSize: 20, fontWeight: '600', marginLeft: 40,}}>Signal</Text>
             <View style={tw`mr-6 flex-row`}>
                 <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
