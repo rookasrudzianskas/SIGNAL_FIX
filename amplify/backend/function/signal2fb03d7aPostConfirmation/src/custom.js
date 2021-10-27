@@ -37,7 +37,6 @@ exports.handler = async (event, context, callback) => {
     console.log(e);
   }
 
-
   //save a new user into DynamoDB
 
   callback(null, event);
