@@ -16,7 +16,10 @@
         "signal2fb03d7a": {}
       },
       "function": {
-        "signal2fb03d7aPostConfirmation": {}
+        "signal2fb03d7aPostConfirmation": {
+          "deploymentBucketName": "amplify-signal-dev-110431-deployment",
+          "s3Key": "amplify-builds/signal2fb03d7aPostConfirmation-7532522f75796b4d4f50-build.zip"
+        }
       }
     }
   }
