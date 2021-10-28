@@ -8,7 +8,7 @@ import ChatRoomItem from "../../components/ChatRoomItem";
 import ChatRoomsData from "../../assets/data/ChatRooms";
 import {useEffect, useState} from "react";
 import {ChatRoom, ChatRoomUser} from "../../src/models";
-import {DataStore} from "aws-amplify";
+import {Auth, DataStore} from "aws-amplify";
 
 
 const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
@@ -17,7 +17,9 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
 
     useEffect(() => {
         const fetchChatRooms = async () => {
-            const chatRooms = await DataStore.query(ChatRoomUser);
+            const userData = await Auth.currentAuthenticatedUser();
+
+            const chatRooms = (await DataStore.query(ChatRoomUser)).filter(chatRoomUser => chatRoomUser.user.id === userData.attributes.sub);
             console.log(chatRooms);
             setChatRooms(chatRooms);
         };
