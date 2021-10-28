@@ -26,8 +26,10 @@ const MessageInput = ({chatRoom}) => {
         setMessage('');
     }
 
+    // @ts-ignore
     const updateLastMessage = async (newMessage) => {
         await DataStore.save(ChatRoom.copyOf(chatRoom, updatedChatRoom => {
+            // @ts-ignore
             updatedChatRoom.LastMessage = newMessage;
         }))
     }
