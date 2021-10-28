@@ -13,12 +13,15 @@ const UserItem = ({user}) => {
 
     const navigation = useNavigation();
     const onPress = async () => {
-        // @ts-ignore
-        // create a chatroom with him
-        //    @TODO
-        // const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
 
-        // connect the authenticated user with the chat room
+        // TODO if there is already a chat room between these 2 users
+        // then redirect to the existing chat room
+        // otherwise, create a new chatroom with these users.
+
+        // Create a chat room
+        const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
+
+        // connect authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
         console.log("This is db user", dbUser);
