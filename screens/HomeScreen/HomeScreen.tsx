@@ -19,8 +19,10 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
         const fetchChatRooms = async () => {
             const userData = await Auth.currentAuthenticatedUser();
 
-            const chatRooms = (await DataStore.query(ChatRoomUser)).filter(chatRoomUser => chatRoomUser.user.id === userData.attributes.sub).map(chatRoomUser => chatRoomUser.chatroom);
-            // console.log(chatRooms);
+            const chatRooms = (await DataStore.query(ChatRoomUser))
+                .filter(chatRoomUser => chatRoomUser.user.id === userData.attributes.sub)
+                .map(chatRoomUser => chatRoomUser.chatroom);
+
             setChatRooms(chatRooms);
         };
         fetchChatRooms();
