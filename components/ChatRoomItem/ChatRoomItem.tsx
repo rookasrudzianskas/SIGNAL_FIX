@@ -14,7 +14,7 @@ const ChatRoomItem = ({chatRoom}) => {
     // const [users, setUsers] = useState<User[]>([]) // all users in the state;
     const [user, setUser] = useState<User|null>(null) // the display user
     const [lastMessage, setLastMessage] = useState<Message|undefined>() // the display user
-
+    console.log("🔥 last message: ", lastMessage);
     const navigation = useNavigation();
     console.log(chatRoom)
     const onPress = () => {
@@ -36,16 +36,13 @@ const ChatRoomItem = ({chatRoom}) => {
             const authUser = await Auth.currentAuthenticatedUser();
             setUser(fetchedUsers.find(user => user.id !== authUser.attributes.sub) || null);
         };
-
         fetchUsers();
     }, []);
 
     useEffect(() => {
-        if(chatRoom.chatRoomLastMessageId) {
-            // @ts-ignore
-            DataStore.query(Message, chatRoom.chatRoomLastMessageId).then(setLastMessage);
-        }
-    }, []);
+        if (!chatRoom.chatRoomLastMessageId) { return }
+        DataStore.query(Message, chatRoom.chatRoomLastMessageId).then(setLastMessage);
+    }, [])
 
 
     if(!user) {
@@ -76,7 +73,7 @@ const ChatRoomItem = ({chatRoom}) => {
                             <Text style={tw`text-lg text-gray-500`}>{moment(lastMessage?.createdAt).fromNow()}</Text>
                         </View>
                     </View>
-                    <Text numberOfLines={1} style={tw`text-lg text-gray-500 mb-5`}>{chatRoom?.lastMessage?.content}</Text>
+                    <Text numberOfLines={1} style={tw`text-lg text-gray-500 mb-5`}>{lastMessage?.content}</Text>
                 </View>
             </View>
         </TouchableOpacity>
