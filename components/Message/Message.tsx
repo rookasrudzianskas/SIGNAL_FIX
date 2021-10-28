@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {User} from "../../src/models";
+import {Auth, DataStore} from "aws-amplify";
 
 const blue = '#3777f0';
 const grey = 'lightgrey';
@@ -9,12 +10,24 @@ const myID = 'u1';
 
 // @ts-ignore
 const Message = ({message}) => {
-    const isMe = message.user.id === myID;
-    const [user, setUser] = useState<User|null>(null);
+    const [user, setUser] = useState<User|undefined>();
+    const [isMe, setIsMe] = useState<boolean>(false);
 
     useEffect(() => {
-
+        // @ts-ignore
+        DataStore.query(User, message.userID).then(setUser);
     }, []);
+
+    useEffect(() => {
+        const checkIfMe = async () => {
+            if(!user) {
+                return;
+            }
+            const authUser = await Auth.currentAuthenticatedUser();
+            setIsMe(user.id === authUser.attributes.sub);
+        }
+
+    }, [user]);
 
 
     return (
