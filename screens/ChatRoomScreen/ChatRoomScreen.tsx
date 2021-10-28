@@ -20,7 +20,10 @@ const ChatRoomScreen = () => {
     }, []);
 
     useEffect(() => {
-
+        if(!chatRoom) {
+            return;
+        }
+        fetchMessages();
     }, [chatRoom]);
 
 
@@ -40,6 +43,10 @@ const ChatRoomScreen = () => {
         }
         // const fetchMessages = await DataStore.query(MessageModel);
     };
+
+    const fetchMessages = async () => {
+        const fetchedMessages = await DataStore.query(MessageModel, message => message.chatroomID());
+    }
 
     return (
         <>
