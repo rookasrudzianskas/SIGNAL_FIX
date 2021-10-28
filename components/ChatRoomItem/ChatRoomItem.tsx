@@ -6,13 +6,14 @@ import styles from "./style";
 import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
 import {useEffect, useState} from "react";
-import {User, ChatRoomUser} from "../../src/models";
+import {User, ChatRoomUser, Message} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
     // const [users, setUsers] = useState<User[]>([]) // all users in the state;
     const [user, setUser] = useState<User|null>(null) // the display user
+    const [lastMessage, setLastMessage] = useState<Message|null>(null) // the display user
 
     const navigation = useNavigation();
     console.log(chatRoom)
@@ -37,6 +38,10 @@ const ChatRoomItem = ({chatRoom}) => {
         };
 
         fetchUsers();
+    }, []);
+
+    useEffect(() => {
+
     }, []);
 
 
