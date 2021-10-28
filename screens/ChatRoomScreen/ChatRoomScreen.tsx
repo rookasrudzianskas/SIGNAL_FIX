@@ -5,7 +5,7 @@ import chatRoomData from "../../assets/data/Chats";
 import MessageInput from "../../components/MessageInput";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useNavigation, useRoute} from "@react-navigation/native";
-import {Message as MessageModel } from "../../src/models";
+import {ChatRoom, Message as MessageModel} from "../../src/models";
 import {DataStore} from "aws-amplify";
 
 const ChatRoomScreen = () => {
@@ -16,7 +16,12 @@ const ChatRoomScreen = () => {
 
     useEffect(() => {
         const fetchMessages = async () => {
-            const fetchMessages = await DataStore.query(MessageModel);
+            if(!route?.params?.id) {
+                console.warn('No chat id is provided.');
+                return;
+            }
+            const chatRoom = await DataStore.query(ChatRoom, route.params.id);
+            // const fetchMessages = await DataStore.query(MessageModel);
         };
 
         fetchMessages();
