@@ -26,7 +26,7 @@ const Message = ({message}) => {
             const authUser = await Auth.currentAuthenticatedUser();
             setIsMe(user.id === authUser.attributes.sub);
         }
-
+        checkIfMe();
     }, [user]);
 
 
