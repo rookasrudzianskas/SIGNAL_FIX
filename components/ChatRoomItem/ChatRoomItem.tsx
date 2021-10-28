@@ -13,7 +13,7 @@ import {Auth, DataStore} from "aws-amplify";
 const ChatRoomItem = ({chatRoom}) => {
     // const [users, setUsers] = useState<User[]>([]) // all users in the state;
     const [user, setUser] = useState<User|null>(null) // the display user
-    const [lastMessage, setLastMessage] = useState<Message|null>(null) // the display user
+    const [lastMessage, setLastMessage] = useState<Message|undefined>() // the display user
 
     const navigation = useNavigation();
     console.log(chatRoom)
@@ -73,7 +73,7 @@ const ChatRoomItem = ({chatRoom}) => {
                             <Text style={tw`text-xl font-bold`}>{user?.name}</Text>
                         </View>
                         <View style={tw``}>
-                            <Text style={tw`text-lg text-gray-500`}>{moment(chatRoom?.lastMessage?.createdAt).fromNow()}</Text>
+                            <Text style={tw`text-lg text-gray-500`}>{moment(lastMessage?.createdAt).fromNow()}</Text>
                         </View>
                     </View>
                     <Text numberOfLines={1} style={tw`text-lg text-gray-500 mb-5`}>{chatRoom?.lastMessage?.content}</Text>
