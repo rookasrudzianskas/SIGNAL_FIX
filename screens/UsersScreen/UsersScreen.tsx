@@ -15,7 +15,7 @@ const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
         <View style={styles.page}>
 
             <FlatList showsVerticalScrollIndicator={false} data={Users} renderItem={({item}) => (
-                <UserItem key={item.id} chatRoom={item} />
+                <UserItem key={item.id} user={item} />
             )}  />
 
         </View>

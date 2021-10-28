@@ -18,11 +18,11 @@ const UserItem = ({user}) => {
 
     return (
         <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
-            <View style={tw`flex-row px-3`}>
+            <View style={tw`flex-row px-3 items-center justify-center`}>
                 <View style={tw`p-3`}>
                     <Image source={{uri: user?.imageUri}} style={styles.image}/>
                 </View>
-                <View style={tw`flex-1 justify-center mt-4`}>
+                <View style={tw`flex-1 justify-center`}>
                     <View style={tw`flex-row items-center`}>
                         <View style={tw`flex flex-row flex-1`}>
                             <Text style={tw`text-xl font-bold`}>{user?.name}</Text>
