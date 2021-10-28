@@ -82,7 +82,9 @@ const HomeHeader = (props) => {
             <Text style={{flex: 1, textAlign: 'center', fontSize: 20, fontWeight: '600', marginLeft: 40,}}>Signal</Text>
             <View style={tw`mr-6 flex-row`}>
                 <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
-                <Feather name="edit-2" size={24} color="black" />
+                <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('UsersScreen')} >
+                    <Feather name="edit-2" size={24} color="black" />
+                </TouchableOpacity>
             </View>
         </View>
     )
