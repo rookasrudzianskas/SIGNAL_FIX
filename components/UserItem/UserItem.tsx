@@ -24,10 +24,16 @@ const UserItem = ({user}) => {
         // connect authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
+
         await DataStore.save(new ChatRoomUser({
         // @ts-ignore
             user: dbUser,
             chatroom: newChatRoom
+        }));
+
+        await DataStore.save(new ChatRoomUser({
+            user: user,
+            chatroom: newChatRoom,
         }));
 
     }
