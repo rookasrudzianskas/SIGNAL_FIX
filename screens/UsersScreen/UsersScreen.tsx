@@ -5,21 +5,21 @@ import { RootTabScreenProps } from '../../types';
 import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import ChatRoomItem from "../../components/ChatRoomItem";
-import Users from "../../assets/data/Users";
 import UserItem from "../../components/UserItem";
 import {DataStore} from 'aws-amplify';
 import {useState} from "react";
+import {User} from "../../src/models";
 
 
 
 const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
 
-    const [users, setUsers] = useState();
+    const [users, setUsers] = useState<User[]>([]);
 
   return (
         <View style={styles.page}>
 
-            <FlatList showsVerticalScrollIndicator={false} data={Users} renderItem={({item}) => (
+            <FlatList showsVerticalScrollIndicator={false} data={users} renderItem={({item}) => (
                 <UserItem key={item.id} user={item} />
             )}  />
 
