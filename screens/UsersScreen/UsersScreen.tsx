@@ -7,7 +7,7 @@ import styles from "./style";
 import ChatRoomItem from "../../components/ChatRoomItem";
 import UserItem from "../../components/UserItem";
 import {DataStore} from 'aws-amplify';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {User} from "../../src/models";
 
 
@@ -15,6 +15,16 @@ import {User} from "../../src/models";
 const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
 
     const [users, setUsers] = useState<User[]>([]);
+
+    useEffect(() => {
+        // querying the users
+        const fetchUsers = async () => {
+            const fetchedUsers = await DataStore.query(User);
+            setUsers(fetchedUsers);
+        };
+
+        fetchUsers();
+    }, []);
 
   return (
         <View style={styles.page}>
