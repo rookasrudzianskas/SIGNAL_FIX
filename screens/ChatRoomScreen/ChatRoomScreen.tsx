@@ -30,12 +30,12 @@ const ChatRoomScreen = () => {
         }
         // @ts-ignore
         const chatRoom = await DataStore.query(ChatRoom, route?.params?.id);
+
         if(!chatRoom) {
             console.error("Coud not find the chat room");
         } else {
             setChatRoom(chatRoom);
         }
-        console.log(chatRoom);
         // const fetchMessages = await DataStore.query(MessageModel);
     };
 
