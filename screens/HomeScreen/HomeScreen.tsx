@@ -28,11 +28,12 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
         fetchChatRooms();
     }, []);
 
+
   return (
         <View style={styles.page}>
 
             <FlatList showsVerticalScrollIndicator={false} data={chatRooms} renderItem={({item}) => (
-                <ChatRoomItem key={item.id} chatRoom={item} />
+                <ChatRoomItem key={item.id}  chatRoom={item} />
             )}  />
 
         </View>
