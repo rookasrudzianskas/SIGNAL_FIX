@@ -15,6 +15,7 @@ const ChatRoomItem = ({chatRoom}) => {
     const [user, setUser] = useState<User|null>(null) // the display user
 
     const navigation = useNavigation();
+    console.log(chatRoom)
     const onPress = () => {
         // @ts-ignore
         navigation.navigate('ChatRoomScreen', {
