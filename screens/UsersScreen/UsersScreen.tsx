@@ -16,6 +16,10 @@ const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
 
     const [users, setUsers] = useState<User[]>([]);
 
+    // useEffect(() => {
+    //     DataStore.query(User).then(setUsers);
+    // }, []);
+
     useEffect(() => {
         // querying the users
         const fetchUsers = async () => {
