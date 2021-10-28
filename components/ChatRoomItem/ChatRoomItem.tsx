@@ -24,7 +24,7 @@ const ChatRoomItem = ({chatRoom}) => {
     if(!user) {
         return (
             <View style={tw`flex items-center justify-center mt-10`}>
-                <ActivityIndicator style={tw` items-center justify-center`} size={'large'} />
+                <ActivityIndicator style={tw` items-center justify-center`} color={'lightblue'} size={'large'} />
             </View>
         )
     }
