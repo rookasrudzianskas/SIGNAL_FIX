@@ -6,17 +6,21 @@ import styles from "./style";
 import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
 import {ChatRoom} from "../../src/models";
-import {DataStore} from "aws-amplify";
+import {Auth, DataStore} from "aws-amplify";
 
 // @ts-ignore
 const UserItem = ({user}) => {
 
     const navigation = useNavigation();
-    const onPress = () => {
+    const onPress = async () => {
         // @ts-ignore
         // create a chatroom with him
         //    @TODO
-        const newChatRoom = await DataStore.save(new ChatRoom({newMessages: {}}));
+        // const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
+
+        // connect the authenticated user with the chat room
+        const authUser = await Auth.currentAuthenticatedUser();
+        console.log(authUser);
 
 
     }
