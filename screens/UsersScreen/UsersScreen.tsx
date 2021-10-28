@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useState} from 'react';
 import {FlatList, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { Text, View } from '../../components/Themed';
 import { RootTabScreenProps } from '../../types';
@@ -9,6 +8,7 @@ import ChatRoomItem from "../../components/ChatRoomItem";
 import Users from "../../assets/data/Users";
 import UserItem from "../../components/UserItem";
 import {DataStore} from 'aws-amplify';
+import {useState} from "react";
 
 
 
