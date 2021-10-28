@@ -15,7 +15,7 @@ const UserItem = ({user}) => {
     const onPress = () => {
         // @ts-ignore
         // create a chatroom with him
-    //    @TODO
+        //    @TODO
         const newChatRoom = await DataStore.save(new ChatRoom({newMessages: {}}));
 
 
