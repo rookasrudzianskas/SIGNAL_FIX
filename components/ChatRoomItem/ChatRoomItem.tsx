@@ -22,6 +22,21 @@ const ChatRoomItem = ({chatRoom}) => {
         });
     }
 
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const fetchedUsers = (await DataStore.query(ChatRoomUser))
+                .filter(chatRoomUser => chatRoomUser.chatroom.id === chatRoom.id)
+                .map(chatRoomUser => chatRoomUser.user);
+
+            console.log("THis is it", fetchedUsers);
+            setUsers(fetchedUsers);
+        };
+
+        fetchUsers();
+    }, []);
+
+
     if(!user) {
         return (
             <View style={tw`flex items-center justify-center mt-10`}>
@@ -29,15 +44,6 @@ const ChatRoomItem = ({chatRoom}) => {
             </View>
         )
     }
-
-    useEffect(() => {
-        const fetchUsers = async () => {
-            const fetchedUsers = (await DataStore.query(ChatRoomUser)).filter(chatRoomUser => chatRoomUser.chatroom.id === chatRoom.id)
-                .map(chatRoomUser => chatRoomUser.user);
-
-            setUsers(fetchedUsers);
-        };
-    }, []);
 
     return (
         <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
