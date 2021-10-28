@@ -26,8 +26,7 @@ const MessageInput = ({chatRoomId}) => {
         // @ts-ignore
             content: message,
             userID: user.attributes.sub,
-        // @ts-ignore
-            chatroomID: chatRoom.id,
+            chatroomID: chatRoomId,
         }));
         setMessage('');
     }
