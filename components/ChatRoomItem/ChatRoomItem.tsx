@@ -6,7 +6,8 @@ import styles from "./style";
 import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
 import {useEffect, useState} from "react";
-import {User} from "../../src/models";
+import {User, ChatRoomUser} from "../../src/models";
+import {DataStore} from "aws-amplify";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
@@ -31,7 +32,7 @@ const ChatRoomItem = ({chatRoom}) => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-
+            const chatRoomUsers = (await DataStore.query(ChatRoomUser)).filter(chatRoomUser => chatRoomUser.chatroom.id === chatRoom.id);
         };
     }, []);
 
