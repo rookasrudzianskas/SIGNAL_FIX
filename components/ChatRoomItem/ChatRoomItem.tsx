@@ -32,7 +32,10 @@ const ChatRoomItem = ({chatRoom}) => {
 
     useEffect(() => {
         const fetchUsers = async () => {
-            const chatRoomUsers = (await DataStore.query(ChatRoomUser)).filter(chatRoomUser => chatRoomUser.chatroom.id === chatRoom.id);
+            const fetchedUsers = (await DataStore.query(ChatRoomUser)).filter(chatRoomUser => chatRoomUser.chatroom.id === chatRoom.id)
+                .map(chatRoomUser => chatRoomUser.user);
+
+            setUsers(fetchedUsers);
         };
     }, []);
 
