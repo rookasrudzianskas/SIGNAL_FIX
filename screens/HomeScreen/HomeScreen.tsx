@@ -7,7 +7,7 @@ import styles from "./style";
 import ChatRoomItem from "../../components/ChatRoomItem";
 import ChatRoomsData from "../../assets/data/ChatRooms";
 import {useEffect, useState} from "react";
-import {ChatRoom} from "../../src/models";
+import {ChatRoom, ChatRoomUser} from "../../src/models";
 import {DataStore} from "aws-amplify";
 
 
@@ -17,7 +17,8 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
 
     useEffect(() => {
         const fetchChatRooms = async () => {
-            const chatRooms = await DataStore.query(ChatRoom);
+            const chatRooms = await DataStore.query(ChatRoomUser);
+            console.log(chatRooms);
             setChatRooms(chatRooms);
         };
         fetchChatRooms();
