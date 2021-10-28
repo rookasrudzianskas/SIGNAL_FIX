@@ -5,7 +5,7 @@
  */
 import {Feather, FontAwesome} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import {NavigationContainer, DefaultTheme, DarkTheme, useNavigation} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import {ColorSchemeName, Image, Pressable, TouchableOpacity, useWindowDimensions, View} from 'react-native';
@@ -68,6 +68,7 @@ function TabBarIcon(props: {
 const HomeHeader = (props) => {
 
     const {width, height} = useWindowDimensions();
+    const navigation = useNavigation();
 
     const onPress = () => {
         Auth.signOut();
