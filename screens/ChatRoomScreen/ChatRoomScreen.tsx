@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet, FlatList, SafeAreaView} from 'react-native';
 import Message from "../../components/Message";
 import chatRoomData from "../../assets/data/Chats";
@@ -6,12 +6,21 @@ import MessageInput from "../../components/MessageInput";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {Message as MessageModel } from "../../src/models";
+import {DataStore} from "aws-amplify";
 
 const ChatRoomScreen = () => {
     const [messages, setMessages] = useState<MessageModel[]>([]);
     const route = useRoute();
     const navigation = useNavigation();
     navigation.setOptions({title: 'Rokas Rudzianskas'});
+
+    useEffect(() => {
+        const fetchMessages = async () => {
+            const fetchMessages = await DataStore.query(MessageModel);
+        };
+
+        fetchMessages();
+    }, []);
 
     return (
         <>
