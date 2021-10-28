@@ -5,11 +5,13 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import {User} from "../../src/models";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
-    const user = chatRoom.users[1];
+    const [users, setUsers] = useState<User[]>([]) // all users in the state;
+    const [user, setUser] = useState<User|null>(null) // the display user
 
     const navigation = useNavigation();
     const onPress = () => {
