@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import {FlatList, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { Text, View } from '../../components/Themed';
 import { RootTabScreenProps } from '../../types';
@@ -12,6 +13,8 @@ import {DataStore} from 'aws-amplify';
 
 
 const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
+
+    const [users, setUsers] = useState();
 
   return (
         <View style={styles.page}>
