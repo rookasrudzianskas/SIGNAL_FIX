@@ -5,7 +5,7 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
-import {ChatRoom} from "../../src/models";
+import {ChatRoom, User} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
 
 // @ts-ignore
@@ -20,6 +20,7 @@ const UserItem = ({user}) => {
 
         // connect the authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
+        const dbUser = await DataStore.query(User, authUser.attributes.sub);
         console.log(authUser);
 
 
