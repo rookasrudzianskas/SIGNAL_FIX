@@ -7,7 +7,7 @@ import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
 import {useEffect, useState} from "react";
 import {User, ChatRoomUser} from "../../src/models";
-import {DataStore} from "aws-amplify";
+import {Auth, DataStore} from "aws-amplify";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
@@ -30,7 +30,9 @@ const ChatRoomItem = ({chatRoom}) => {
                 .map(chatRoomUser => chatRoomUser.user);
 
             setUsers(fetchedUsers);
-            setUser(fetchedUsers[0]);
+
+            const authUser = await Auth.currentAuthenticatedUser();
+            setUser(fetchedUsers.find(user => user.id !== authUser.attributes.sub) || null);
         };
 
         fetchUsers();
