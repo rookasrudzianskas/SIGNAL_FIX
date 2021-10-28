@@ -40,7 +40,7 @@ function RootNavigator() {
         <Stack.Screen
             name="HomeScreen"
             component={HomeScreen}
-            options={{ headerTitle: props => <HomeHeader /> }}
+            options={{ title: 'Users 🚀' }}
         />
 
         <Stack.Screen
