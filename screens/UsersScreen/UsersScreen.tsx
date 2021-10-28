@@ -5,19 +5,17 @@ import { RootTabScreenProps } from '../../types';
 import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import ChatRoomItem from "../../components/ChatRoomItem";
-import ChatRoomsData from "../../assets/data/ChatRooms";
+import Users from "../../assets/data/Users";
+import UserItem from "../../components/UserItem";
 
 
 const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
 
-    const chatRoom1 = ChatRoomsData[0];
-
-    const chatRoom2 = ChatRoomsData[1];
   return (
         <View style={styles.page}>
 
-            <FlatList showsVerticalScrollIndicator={false} data={ChatRoomsData} renderItem={({item}) => (
-                <ChatRoomItem key={item.id} chatRoom={item} />
+            <FlatList showsVerticalScrollIndicator={false} data={Users} renderItem={({item}) => (
+                <UserItem key={item.id} chatRoom={item} />
             )}  />
 
         </View>
