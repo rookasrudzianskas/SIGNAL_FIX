@@ -10,7 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import {ColorSchemeName, Image, Pressable, TouchableOpacity, useWindowDimensions, View} from 'react-native';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import UsersScreen from '../screens/HomeScreen/HomeScreen';
+import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ChatRoomScreen from "../screens/ChatRoomScreen/ChatRoomScreen";
@@ -18,6 +18,7 @@ import {Text} from 'react-native';
 import {Component} from "react";
 import tw from "tailwind-react-native-classnames";
 import {Auth} from "aws-amplify";
+import UsersScreen from "../screens/UsersScreen/UsersScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -41,6 +42,13 @@ function RootNavigator() {
             component={HomeScreen}
             options={{ headerTitle: props => <HomeHeader /> }}
         />
+
+        <Stack.Screen
+            name="UsersScreen"
+            component={UsersScreen}
+            options={{ headerTitle: props => <HomeHeader /> }}
+        />
+
         <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen}
                       options={{ headerTitle: ChatHeader, headerBackTitleVisible: false, }}
         />
