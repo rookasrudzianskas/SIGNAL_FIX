@@ -7,6 +7,8 @@ import styles from "./style";
 import ChatRoomItem from "../../components/ChatRoomItem";
 import Users from "../../assets/data/Users";
 import UserItem from "../../components/UserItem";
+import {DataStore} from 'aws-amplify';
+
 
 
 const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
