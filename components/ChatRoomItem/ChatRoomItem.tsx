@@ -11,7 +11,7 @@ import {Auth, DataStore} from "aws-amplify";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
-    const [users, setUsers] = useState<User[]>([]) // all users in the state;
+    // const [users, setUsers] = useState<User[]>([]) // all users in the state;
     const [user, setUser] = useState<User|null>(null) // the display user
 
     const navigation = useNavigation();
@@ -29,7 +29,7 @@ const ChatRoomItem = ({chatRoom}) => {
                 .filter(chatRoomUser => chatRoomUser.chatroom.id === chatRoom.id)
                 .map(chatRoomUser => chatRoomUser.user);
 
-            setUsers(fetchedUsers);
+            // setUsers(fetchedUsers);
 
             const authUser = await Auth.currentAuthenticatedUser();
             setUser(fetchedUsers.find(user => user.id !== authUser.attributes.sub) || null);
