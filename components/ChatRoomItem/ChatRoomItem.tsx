@@ -17,6 +17,8 @@ const ChatRoomItem = ({chatRoom}) => {
 
     console.log("🔥 last message: ", lastMessage);
     const navigation = useNavigation();
+
+
     console.log(chatRoom)
     const onPress = () => {
         // @ts-ignore
@@ -39,6 +41,8 @@ const ChatRoomItem = ({chatRoom}) => {
         };
         fetchUsers();
     }, []);
+
+    console.log('🔫', chatRoom.chatRoomLastMessageId);
 
     useEffect(() => {
         if (!chatRoom.chatRoomLastMessageId) { return }
