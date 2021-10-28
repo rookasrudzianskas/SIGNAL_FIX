@@ -41,7 +41,11 @@ const ChatRoomItem = ({chatRoom}) => {
     }, []);
 
     useEffect(() => {
+        if(chatRoom.chatRoomLastMessageId) {
+            return (
 
+            )
+        }
     }, []);
 
 
