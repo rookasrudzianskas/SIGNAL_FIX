@@ -29,8 +29,8 @@ const ChatRoomItem = ({chatRoom}) => {
                 .filter(chatRoomUser => chatRoomUser.chatroom.id === chatRoom.id)
                 .map(chatRoomUser => chatRoomUser.user);
 
-            console.log("THis is it", fetchedUsers);
             setUsers(fetchedUsers);
+            setUser(fetchedUsers[0]);
         };
 
         fetchUsers();
