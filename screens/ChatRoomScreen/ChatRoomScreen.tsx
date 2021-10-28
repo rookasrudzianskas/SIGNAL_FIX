@@ -16,11 +16,14 @@ const ChatRoomScreen = () => {
 
     useEffect(() => {
         const fetchMessages = async () => {
+            // @ts-ignore
             if(!route?.params?.id) {
                 console.warn('No chat id is provided.');
                 return;
             }
-            const chatRoom = await DataStore.query(ChatRoom, route.params.id);
+            // @ts-ignore
+            const chatRoom = await DataStore.query(ChatRoom, route?.params?.id);
+            console.log(chatRoom);
             // const fetchMessages = await DataStore.query(MessageModel);
         };
 
