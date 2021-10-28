@@ -21,7 +21,7 @@ const UserItem = ({user}) => {
         // connect the authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
-        console.log(authUser);
+        console.log("This is db user", dbUser);
 
 
     }
