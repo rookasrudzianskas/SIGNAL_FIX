@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import tw from "tailwind-react-native-classnames";
+import {User} from "../../src/models";
 
 const blue = '#3777f0';
 const grey = 'lightgrey';
@@ -9,6 +10,11 @@ const myID = 'u1';
 // @ts-ignore
 const Message = ({message}) => {
     const isMe = message.user.id === myID;
+    const [user, setUser] = useState<User|null>(null);
+
+    useEffect(() => {
+
+    }, []);
 
 
     return (
