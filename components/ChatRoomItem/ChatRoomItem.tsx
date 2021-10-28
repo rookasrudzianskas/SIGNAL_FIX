@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image, StyleSheet, TouchableOpacity, View, Text} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View, Text, ActivityIndicator} from 'react-native';
 import { RootTabScreenProps } from '../../types';
 import tw from "tailwind-react-native-classnames";
 import styles from "./style";
@@ -21,8 +21,18 @@ const ChatRoomItem = ({chatRoom}) => {
         });
     }
 
-    useEffect(() => {
+    if(!user) {
+        return (
+            <View style={tw`flex items-center justify-center mt-10`}>
+                <ActivityIndicator style={tw` items-center justify-center`} size={'large'} />
+            </View>
+        )
+    }
 
+    useEffect(() => {
+        const fetchUsers = async () => {
+
+        };
     }, []);
 
     return (
