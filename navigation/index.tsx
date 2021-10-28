@@ -10,7 +10,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import {ColorSchemeName, Image, Pressable, TouchableOpacity, useWindowDimensions, View} from 'react-native';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import UsersScreen from '../screens/HomeScreen/HomeScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import ChatRoomScreen from "../screens/ChatRoomScreen/ChatRoomScreen";
