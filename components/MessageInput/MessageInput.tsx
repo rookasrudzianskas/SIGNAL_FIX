@@ -4,10 +4,10 @@ import styles from "./style";
 import tw from "tailwind-react-native-classnames";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore} from "aws-amplify";
-import { Message } from '../../src/models';
+import {ChatRoom, Message} from '../../src/models';
 
 // @ts-ignore
-const MessageInput = ({chatRoomId}) => {
+const MessageInput = ({chatRoom}) => {
     const [message, setMessage] = useState('');
     // console.warn(message);
 
@@ -17,10 +17,19 @@ const MessageInput = ({chatRoomId}) => {
         const newMessage = await DataStore.save(new Message({
             content: message,
             userID: user.attributes.sub,
-            chatroomID: chatRoomId,
+            chatroomID: chatRoom?.id,
         }));
 
+        // @ts-ignore
+        updateLastMessage(newMessage);
+
         setMessage('');
+    }
+
+    const updateLastMessage = async (newMessage) => {
+        await DataStore.save(ChatRoom.copyOf(chatRoom, updatedChatRoom => {
+            updatedChatRoom.LastMessage = newMessage;
+        }))
     }
 
     const onPlusClicked = () => {

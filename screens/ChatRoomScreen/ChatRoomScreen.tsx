@@ -64,7 +64,7 @@ const ChatRoomScreen = () => {
                 <FlatList inverted data={messages} renderItem={({item}) => (
                     <Message message={item} />
                 )} />
-                <MessageInput chatRoomId={chatRoom?.id} />
+                <MessageInput chatRoom={chatRoom} />
             </SafeAreaView>
         </>
     );
