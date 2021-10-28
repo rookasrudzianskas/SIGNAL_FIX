@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, ActivityIndicator} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {User} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
@@ -28,6 +28,14 @@ const Message = ({message}) => {
         }
         checkIfMe();
     }, [user]);
+
+    if(!user) {
+        return (
+            <View style={tw`flex items-center justify-center mt-10`}>
+                <ActivityIndicator style={tw` items-center justify-center`} color={'lightblue'} size={'large'} />
+            </View>
+        )
+    }
 
 
     return (
