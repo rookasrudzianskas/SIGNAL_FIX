@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, FlatList, SafeAreaView} from 'react-native';
+import {Text, View, StyleSheet, FlatList, SafeAreaView, ActivityIndicator} from 'react-native';
 import Message from "../../components/Message";
 import chatRoomData from "../../assets/data/Chats";
 import MessageInput from "../../components/MessageInput";
@@ -53,13 +53,17 @@ const ChatRoomScreen = () => {
         // console.log('This is messages, which are fetched from aws', fetchedMessages);
     }
 
+    if(!chatRoom) {
+        return <ActivityIndicator size={'large' } color={'green'} />
+    }
+
     return (
         <>
             <SafeAreaView style={styles.container}>
                 <FlatList inverted data={messages} renderItem={({item}) => (
                     <Message message={item} />
                 )} />
-                <MessageInput />
+                <MessageInput chatRoomId={chatRoom?.id} />
             </SafeAreaView>
         </>
     );

@@ -3,8 +3,11 @@ import {Text, View, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingVie
 import styles from "./style";
 import tw from "tailwind-react-native-classnames";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
+import Message from "../Message";
+import {Auth, DataStore} from "aws-amplify";
 
-const MessageInput = () => {
+// @ts-ignore
+const MessageInput = ({chatRoomId}) => {
     const [message, setMessage] = useState('');
 
     const onPress = () => {
@@ -15,8 +18,17 @@ const MessageInput = () => {
         }
     }
 
-    const sendMessage = () => {
+    const sendMessage = async () => {
         // send message
+        const user = await Auth.currentAuthenticatedUser();
+        // @ts-ignore
+        const newMessage = await DataStore.save(new Message({
+        // @ts-ignore
+            content: message,
+            userID: user.attributes.sub,
+        // @ts-ignore
+            chatroomID: chatRoom.id,
+        }));
         setMessage('');
     }
 
