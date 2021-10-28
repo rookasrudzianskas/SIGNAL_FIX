@@ -16,10 +16,12 @@ const ChatRoomScreen = () => {
     navigation.setOptions({title: 'Rokas Rudzianskas'});
 
     useEffect(() => {
-
-
         fetchChatRoom();
     }, []);
+
+    useEffect(() => {
+
+    }, [chatRoom]);
 
 
     const fetchChatRoom = async () => {
