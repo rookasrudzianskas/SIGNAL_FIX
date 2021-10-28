@@ -19,12 +19,11 @@ const UserItem = ({user}) => {
         // otherwise, create a new chatroom with these users.
 
         // Create a chat room
-        const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
+        // const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
 
         // connect authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
-        console.log("This is db user", dbUser);
 
 
     }
