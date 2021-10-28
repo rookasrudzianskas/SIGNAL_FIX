@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
             const userData = await Auth.currentAuthenticatedUser();
 
             const chatRooms = (await DataStore.query(ChatRoomUser)).filter(chatRoomUser => chatRoomUser.user.id === userData.attributes.sub).map(chatRoomUser => chatRoomUser.chatroom);
-            console.log(chatRooms);
+            // console.log(chatRooms);
             setChatRooms(chatRooms);
         };
         fetchChatRooms();
@@ -29,9 +29,9 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
   return (
         <View style={styles.page}>
 
-            {/*<FlatList showsVerticalScrollIndicator={false} data={chatRooms} renderItem={({item}) => (*/}
-            {/*    <ChatRoomItem key={item.id} chatRoom={item} />*/}
-            {/*)}  />*/}
+            <FlatList showsVerticalScrollIndicator={false} data={chatRooms} renderItem={({item}) => (
+                <ChatRoomItem key={item.id} chatRoom={item} />
+            )}  />
 
         </View>
   );
