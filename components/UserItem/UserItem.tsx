@@ -5,6 +5,8 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
+import {ChatRoom} from "../../src/models";
+import {DataStore} from "aws-amplify";
 
 // @ts-ignore
 const UserItem = ({user}) => {
@@ -14,7 +16,7 @@ const UserItem = ({user}) => {
         // @ts-ignore
         // create a chatroom with him
     //    @TODO
-
+        const newChatRoom = await DataStore.save(new ChatRoom({newMessages: {}}));
 
 
     }
