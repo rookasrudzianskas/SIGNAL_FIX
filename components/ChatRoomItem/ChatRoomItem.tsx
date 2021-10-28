@@ -5,6 +5,7 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
+import {useEffect} from "react";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
@@ -17,6 +18,10 @@ const ChatRoomItem = ({chatRoom}) => {
             id: chatRoom.id,
         });
     }
+
+    useEffect(() => {
+
+    }, []);
 
     return (
         <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
