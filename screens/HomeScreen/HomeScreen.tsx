@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
         <View style={styles.page}>
 
             <FlatList showsVerticalScrollIndicator={false} data={chatRooms} renderItem={({item}) => (
-                <ChatRoomItem key={item.id}  chatRoom={item} />
+                <ChatRoomItem key={item.id} chatRoom={item} />
             )}  />
 
         </View>
