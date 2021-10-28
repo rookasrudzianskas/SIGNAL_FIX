@@ -36,6 +36,9 @@ const UserItem = ({user}) => {
             chatroom: newChatRoom,
         }));
 
+        // @ts-ignore
+        navigation.navigate('ChatRoomScreen', { id: newChatRoom.id });
+
     }
 
     return (
