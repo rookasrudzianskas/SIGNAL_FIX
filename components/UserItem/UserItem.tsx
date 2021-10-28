@@ -5,7 +5,7 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
-import {ChatRoom, User} from "../../src/models";
+import {ChatRoom, ChatRoomUser, User} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
 
 // @ts-ignore
@@ -19,12 +19,16 @@ const UserItem = ({user}) => {
         // otherwise, create a new chatroom with these users.
 
         // Create a chat room
-        // const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
+        const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
 
         // connect authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
-
+        await DataStore.save(new ChatRoomUser({
+        // @ts-ignore
+            user: dbUser,
+            chatroom: newChatRoom
+        }));
 
     }
 
