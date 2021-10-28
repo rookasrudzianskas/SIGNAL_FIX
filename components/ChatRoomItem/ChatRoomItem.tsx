@@ -42,9 +42,8 @@ const ChatRoomItem = ({chatRoom}) => {
 
     useEffect(() => {
         if(chatRoom.chatRoomLastMessageId) {
-            return (
-
-            )
+            // @ts-ignore
+            DataStore.query(Message, chatRoom.chatRoomLastMessageId).then(setLastMessage);
         }
     }, []);
 
