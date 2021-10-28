@@ -17,7 +17,6 @@ const MessageInput = () => {
 
     const sendMessage = () => {
         // send message
-        console.warn("Sending the message", message);
         setMessage('');
     }
 
