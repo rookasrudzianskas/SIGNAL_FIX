@@ -8,7 +8,7 @@ import {useNavigation} from "@react-navigation/native";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
-    const user = null;
+    const user = chatRoom.users[1];
 
     const navigation = useNavigation();
     const onPress = () => {
@@ -22,7 +22,6 @@ const ChatRoomItem = ({chatRoom}) => {
         <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
             <View style={tw`flex-row px-3`}>
                 <View style={tw`p-3`}>
-    {/*// @ts-ignore*/}
                     <Image source={{uri: user?.imageUri}} style={styles.image}/>
                     {chatRoom.newMessages && (
                         <View style={[tw`bg-blue-500 flex items-center justify-center`, {width: 20, height: 20, borderRadius: 20, position: 'absolute', left: 54, top: 10, borderWidth: 1, borderColor: 'white'}]}>
