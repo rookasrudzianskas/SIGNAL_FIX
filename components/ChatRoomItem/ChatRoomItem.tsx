@@ -11,9 +11,10 @@ import {Auth, DataStore} from "aws-amplify";
 
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
-    // const [users, setUsers] = useState<User[]>([]) // all users in the state;
-    const [user, setUser] = useState<User|null>(null) // the display user
+    // const [users, setUsers] = useState<User[]>([]); // all users in this chatroom
+    const [user, setUser] = useState<User|null>(null); // the display user
     const [lastMessage, setLastMessage] = useState<Message|undefined>();
+
     console.log("🔥 last message: ", lastMessage);
     const navigation = useNavigation();
     console.log(chatRoom)
