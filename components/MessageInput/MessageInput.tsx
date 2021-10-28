@@ -3,36 +3,36 @@ import {Text, View, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingVie
 import styles from "./style";
 import tw from "tailwind-react-native-classnames";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
-import Message from "../Message";
 import {Auth, DataStore} from "aws-amplify";
+import { Message } from '../../src/models';
 
 // @ts-ignore
 const MessageInput = ({chatRoomId}) => {
     const [message, setMessage] = useState('');
-
-    const onPress = () => {
-        if(message) {
-            sendMessage();
-        } else {
-            onPlusClicked();
-        }
-    }
+    // console.warn(message);
 
     const sendMessage = async () => {
         // send message
         const user = await Auth.currentAuthenticatedUser();
-        // @ts-ignore
         const newMessage = await DataStore.save(new Message({
-        // @ts-ignore
             content: message,
             userID: user.attributes.sub,
             chatroomID: chatRoomId,
         }));
+
         setMessage('');
     }
 
     const onPlusClicked = () => {
-        console.warn('On plus clicked');
+        console.warn("On plus clicked");
+    }
+
+    const onPress = () => {
+        if (message) {
+            sendMessage();
+        } else {
+            onPlusClicked();
+        }
     }
 
     return (
