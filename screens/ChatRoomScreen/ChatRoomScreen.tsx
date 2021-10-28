@@ -49,7 +49,8 @@ const ChatRoomScreen = () => {
             return;
         }
         const fetchedMessages = await DataStore.query(MessageModel, message => message.chatroomID("eq", chatRoom?.id));
-        console.log('This is messages, which are fetched from aws', fetchedMessages);
+        setMessages(fetchedMessages);
+        // console.log('This is messages, which are fetched from aws', fetchedMessages);
     }
 
     return (
