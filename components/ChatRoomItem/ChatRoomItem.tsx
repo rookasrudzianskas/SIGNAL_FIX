@@ -34,8 +34,9 @@ const ChatRoomItem = ({chatRoom}) => {
     }, []);
 
     useEffect(() => {
-        if (!chatRoom.chatRoomLastMessageId) { return }
+        // if (!chatRoom.chatRoomLastMessageId) { return }
         DataStore.query(Message, chatRoom.chatRoomLastMessageId).then(setLastMessage);
+        console.log(lastMessage);
     }, [])
 
     const onPress = () => {
