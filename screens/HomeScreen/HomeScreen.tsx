@@ -14,7 +14,6 @@ import {Auth, DataStore} from "aws-amplify";
 const HomeScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
 
     const [chatRooms, setChatRooms] = useState<ChatRoom[]>([]);
-    console.log('This is the main chatroom', chatRooms);
 
     useEffect(() => {
         const fetchChatRooms = async () => {
