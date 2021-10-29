@@ -6,7 +6,7 @@ import MessageInput from "../../components/MessageInput";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {ChatRoom, Message as MessageModel} from "../../src/models";
-import {DataStore} from "aws-amplify";
+import {DataStore, SortDirection} from "aws-amplify";
 
 const ChatRoomScreen = () => {
     const [messages, setMessages] = useState<MessageModel[]>([]);
@@ -45,14 +45,18 @@ const ChatRoomScreen = () => {
     };
 
     const fetchMessages = async () => {
-        if(!chatRoom) {
+        if (!chatRoom) {
             return;
         }
-        const fetchedMessages = await DataStore.query(MessageModel, message => message.chatroomID("eq", chatRoom?.id));
-        console.log('This is fetched messages', fetchedMessages);
+        const fetchedMessages = await DataStore.query(MessageModel,
+            message => message.chatroomID("eq", chatRoom?.id),
+            {
+                sort: message => message.createdAt(SortDirection.DESCENDING)
+            }
+        );
+        console.log(fetchedMessages);
         setMessages(fetchedMessages);
-        // console.log('This is messages, which are fetched from aws', fetchedMessages);
-    }
+    };
 
     if(!chatRoom) {
         return <ActivityIndicator size={'large' } color={'green'} />
