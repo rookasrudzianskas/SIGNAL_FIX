@@ -94,5 +94,3 @@ const styles = StyleSheet.create({
     }
 
 });
-
-// done now further
