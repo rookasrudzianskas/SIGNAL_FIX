@@ -21,6 +21,7 @@ const ChatRoomItem = ({chatRoom}) => {
 
     console.log(chatRoom)
     const onPress = () => {
+
         // @ts-ignore
         navigation.navigate('ChatRoomScreen', {
             id: chatRoom.id,
