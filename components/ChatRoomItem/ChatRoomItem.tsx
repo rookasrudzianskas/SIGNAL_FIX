@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import {User, ChatRoomUser, Message} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
 
+
 // @ts-ignore
 const ChatRoomItem = ({chatRoom}) => {
     // const [users, setUsers] = useState<User[]>([]); // all users in this chatroom
