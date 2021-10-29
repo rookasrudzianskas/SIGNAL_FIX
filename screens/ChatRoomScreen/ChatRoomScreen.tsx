@@ -37,7 +37,6 @@ const ChatRoomScreen = () => {
         return () => subscription.unsubscribe();
     }, []);
 
-
     const fetchChatRoom = async () => {
         // @ts-ignore
         if(!route?.params?.id) {
