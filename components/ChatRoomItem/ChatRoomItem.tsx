@@ -16,19 +16,8 @@ const ChatRoomItem = ({chatRoom}) => {
     const [user, setUser] = useState<User|null>(null); // the display user
     const [lastMessage, setLastMessage] = useState<Message|undefined>();
 
-    // console.log("🔥 last message: ", lastMessage);
     const navigation = useNavigation();
-
-
-    // console.log(chatRoom)
-    const onPress = () => {
-
-        // @ts-ignore
-        navigation.navigate('ChatRoomScreen', {
-            id: chatRoom.id,
-        });
-    }
-
+    console.log(chatRoom);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -44,12 +33,15 @@ const ChatRoomItem = ({chatRoom}) => {
         fetchUsers();
     }, []);
 
-
     useEffect(() => {
         if (!chatRoom.chatRoomLastMessageId) { return }
         DataStore.query(Message, chatRoom.chatRoomLastMessageId).then(setLastMessage);
-        console.log('DONE');
     }, [])
+
+    const onPress = () => {
+        // @ts-ignore
+        navigation.navigate('ChatRoom', { id: chatRoom.id });
+    }
 
 
     if(!user) {
