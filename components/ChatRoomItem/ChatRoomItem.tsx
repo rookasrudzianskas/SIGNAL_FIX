@@ -73,7 +73,7 @@ const ChatRoomItem = ({chatRoom}) => {
                             <Text style={tw`text-lg text-gray-500`}>{moment(lastMessage?.createdAt).fromNow()}</Text>
                         </View>
                     </View>
-                    <Text numberOfLines={1} style={tw`text-lg text-gray-500 mb-5`}>{lastMessage?.content}</Text>
+                    <Text numberOfLines={1} style={tw`text-lg text-gray-500 mb-5`}>{lastMessage?.content || 'Last Message 🔥'}</Text>
                 </View>
             </View>
         </TouchableOpacity>
