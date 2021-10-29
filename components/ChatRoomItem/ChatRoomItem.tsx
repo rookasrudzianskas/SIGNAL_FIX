@@ -42,6 +42,7 @@ const ChatRoomItem = ({chatRoom}) => {
         fetchUsers();
     }, []);
 
+
     console.log('🔫', chatRoom.chatRoomLastMessageId);
 
     useEffect(() => {
