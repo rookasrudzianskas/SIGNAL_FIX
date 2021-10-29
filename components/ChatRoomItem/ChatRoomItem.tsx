@@ -37,7 +37,7 @@ const ChatRoomItem = ({chatRoom}) => {
         if (!chatRoom.chatRoomLastMessageId) { return }
         DataStore.query(Message, chatRoom.chatRoomLastMessageId).then(setLastMessage);
         console.log(lastMessage);
-    }, [])
+    }, []);
 
     const onPress = () => {
         // @ts-ignore
