@@ -3,6 +3,7 @@ import tw from "tailwind-react-native-classnames";
 import {Feather} from "@expo/vector-icons";
 import * as React from "react";
 
+// @ts-ignore
 const ChatRoomHeader = (props) => {
 
     const {width, height} = useWindowDimensions();
