@@ -48,6 +48,7 @@ function RootNavigator() {
 
         <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen}
                       options={({ route }) => ({
+                          //@ts-ignore
                           headerTitle: () => <ChatRoomHeader id={route.params?.id} />,
                           headerBackTitleVisible: false,
                       })}
