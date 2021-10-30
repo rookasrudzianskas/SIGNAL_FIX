@@ -47,11 +47,10 @@ function RootNavigator() {
         />
 
         <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen}
-                      options={({route}) => ({
-                          //@ts-ignore
-                          headerTitle: () => <ChatRoomHeader id={route?.params?.id} />,
-                              headerBackTitleVisible: false,
-                          })}
+                      options={({ route }) => ({
+                          headerTitle: () => <ChatRoomHeader id={route.params?.id} />,
+                          headerBackTitleVisible: false,
+                      })}
         />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
