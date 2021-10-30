@@ -12,7 +12,6 @@ const ChatRoomScreen = () => {
     const [chatRoom, setChatRoom] = useState<ChatRoom|null>(null);
     const route = useRoute();
     const navigation = useNavigation();
-    navigation.setOptions({title: 'Rokas Rudzianskas'});
 
     useEffect(() => {
         fetchChatRoom();
