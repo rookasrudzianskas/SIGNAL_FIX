@@ -64,7 +64,7 @@ const ChatRoomScreen = () => {
                 sort: message => message.createdAt(SortDirection.DESCENDING)
             }
         );
-        console.log(fetchedMessages);
+        // console.log(fetchedMessages);
         setMessages(fetchedMessages);
     };
 
