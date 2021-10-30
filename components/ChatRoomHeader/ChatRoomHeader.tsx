@@ -8,6 +8,7 @@ import {useRoute} from "@react-navigation/native";
 const ChatRoomHeader = (props) => {
 
     const {width, height} = useWindowDimensions();
+    console.log(props);
 
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>
