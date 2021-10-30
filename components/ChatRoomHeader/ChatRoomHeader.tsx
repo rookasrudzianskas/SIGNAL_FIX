@@ -2,11 +2,13 @@ import {Image, Text, useWindowDimensions, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import {Feather} from "@expo/vector-icons";
 import * as React from "react";
+import {useRoute} from "@react-navigation/native";
 
 // @ts-ignore
 const ChatRoomHeader = (props) => {
 
     const {width, height} = useWindowDimensions();
+    const route = useRoute();
 
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>

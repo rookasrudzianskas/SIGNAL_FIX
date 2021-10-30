@@ -46,7 +46,10 @@ function RootNavigator() {
         />
 
         <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen}
-                      options={{ headerTitle: ChatRoomHeader, headerBackTitleVisible: false, }}
+                      options={({route}) => ({
+                          headerTitle: ChatRoomHeader,
+                              headerBackTitleVisible: false,
+                          })}
         />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
