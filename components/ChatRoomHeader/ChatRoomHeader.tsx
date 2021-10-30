@@ -5,7 +5,7 @@ import * as React from "react";
 import {useRoute} from "@react-navigation/native";
 
 // @ts-ignore
-const ChatRoomHeader = (props) => {
+const ChatRoomHeader = ({id}) => {
 
     const {width, height} = useWindowDimensions();
     console.log(props);
