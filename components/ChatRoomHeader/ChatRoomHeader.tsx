@@ -3,11 +3,28 @@ import tw from "tailwind-react-native-classnames";
 import {Feather} from "@expo/vector-icons";
 import * as React from "react";
 import {useRoute} from "@react-navigation/native";
+import {useEffect} from "react";
+import {Auth, DataStore} from "aws-amplify";
+import {ChatRoomUser} from "../../src/models";
 
 // @ts-ignore
 const ChatRoomHeader = ({id, children}) => {
 
     const {width, height} = useWindowDimensions();
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            const fetchedUsers = (await DataStore.query(ChatRoomUser))
+                .filter(chatRoomUser => chatRoomUser.chatroom.id === chatRoom.id)
+                .map(chatRoomUser => chatRoomUser.user);
+
+            // setUsers(fetchedUsers);
+
+            const authUser = await Auth.currentAuthenticatedUser();
+            setUser(fetchedUsers.find(user => user.id !== authUser.attributes.sub) || null);
+        };
+        fetchUsers();
+    }, []);
 
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>

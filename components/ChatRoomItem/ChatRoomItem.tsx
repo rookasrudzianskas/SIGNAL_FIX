@@ -17,7 +17,7 @@ const ChatRoomItem = ({chatRoom}) => {
     const [lastMessage, setLastMessage] = useState<Message|undefined>();
 
     const navigation = useNavigation();
-    console.log("THis is clear chatRoom", chatRoom);
+    // console.log("THis is clear chatRoom", chatRoom);
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -36,7 +36,7 @@ const ChatRoomItem = ({chatRoom}) => {
     useEffect(() => {
         if (!chatRoom.chatRoomLastMessageId) { return }
         DataStore.query(Message, chatRoom.chatRoomLastMessageId).then(setLastMessage);
-        console.log(lastMessage);
+        // console.log(lastMessage);
     }, []);
 
     const onPress = () => {
