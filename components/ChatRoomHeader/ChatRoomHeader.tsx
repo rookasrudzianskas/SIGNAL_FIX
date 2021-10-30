@@ -15,6 +15,10 @@ const ChatRoomHeader = ({id, children}) => {
 
 
     useEffect(() => {
+        if(!id) {
+            return;
+        }
+
         const fetchUsers = async () => {
             const fetchedUsers = (await DataStore.query(ChatRoomUser))
                 .filter(chatRoomUser => chatRoomUser.chatroom.id === id)
