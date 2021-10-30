@@ -91,6 +91,7 @@ const HomeHeader = (props) => {
 }
 
 //@ts-ignore
+
 const ChatHeader = (props) => {
 
     const {width, height} = useWindowDimensions();
