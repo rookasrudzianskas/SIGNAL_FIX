@@ -20,7 +20,7 @@ const ChatRoomScreen = () => {
 
     useEffect(() => {
         if(!chatRoom) {
-            return;
+            return;3
         }
         fetchMessages();
     }, [chatRoom]);
@@ -63,6 +63,7 @@ const ChatRoomScreen = () => {
                 sort: message => message.createdAt(SortDirection.DESCENDING)
             }
         );
+
         // console.log(fetchedMessages);
         setMessages(fetchedMessages);
     };
