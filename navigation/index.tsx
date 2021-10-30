@@ -29,7 +29,8 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-  return (
+  // @ts-ignore
+    return (
     <Stack.Navigator  screenOptions={{
         headerBackTitleVisible: false
     }} initialRouteName={'HomeScreen'} >
@@ -47,7 +48,8 @@ function RootNavigator() {
 
         <Stack.Screen name="ChatRoomScreen" component={ChatRoomScreen}
                       options={({route}) => ({
-                          headerTitle: ChatRoomHeader,
+                          //@ts-ignore
+                          headerTitle: () => <ChatRoomHeader id={route?.params?.id} />,
                               headerBackTitleVisible: false,
                           })}
         />
