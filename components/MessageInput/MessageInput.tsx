@@ -62,6 +62,8 @@ const MessageInput = ({chatRoom}) => {
                 <Feather name="camera" size={24} color="#595959" />
                 <MaterialCommunityIcons style={{marginHorizontal: 5,}} name="microphone-outline" size={24} color="#595959" />
             </View>
+
+
             <TouchableOpacity onPress={onPress}  style={styles.buttonContainer}>
                 {message ? (
                     <Ionicons name="ios-send" size={18} color="white" />
@@ -69,6 +71,11 @@ const MessageInput = ({chatRoom}) => {
                     <AntDesign name="plus" size={24} color="white" />
                 )}
             </TouchableOpacity>
+
+                <EmojiSelector
+                    category={Categories.symbols}
+                    onEmojiSelected={emoji => console.log(emoji)}
+                />
         </KeyboardAvoidingView>
     );
 };
