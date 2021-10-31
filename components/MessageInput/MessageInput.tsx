@@ -16,7 +16,7 @@ const MessageInput = ({chatRoom}) => {
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     // console.warn(message);
 
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState<String|null>(null);
 
     useEffect(() => {
         (async () => {
@@ -42,7 +42,7 @@ const MessageInput = ({chatRoom}) => {
         console.log(result);
 
         if(!result.cancelled) {
-            // setImage(result.uri)
+            setImage(result.uri)
         }
 
     };
