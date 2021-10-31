@@ -81,7 +81,7 @@ const MessageInput = ({chatRoom}) => {
                 <EmojiSelector
                     category={Categories.symbols}
                     columns={9}
-                    onEmojiSelected={emoji => console.log(emoji)}
+                    onEmojiSelected={emoji => setMessage(currentMessage => currentMessage + emoji)}
                 />
             )}
         </KeyboardAvoidingView>
