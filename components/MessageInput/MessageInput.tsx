@@ -11,6 +11,7 @@ import EmojiSelector, { Categories } from "react-native-emoji-selector";
 // @ts-ignore
 const MessageInput = ({chatRoom}) => {
     const [message, setMessage] = useState('');
+    const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     // console.warn(message);
 
     const sendMessage = async () => {
