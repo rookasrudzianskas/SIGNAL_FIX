@@ -5,6 +5,8 @@ import tw from "tailwind-react-native-classnames";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore} from "aws-amplify";
 import {ChatRoom, Message} from '../../src/models';
+import EmojiSelector, { Categories } from "react-native-emoji-selector";
+
 
 // @ts-ignore
 const MessageInput = ({chatRoom}) => {
