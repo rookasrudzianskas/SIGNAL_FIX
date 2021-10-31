@@ -80,7 +80,7 @@ const MessageInput = ({chatRoom}) => {
             {isEmojiPickerOpen && (
                 <EmojiSelector
                     category={Categories.symbols}
-                    columns={8}
+                    columns={9}
                     onEmojiSelected={emoji => console.log(emoji)}
                 />
             )}
