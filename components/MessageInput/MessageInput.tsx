@@ -76,6 +76,7 @@ const MessageInput = ({chatRoom}) => {
 
                 <EmojiSelector
                     category={Categories.symbols}
+                    columns={8}
                     onEmojiSelected={emoji => console.log(emoji)}
                 />
         </KeyboardAvoidingView>
