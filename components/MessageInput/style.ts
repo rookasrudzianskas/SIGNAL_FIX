@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     root: {
-        flexDirection: 'row',
         padding: 10,
     },
     inputContainer: {
@@ -25,6 +24,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    row: {
+        flexDirection: 'row',
+    }
 });
 
 export default styles;

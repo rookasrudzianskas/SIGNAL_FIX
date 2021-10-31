@@ -49,28 +49,30 @@ const MessageInput = ({chatRoom}) => {
 
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.root}>
-            <View style={styles.inputContainer}>
-                <SimpleLineIcons name="emotsmile" size={24} color="#595959" style={{marginHorizontal: 5,}} />
+            <View style={styles.row}>
+                <View style={styles.inputContainer}>
+                    <SimpleLineIcons name="emotsmile" size={24} color="#595959" style={{marginHorizontal: 5,}} />
 
-                <TextInput
-                    style={{flex: 1, marginHorizontal: 5,}}
-                    placeholder="Type a message here"
-                    value={message}
-                    onChangeText={(text) => setMessage(text)}
-                />
+                    <TextInput
+                        style={{flex: 1, marginHorizontal: 5,}}
+                        placeholder="Type a message here"
+                        value={message}
+                        onChangeText={(text) => setMessage(text)}
+                    />
 
-                <Feather name="camera" size={24} color="#595959" />
-                <MaterialCommunityIcons style={{marginHorizontal: 5,}} name="microphone-outline" size={24} color="#595959" />
+                    <Feather name="camera" size={24} color="#595959" />
+                    <MaterialCommunityIcons style={{marginHorizontal: 5,}} name="microphone-outline" size={24} color="#595959" />
+                </View>
+
+
+                <TouchableOpacity onPress={onPress}  style={styles.buttonContainer}>
+                    {message ? (
+                        <Ionicons name="ios-send" size={18} color="white" />
+                    ) : (
+                        <AntDesign name="plus" size={24} color="white" />
+                    )}
+                </TouchableOpacity>
             </View>
-
-
-            <TouchableOpacity onPress={onPress}  style={styles.buttonContainer}>
-                {message ? (
-                    <Ionicons name="ios-send" size={18} color="white" />
-                ) : (
-                    <AntDesign name="plus" size={24} color="white" />
-                )}
-            </TouchableOpacity>
 
                 <EmojiSelector
                     category={Categories.symbols}
