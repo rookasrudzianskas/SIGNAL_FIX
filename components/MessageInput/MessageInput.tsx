@@ -6,6 +6,8 @@ import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} f
 import {Auth, DataStore} from "aws-amplify";
 import {ChatRoom, Message} from '../../src/models';
 import EmojiSelector, { Categories } from "react-native-emoji-selector";
+import { Image } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
 
 // @ts-ignore
