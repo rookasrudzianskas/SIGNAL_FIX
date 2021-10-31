@@ -140,4 +140,3 @@ const MessageInput = ({chatRoom}) => {
 
 export default MessageInput;
 
-// done for today
