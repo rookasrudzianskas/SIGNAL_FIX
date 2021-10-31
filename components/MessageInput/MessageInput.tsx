@@ -21,8 +21,9 @@ const MessageInput = ({chatRoom}) => {
     useEffect(() => {
         (async () => {
             if (Platform.OS !== 'web') {
-                const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-                if (status !== 'granted') {
+                const libraryResponse = await ImagePicker.requestMediaLibraryPermissionsAsync();
+                const photoResponse = await ImagePicker.requestCameraPermissionsAsync();
+                if (libraryResponse.status !== 'granted' && photoResponse.status !== 'granted') {
                     alert('Sorry, we need camera roll permissions to make this work!');
                 }
             }
