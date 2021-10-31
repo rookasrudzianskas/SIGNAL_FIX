@@ -97,8 +97,15 @@ const MessageInput = ({chatRoom}) => {
                         onChangeText={(text) => setMessage(text)}
                     />
 
-                    <Feather name="camera" size={24} color="#595959" />
-                    <MaterialCommunityIcons style={{marginHorizontal: 5,}} name="microphone-outline" size={24} color="#595959" />
+                    <TouchableOpacity activeOpacity={0.6}>
+                        <Feather name="camera" size={24} color="#595959"  style={{marginHorizontal: 5,}} />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity activeOpacity={0.6}>
+                        <Feather name="image" size={24} color="#595959"  style={{marginHorizontal: 5,}}/>
+                    </TouchableOpacity>
+
+                    <MaterialCommunityIcons  name="microphone-outline" size={24} color="#595959" />
                 </View>
 
 
