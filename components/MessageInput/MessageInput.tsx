@@ -85,9 +85,9 @@ const MessageInput = ({chatRoom}) => {
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
             {image && (
-                <View>
+                <View style={{}}>
     {/*// @ts-ignore*/}
-                    <Image  source={{uri: image}} style={{width: 100, height: 100}}/>
+                    <Image  source={{uri: image}} style={{width: 150, height: 100, resizeMode: 'contain'}}/>
                 </View>
             )}
             <View style={[styles.row]}>
