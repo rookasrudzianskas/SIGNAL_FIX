@@ -50,7 +50,7 @@ const MessageInput = ({chatRoom}) => {
 
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.root}>
-            <View style={styles.row}>
+            <View style={[styles.row, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
                 <View style={styles.inputContainer}>
                     <SimpleLineIcons name="emotsmile" size={24} color="#595959" style={{marginHorizontal: 5,}} />
 
@@ -75,11 +75,13 @@ const MessageInput = ({chatRoom}) => {
                 </TouchableOpacity>
             </View>
 
+            {isEmojiPickerOpen && (
                 <EmojiSelector
                     category={Categories.symbols}
                     columns={8}
                     onEmojiSelected={emoji => console.log(emoji)}
                 />
+            )}
         </KeyboardAvoidingView>
     );
 };

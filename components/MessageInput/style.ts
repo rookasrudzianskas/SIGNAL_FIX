@@ -3,7 +3,6 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
     root: {
         padding: 10,
-        height: '50%',
     },
     inputContainer: {
         backgroundColor: '#f2f2f2',
