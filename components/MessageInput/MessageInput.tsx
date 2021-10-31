@@ -84,6 +84,11 @@ const MessageInput = ({chatRoom}) => {
 
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
+            {image && (
+                <View>
+
+                </View>
+            )}
             <View style={[styles.row]}>
                 <View style={styles.inputContainer}>
                     <TouchableOpacity activeOpacity={0.6} onPress={() => setIsEmojiPickerOpen(!isEmojiPickerOpen)}>
