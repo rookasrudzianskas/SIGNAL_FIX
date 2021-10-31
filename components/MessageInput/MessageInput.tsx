@@ -27,6 +27,7 @@ const MessageInput = ({chatRoom}) => {
         updateLastMessage(newMessage);
 
         setMessage('');
+        setIsEmojiPickerOpen(false);
     }
 
     // @ts-ignore
