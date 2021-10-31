@@ -52,7 +52,9 @@ const MessageInput = ({chatRoom}) => {
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.root}>
             <View style={[styles.row, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
                 <View style={styles.inputContainer}>
-                    <SimpleLineIcons name="emotsmile" size={24} color="#595959" style={{marginHorizontal: 5,}} />
+                    <TouchableOpacity activeOpacity={0.6}>
+                        <SimpleLineIcons name="emotsmile" size={24} color="#595959" style={{marginHorizontal: 5,}} />
+                    </TouchableOpacity>
 
                     <TextInput
                         style={{flex: 1, marginHorizontal: 5,}}
