@@ -16,7 +16,7 @@ const MessageInput = ({chatRoom}) => {
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     // console.warn(message);
 
-    const [image, setImage] = useState<String|null>(null);
+    const [image, setImage] = useState<string|null>(null);
 
     useEffect(() => {
         (async () => {
@@ -86,7 +86,8 @@ const MessageInput = ({chatRoom}) => {
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
             {image && (
                 <View>
-
+    {/*// @ts-ignore*/}
+                    <Image  source={{uri: image}} style={{width: 100, height: 100}}/>
                 </View>
             )}
             <View style={[styles.row]}>
