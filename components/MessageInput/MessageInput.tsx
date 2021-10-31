@@ -85,9 +85,10 @@ const MessageInput = ({chatRoom}) => {
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
             {image && (
-                <View style={{}}>
+                <View style={{flexDirection: 'row', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray"}}>
     {/*// @ts-ignore*/}
                     <Image  source={{uri: image}} style={{width: 150, height: 100, resizeMode: 'contain'}}/>
+                    <AntDesign name="close" size={24} color="black" />
                 </View>
             )}
             <View style={[styles.row]}>
