@@ -9,4 +9,5 @@
     <option name="search" value="" />
     <option name="tryString" value="C:\dir\blah\meh\file.ext" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
