@@ -19,6 +19,7 @@ Amplify.configure({
   },
 });
 
+
 const App = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
