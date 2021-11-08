@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform} from 'react-native';
+import {Image, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from "./style";
-import tw from "tailwind-react-native-classnames";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore} from "aws-amplify";
 import {ChatRoom, Message} from '../../src/models';
-import EmojiSelector, { Categories } from "react-native-emoji-selector";
-import { Image } from 'react-native';
+import EmojiSelector, {Categories} from "react-native-emoji-selector";
 import * as ImagePicker from 'expo-image-picker';
 
 
@@ -97,7 +95,17 @@ const MessageInput = ({chatRoom}) => {
     }
 
     const sendImage = () => {
+        // upload the image to S3 and send the url to the server
 
+    }
+
+    const getImageBlob = async () => {
+        if (image) {
+            return null;
+        }
+        // @ts-ignore
+        const response = await fetch(image);
+        return await response.blob();
     }
 
     return (
