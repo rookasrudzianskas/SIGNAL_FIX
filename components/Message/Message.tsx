@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet, ActivityIndicator, useWindowDimensions} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {User} from "../../src/models";
-import {Auth, DataStore} from "aws-amplify";
+import {Auth, DataStore, Storage} from "aws-amplify";
 // @ts-ignore
 import {S3Image} from "aws-amplify-react-native";
 import AudioPlayer from "../AudioPlayer";
@@ -15,6 +15,7 @@ const myID = 'u1';
 const Message = ({message}) => {
     const [user, setUser] = useState<User|undefined>();
     const [isMe, setIsMe] = useState<boolean>(false);
+    const [soundURI, setSoundURI] = useState<string|null>(null);
     const { width } = useWindowDimensions();
 
 
@@ -33,6 +34,10 @@ const Message = ({message}) => {
         }
         checkIfMe();
     }, [user]);
+
+    const downloadSounded = async () => {
+        const uri = await Storage.get(message.audio);
+    }
 
     if(!user) {
         return (
@@ -56,9 +61,9 @@ const Message = ({message}) => {
                     />
                 </View>
             )}
-            {message.audio && (
-                <AudioPlayer soundURI={message.audio} />
-            )}
+            {/*{message.audio && (*/}
+            {/*    <AudioPlayer soundURI={message.audio} />*/}
+            {/*)}*/}
             {!!message.content && (
                 <Text style={{color: isMe ? 'black' : 'white'}}>
                     {message?.content}
