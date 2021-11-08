@@ -10,6 +10,7 @@ import 'react-native-get-random-values';
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import {Audio, AVPlaybackStatus} from "expo-av";
+import AudioPlayer from '../AudioPlayer';
 
 
 // @ts-ignore
@@ -291,26 +292,7 @@ const MessageInput = ({chatRoom}) => {
             )}
 
             {sound && (
-                <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden', padding: 10}}>
-                    <TouchableOpacity activeOpacity={0.6} onPress={playPauseSound}>
-                        <Feather name={paused ? 'play' : 'pause'} size={24} color="gray" style={{}} />
-                    </TouchableOpacity>
-
-                    <View style={styles.audioProgressBG}>
-                        <View style={{
-                            width: 10,
-                            height: 10,
-                            borderRadius: 10,
-                            backgroundColor: '#3777f0',
-                            position: 'absolute',
-                            top: -3,
-                            left: `${audioProgress * 100}%`,
-                        }}>
-
-                        </View>
-                    </View>
-                        <Text>{getDuration()}</Text>
-                </View>
+               <AudioPlayer />
             )}
 
             <View style={[styles.row]}>
