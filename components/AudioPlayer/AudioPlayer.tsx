@@ -5,15 +5,10 @@ import styles from "../MessageInput/style";
 import {Audio, AVPlaybackStatus} from "expo-av";
 
 const AudioPlayer = () => {
-    const [message, setMessage] = useState('');
-    const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
-    const [progress, setProgress] = useState(0);
-    const [recording, setRecording] = useState<Audio.Recording | null>(null);
     const [sound, setSound] = useState<Audio.Sound | null>(null);
     const [paused, setPaused] = useState(true);
     const [audioProgress, setAudioProgress] = useState(0);
     const [audioDuration, setAudioDuration] = useState(0);
-    const [soundURI, setSoundURI] = useState<string | null>(null);
 
     const getDuration = () => {
         const minutes = Math.floor(audioDuration / (60 * 1000));
