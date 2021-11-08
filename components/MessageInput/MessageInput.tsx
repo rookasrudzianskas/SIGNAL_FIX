@@ -124,7 +124,7 @@ const MessageInput = ({chatRoom}) => {
         if (!image) {
             return;
         }
-        const blob = await getImageBlob();
+        const blob = await getBlob(image);
         const {key} = await Storage.put(`${uuidv4()}.png`, blob, {
             progressCallback
         });
@@ -144,11 +144,11 @@ const MessageInput = ({chatRoom}) => {
     };
 
 
-    const getImageBlob = async () => {
-        if (!image) {
+    const getBlob = async (uri: string) => {
+        if (!uri) {
             return null;
         }
-        const response = await fetch(image);
+        const response = await fetch(uri);
         const blob = await response.blob();
         return blob;
     };
@@ -229,7 +229,7 @@ const MessageInput = ({chatRoom}) => {
         if (!image) {
             return;
         }
-        const blob = await getImageBlob();
+        const blob = await getBlob();
         const {key} = await Storage.put(`${uuidv4()}.png`, blob, {
             progressCallback
         });
