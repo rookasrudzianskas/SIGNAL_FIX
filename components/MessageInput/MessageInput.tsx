@@ -96,6 +96,10 @@ const MessageInput = ({chatRoom}) => {
         }
     }
 
+    const sendImage = () => {
+
+    }
+
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
             {image && (
