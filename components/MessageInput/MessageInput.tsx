@@ -228,26 +228,26 @@ const MessageInput = ({chatRoom}) => {
 
     const sendAudio = async () => {
         // upload the sound to S3 and send the url to the server
-        if (!image) {
+        if (!soundURI) {
             return;
         }
-        const blob = await getBlob();
-        const {key} = await Storage.put(`${uuidv4()}.png`, blob, {
+        const blob = await getBlob(soundURI);
+        const {sound} = await Storage.put(`${uuidv4()}.mp3`, blob, {
             progressCallback
         });
 
         // send message
         const user = await Auth.currentAuthenticatedUser();
-        const newMessage = await DataStore.save(new Message({
-            content: message,
-            image: key,
-            userID: user.attributes.sub,
-            chatroomID: chatRoom?.id,
-        }));
-
-        // // @ts-ignore
-        updateLastMessage(newMessage);
-        resetFields();
+        // const newMessage = await DataStore.save(new Message({
+        //     content: message,
+        //     audio: sound,
+        //     userID: user.attributes.sub,
+        //     chatroomID: chatRoom?.id,
+        // }));
+        //
+        // // // @ts-ignore
+        // updateLastMessage(newMessage);
+        // resetFields();
     };
 
     // @ts-ignore
