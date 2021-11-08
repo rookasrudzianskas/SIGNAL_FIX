@@ -14,7 +14,13 @@ const AudioPlayer = ({soundURI}) => {
 
     useEffect(() => {
         loadSound();
-    }, []);
+        () => {
+            // unload sound
+            if (sound) {
+                sound.unloadAsync();
+            }
+        };
+    }, [soundURI]);
 
     const loadSound = async () => {
         if(!soundURI) {
