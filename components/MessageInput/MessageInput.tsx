@@ -149,8 +149,7 @@ const MessageInput = ({chatRoom}) => {
     };
 
 
-    // the code for the audio
-
+    // the code for the audio recording
     async function startRecording() {
         try {
             await Audio.setAudioModeAsync({
