@@ -243,12 +243,7 @@ const MessageInput = ({chatRoom}) => {
                         <Feather name={paused ? 'play' : 'pause'} size={24} color="gray" style={{}} />
                     </TouchableOpacity>
 
-                    <View style={{
-                        height: 3,
-                        borderRadius: 10,
-                        backgroundColor: "#3777f0",
-                        width: `${progress * 100}%`,
-                    }}>
+                    <View style={styles.audioProgressBG}>
 
                     </View>
                 </View>
