@@ -36,10 +36,7 @@ const MessageInput = ({chatRoom}) => {
         setImage(null);
         setProgress(0);
         setSoundURI(null);
-        setAudioProgress(0);
-        setAudioDuration(0);
-        setSound(null);
-    }
+    };
 
     useEffect(() => {
         (async () => {
