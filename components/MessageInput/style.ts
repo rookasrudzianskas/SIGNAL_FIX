@@ -26,7 +26,12 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
-    }
+    },
+    audioProgressBG: {
+        height: 5,
+        backgroundColor: 'lightgray',
+        alignSelf: 'stretch'
+    },
 });
 
 export default styles;
