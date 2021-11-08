@@ -107,6 +107,8 @@ const MessageInput = ({chatRoom}) => {
     const onPress = () => {
         if(image) {
             sendImage();
+        } else if(soundURI) {
+            sendAudio();
         } else if (message) {
             sendMessage();
         } else {
