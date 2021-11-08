@@ -19,6 +19,7 @@ const MessageInput = ({chatRoom}) => {
     const [progress, setProgress] = useState(0);
     const [recording, setRecording] = useState<Audio.Recording | null>(null);
     const [sound, setSound] = useState<Audio.Sound | null>(null);
+    const [paused, setPaused] = useState(true);
 
 
     // console.warn(message);
