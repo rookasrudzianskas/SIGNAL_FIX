@@ -88,8 +88,10 @@ const MessageInput = ({chatRoom}) => {
 
     const onPress = () => {
         if(image) {
-            sendMessage().then();
+            sendImage();
         } else if (message) {
+            sendMessage();
+        } else {
             onPlusClicked();
         }
     }
