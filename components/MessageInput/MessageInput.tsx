@@ -109,6 +109,7 @@ const MessageInput = ({chatRoom}) => {
         }
         const blob = await getImageBlob();
         const {key} = await Storage.put(`${uuidv4()}.png`, blob, {
+            progressCallback
         });
 
         // send message
@@ -124,6 +125,10 @@ const MessageInput = ({chatRoom}) => {
         updateLastMessage(newMessage);
         resetFields();
     };
+    // @ts-ignore
+    const progressCallback = (progress) => {
+        console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+    }
 
     const getImageBlob = async () => {
         if (!image) {
