@@ -17,7 +17,7 @@ const MessageInput = ({chatRoom}) => {
     const [message, setMessage] = useState('');
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     const [progress, setProgress] = useState(0);
-    const [recording, setRecording] = useState();
+    const [recording, setRecording] = useState<Audio.Recording | null>(null);
 
     // console.warn(message);
 
