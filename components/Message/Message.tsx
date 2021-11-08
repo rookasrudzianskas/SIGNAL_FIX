@@ -55,9 +55,11 @@ const Message = ({message}) => {
                     />
                 </View>
             )}
-            <Text style={{color: isMe ? 'black' : 'white'}}>
-                {message?.content}
-            </Text>
+            {!!message.content && (
+                <Text style={{color: isMe ? 'black' : 'white'}}>
+                    {message?.content}
+                </Text>
+            )}
         </View>
     );
 };
