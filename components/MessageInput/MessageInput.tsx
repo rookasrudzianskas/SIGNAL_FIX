@@ -243,16 +243,16 @@ const MessageInput = ({chatRoom}) => {
 
         // send message
         const user = await Auth.currentAuthenticatedUser();
-        // const newMessage = await DataStore.save(new Message({
-        //     content: message,
-        //     audio: sound,
-        //     userID: user.attributes.sub,
-        //     chatroomID: chatRoom?.id,
-        // }));
-        //
-        // // // @ts-ignore
-        // updateLastMessage(newMessage);
-        // resetFields();
+        const newMessage = await DataStore.save(new Message({
+            content: message,
+            audio: sound,
+            userID: user.attributes.sub,
+            chatroomID: chatRoom?.id,
+        }));
+
+        // // @ts-ignore
+        updateLastMessage(newMessage);
+        resetFields();
     };
 
     // @ts-ignore
