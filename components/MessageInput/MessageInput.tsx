@@ -160,17 +160,6 @@ const MessageInput = ({chatRoom}) => {
 
 
     // the code for the audio recording
-    // @ts-ignore
-    const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
-        if(!status.isLoaded) {
-            return;
-        }
-
-        setAudioProgress(status.positionMillis / (status.durationMillis || 1));
-        setPaused(!status.isPlaying);
-        setAudioDuration(status.durationMillis || 0);
-    }
-
     async function startRecording() {
         try {
             await Audio.setAudioModeAsync({

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Feather} from "@expo/vector-icons";
 import styles from "../MessageInput/style";
-import {Audio} from "expo-av";
+import {Audio, AVPlaybackStatus} from "expo-av";
 
 const AudioPlayer = () => {
     const [message, setMessage] = useState('');
@@ -33,6 +33,17 @@ const AudioPlayer = () => {
             await sound.pauseAsync();
         }
     };
+
+    // @ts-ignore
+    const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
+        if(!status.isLoaded) {
+            return;
+        }
+
+        setAudioProgress(status.positionMillis / (status.durationMillis || 1));
+        setPaused(!status.isPlaying);
+        setAudioDuration(status.durationMillis || 0);
+    }
 
     return (
         <View>
