@@ -24,6 +24,12 @@ const Message = ({message}) => {
         DataStore.query(User, message.userID).then(setUser);
     }, []);
 
+    useEffect(()  => {
+        if(message.audio) {
+            Storage.get(message.audio).then(() => setSoundURI);
+        }
+    }, [message]);
+
     useEffect(() => {
         const checkIfMe = async () => {
             if(!user) {
@@ -35,9 +41,6 @@ const Message = ({message}) => {
         checkIfMe();
     }, [user]);
 
-    const downloadSound = async () => {
-        const uri = await Storage.get(message.audio);
-    }
 
     if(!user) {
         return (
