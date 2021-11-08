@@ -9,6 +9,7 @@ import * as ImagePicker from 'expo-image-picker';
 import 'react-native-get-random-values';
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
+import {Audio} from "expo-av";
 
 
 // @ts-ignore
@@ -32,7 +33,8 @@ const MessageInput = ({chatRoom}) => {
             if (Platform.OS !== 'web') {
                 const libraryResponse = await ImagePicker.requestMediaLibraryPermissionsAsync();
                 const photoResponse = await ImagePicker.requestCameraPermissionsAsync();
-                if (libraryResponse.status !== 'granted' && photoResponse.status !== 'granted') {
+                const audioResponse = await Audio.requestPermissionsAsync();
+                if (libraryResponse.status !== 'granted' && photoResponse.status !== 'granted' && audioResponse.status !== 'granted') {
                     alert('Sorry, we need camera roll permissions to make this work!');
                 }
             }
