@@ -160,8 +160,8 @@ const MessageInput = ({chatRoom}) => {
                     >
                         <View
                             style={{
-                                height: 5,
-                                borderRadius: 5,
+                                height: 3,
+                                borderRadius: 10,
                                 backgroundColor: "#3777f0",
                                 width: `${progress * 100}%`,
                             }}
