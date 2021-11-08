@@ -37,6 +37,7 @@ const MessageInput = ({chatRoom}) => {
         setSoundURI(null);
         setAudioProgress(0);
         setAudioDuration(0);
+        setSound(null);
     }
 
     useEffect(() => {
