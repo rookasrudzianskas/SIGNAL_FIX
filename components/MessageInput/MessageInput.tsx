@@ -118,7 +118,7 @@ const MessageInput = ({chatRoom}) => {
                         onChangeText={(text) => setMessage(text)}
                     />
 
-                    <TouchableOpacity activeOpacity={0.6}>
+                    <TouchableOpacity onPress={takePhoto} activeOpacity={0.6}>
                         <Feather name="camera" size={24} color="#595959"  style={{marginHorizontal: 5,}} />
                     </TouchableOpacity>
 
