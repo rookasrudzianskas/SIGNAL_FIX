@@ -1,14 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Feather} from "@expo/vector-icons";
 import styles from "../MessageInput/style";
 import {Audio, AVPlaybackStatus} from "expo-av";
 
-const AudioPlayer = () => {
+const AudioPlayer = ({soundURI}) => {
     const [sound, setSound] = useState<Audio.Sound | null>(null);
     const [paused, setPaused] = useState(true);
     const [audioProgress, setAudioProgress] = useState(0);
     const [audioDuration, setAudioDuration] = useState(0);
+
+
+    useEffect(() => {
+
+    }, []);
 
     const getDuration = () => {
         const minutes = Math.floor(audioDuration / (60 * 1000));

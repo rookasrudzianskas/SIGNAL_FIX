@@ -194,8 +194,7 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         setSoundURI(uri);
-        const { sound } = await Audio.Sound.createAsync({ uri }, {}, onPlaybackStatusUpdate);
-        setSound(sound);
+
     }
 
 
