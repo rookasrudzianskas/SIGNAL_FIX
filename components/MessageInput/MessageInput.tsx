@@ -161,6 +161,7 @@ const MessageInput = ({chatRoom}) => {
         }
 
         setAudioProgress(status.positionMillis / (status.durationMillis || 1));
+        setPaused(!status.isPlaying);
     }
 
     async function startRecording() {
@@ -208,10 +209,8 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         if (paused) {
-            setPaused(false);
             await sound.playAsync();
         } else {
-            setPaused(true);
             await sound.pauseAsync();
         }
     }
