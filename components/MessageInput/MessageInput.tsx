@@ -156,7 +156,7 @@ const MessageInput = ({chatRoom}) => {
     };
 
 
-    // the code for the audio recording
+    // the code for the audio recording 🔥
     async function startRecording() {
         try {
             await Audio.setAudioModeAsync({
@@ -196,7 +196,6 @@ const MessageInput = ({chatRoom}) => {
         setSoundURI(uri);
 
     }
-
 
     const sendAudio = async () => {
         // upload the sound to S3 and send the url to the server
