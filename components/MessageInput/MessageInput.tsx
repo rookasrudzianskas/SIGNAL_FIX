@@ -217,11 +217,12 @@ const MessageInput = ({chatRoom}) => {
         }
     };
 
-    const getDurationFormatted = () => {
+    const getDuration = () => {
         const minutes = Math.floor(audioDuration / (60 * 1000));
-        const seconds = Math.floor(audioDuration % (60 * 1000) / 1000);
-        return `${minutes}:${seconds}`;
-    }
+        const seconds = Math.floor((audioDuration % (60 * 1000)) / 1000);
+
+        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    };
 
     // @ts-ignore
     return (
@@ -273,7 +274,7 @@ const MessageInput = ({chatRoom}) => {
 
                         </View>
                     </View>
-                        <Text>{getDurationFormatted}</Text>
+                        <Text>{getDuration()}</Text>
                 </View>
             )}
 
