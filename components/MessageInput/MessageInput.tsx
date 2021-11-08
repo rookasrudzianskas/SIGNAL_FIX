@@ -233,9 +233,11 @@ const MessageInput = ({chatRoom}) => {
         if (!soundURI) {
             return;
         }
+        const uriParts = soundURI.split('.');
+        const extension = uriParts[uriParts.length - 1];
         const blob = await getBlob(soundURI);
         // @ts-ignore
-        const {sound} = await Storage.put(`${uuidv4()}.mp3`, blob, {
+        const {sound} = await Storage.put(`${uuidv4()}.${extension}`, blob, {
             progressCallback
         });
 
