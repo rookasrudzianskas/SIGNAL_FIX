@@ -103,7 +103,21 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         const blob = await getImageBlob();
-        await Storage.put(`${uuidv4()}.png`, blob);
+        const result = await Storage.put(`${uuidv4()}.png`, blob);
+
+        // // send message
+        // const user = await Auth.currentAuthenticatedUser();
+        // const newMessage = await DataStore.save(new Message({
+        //     content: message,
+        //     userID: user.attributes.sub,
+        //     chatroomID: chatRoom?.id,
+        // }));
+        //
+        // // @ts-ignore
+        // updateLastMessage(newMessage);
+        //
+        // setMessage('');
+        // setIsEmojiPickerOpen(false);
     }
 
     const getImageBlob = async () => {
