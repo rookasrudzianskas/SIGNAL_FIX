@@ -48,6 +48,17 @@ const MessageInput = ({chatRoom}) => {
 
     };
 
+    const takePhoto = async () => {
+        const result = await ImagePicker.launchCameraAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            aspect: [4, 3]
+        });
+
+        if(!result.cancelled) {
+            setImage(result.uri);
+        }
+    };
+
     const sendMessage = async () => {
         // send message
         const user = await Auth.currentAuthenticatedUser();
