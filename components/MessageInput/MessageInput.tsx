@@ -108,13 +108,14 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         const blob = await getImageBlob();
-        const {key} = await Storage.put(`${uuidv4()}.png`, blob);
+        const {key} = await Storage.put(`${uuidv4()}.png`, blob, {
+        });
 
         // send message
         const user = await Auth.currentAuthenticatedUser();
         const newMessage = await DataStore.save(new Message({
             content: message,
-            image: image,
+            image: key,
             userID: user.attributes.sub,
             chatroomID: chatRoom?.id,
         }));
@@ -122,7 +123,7 @@ const MessageInput = ({chatRoom}) => {
         // // @ts-ignore
         updateLastMessage(newMessage);
         resetFields();
-    }''
+    };
 
     const getImageBlob = async () => {
         if (!image) {
