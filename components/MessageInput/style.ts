@@ -28,10 +28,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     audioProgressBG: {
+        flex: 1,
         height: 3,
         backgroundColor: 'lightgray',
-        alignSelf: 'stretch',
         borderRadius: 5,
+        margin: 10,
     },
 });
 
