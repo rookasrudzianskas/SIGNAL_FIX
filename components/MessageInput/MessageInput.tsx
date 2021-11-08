@@ -187,6 +187,13 @@ const MessageInput = ({chatRoom}) => {
         setSound(sound);
     }
 
+    const playPauseSound = () => {
+        if(!sound) {
+            return;
+        }
+        sound.playAsync();
+    }
+
     // @ts-ignore
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
@@ -219,8 +226,8 @@ const MessageInput = ({chatRoom}) => {
             )}
 
             {sound && (
-                <View style={{flexDirection: 'row', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden'}}>
-                    <TouchableOpacity activeOpacity={0.6} onPress={() => setSound(null)}>
+                <View style={{flexDirection: 'row', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden', padding: 10}}>
+                    <TouchableOpacity activeOpacity={0.6} onPress={playPauseSound}>
                         <Feather name="play" size={24} color="black" style={{}} />
                     </TouchableOpacity>
                 </View>
