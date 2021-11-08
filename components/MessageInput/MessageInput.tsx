@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Image, KeyboardAvoidingView, Platform, Pressable, TextInput, TouchableOpacity, View} from 'react-native';
+import {Image, KeyboardAvoidingView, Platform, Pressable, TextInput, TouchableOpacity, View, Text} from 'react-native';
 import styles from "./style";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore, Storage} from "aws-amplify";
@@ -21,6 +21,7 @@ const MessageInput = ({chatRoom}) => {
     const [sound, setSound] = useState<Audio.Sound | null>(null);
     const [paused, setPaused] = useState(true);
     const [audioProgress, setAudioProgress] = useState(0);
+    const [audioDuration, setAudioDuration] = useState(0);
 
 
     // console.warn(message);
@@ -162,6 +163,7 @@ const MessageInput = ({chatRoom}) => {
 
         setAudioProgress(status.positionMillis / (status.durationMillis || 1));
         setPaused(!status.isPlaying);
+        setAudioDuration(status.durationMillis || 0);
     }
 
     async function startRecording() {
@@ -209,10 +211,15 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         if (paused) {
-            await sound.playAsync();
+            await sound.playFromPositionAsync(0);
         } else {
             await sound.pauseAsync();
         }
+    };
+
+    const getDurationFormatted = () => {
+        const minutes = Math.floor(audioDuration / 60 * 1000);
+        const seconds = Math.floor(audioDuration - minutes);
     }
 
     // @ts-ignore
@@ -265,6 +272,7 @@ const MessageInput = ({chatRoom}) => {
 
                         </View>
                     </View>
+                        <Text>{getDurationFormatted}</Text>
                 </View>
             )}
 
