@@ -34,6 +34,9 @@ const MessageInput = ({chatRoom}) => {
         setIsEmojiPickerOpen(false);
         setImage(null);
         setProgress(0);
+        setSoundURI(null);
+        setAudioProgress(0);
+        setAudioDuration(0);
     }
 
     useEffect(() => {
