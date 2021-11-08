@@ -19,6 +19,12 @@ const MessageInput = ({chatRoom}) => {
 
     const [image, setImage] = useState<string|null>(null);
 
+    const resetFields = () => {
+        setMessage('');
+        setIsEmojiPickerOpen(false);
+        setImage(null);
+    }
+
     useEffect(() => {
         (async () => {
             if (Platform.OS !== 'web') {
@@ -116,9 +122,8 @@ const MessageInput = ({chatRoom}) => {
 
         // // @ts-ignore
         updateLastMessage(newMessage);
-        setMessage('');
-        setIsEmojiPickerOpen(false);
-    }
+        resetFields();
+    }''
 
     const getImageBlob = async () => {
         if (!image) {
