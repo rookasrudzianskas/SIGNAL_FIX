@@ -188,11 +188,17 @@ const MessageInput = ({chatRoom}) => {
         setSound(sound);
     }
 
-    const playPauseSound = () => {
-        if(!sound) {
+    const playPauseSound = async () => {
+        if (!sound) {
             return;
         }
-        sound.playAsync();
+        if (paused) {
+            await sound.playAsync();
+            setPaused(false);
+        } else {
+            await sound.pauseAsync();
+            setPaused(true);
+        }
     }
 
     // @ts-ignore
