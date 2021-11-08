@@ -154,7 +154,6 @@ const MessageInput = ({chatRoom}) => {
 
 
     // the code for the audio recording
-
     // @ts-ignore
     const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
         if(!status.isLoaded) {
