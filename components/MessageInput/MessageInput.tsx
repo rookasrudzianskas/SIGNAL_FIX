@@ -226,13 +226,6 @@ const MessageInput = ({chatRoom}) => {
         }
     };
 
-    const getDuration = () => {
-        const minutes = Math.floor(audioDuration / (60 * 1000));
-        const seconds = Math.floor((audioDuration % (60 * 1000)) / 1000);
-
-        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-    };
-
     const sendAudio = async () => {
         // upload the sound to S3 and send the url to the server
         if (!soundURI) {

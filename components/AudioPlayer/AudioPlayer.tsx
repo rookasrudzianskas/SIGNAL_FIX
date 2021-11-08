@@ -3,7 +3,16 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {Feather} from "@expo/vector-icons";
 import styles from "../MessageInput/style";
 
-const AudioPlayer = () => {
+const AudioPlayer = (soundURI) => {
+
+
+    const getDuration = () => {
+        const minutes = Math.floor(audioDuration / (60 * 1000));
+        const seconds = Math.floor((audioDuration % (60 * 1000)) / 1000);
+
+        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    };
+
     return (
         <View>
             <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden', padding: 10}}>
