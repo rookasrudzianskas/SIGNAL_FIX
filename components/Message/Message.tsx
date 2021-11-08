@@ -35,7 +35,7 @@ const Message = ({message}) => {
         checkIfMe();
     }, [user]);
 
-    const downloadSounded = async () => {
+    const downloadSound = async () => {
         const uri = await Storage.get(message.audio);
     }
 
