@@ -26,7 +26,7 @@ const Message = ({message}) => {
 
     useEffect(()  => {
         if(message.audio) {
-            Storage.get(message.audio).then(() => setSoundURI);
+            Storage.get(message.audio).then(setSoundURI);
         }
     }, [message]);
 
