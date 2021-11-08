@@ -3,6 +3,7 @@ import {Text, View, StyleSheet, ActivityIndicator} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {User} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
+// @ts-ignore
 import {S3Image} from "aws-amplify-react-native";
 
 const blue = '#3777f0';
