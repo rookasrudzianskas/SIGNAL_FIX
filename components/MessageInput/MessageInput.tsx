@@ -151,10 +151,21 @@ const MessageInput = ({chatRoom}) => {
     {/*// @ts-ignore*/}
                     <Image  source={{uri: image}} style={{width: 150, height: 100, resizeMode: 'contain', borderRadius: 10,}}/>
 
-                    <View style={{flex: 1}}>
-                        <View style={{height: 3, backgroundColor: '#3777f0', width: '50%', alignSelf: 'flex-end', borderRadius: 10, marginLeft: 'auto'}}>
-
-                        </View>
+                    <View
+                        style={{
+                            flex: 1,
+                            justifyContent: "flex-start",
+                            alignSelf: "flex-end",
+                        }}
+                    >
+                        <View
+                            style={{
+                                height: 5,
+                                borderRadius: 5,
+                                backgroundColor: "#3777f0",
+                                width: `${progress * 100}%`,
+                            }}
+                        />
                     </View>
 
                     <TouchableOpacity activeOpacity={0.6} onPress={() => setImage(null)}>
