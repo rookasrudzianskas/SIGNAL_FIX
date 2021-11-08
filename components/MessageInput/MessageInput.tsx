@@ -154,6 +154,12 @@ const MessageInput = ({chatRoom}) => {
 
 
     // the code for the audio recording
+
+    // @ts-ignore
+    const onPlaybackStatusUpdate = (data) => {
+        console.log(data);
+    }
+
     async function startRecording() {
         try {
             await Audio.setAudioModeAsync({
@@ -190,7 +196,7 @@ const MessageInput = ({chatRoom}) => {
         if(!uri) {
             return;
         }
-        const { sound } = await Audio.Sound.createAsync({ uri });
+        const { sound } = await Audio.Sound.createAsync({ uri }, {}, onPlaybackStatusUpdate);
         setSound(sound);
     }
 
