@@ -45,7 +45,7 @@ const Message = ({message}) => {
     return (
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer]}>
             {message.image && (
-                <View style={{marginBottom: 10}}>
+                <View style={{marginBottom: message.content ? 10 : 0}}>
                     <S3Image
                         style={{ width: width * 0.7, aspectRatio: 4 / 3, borderRadius: 10 }}
                         resizeMode={'contain'}
