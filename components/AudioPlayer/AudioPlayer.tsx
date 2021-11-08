@@ -4,6 +4,7 @@ import {Feather} from "@expo/vector-icons";
 import styles from "../MessageInput/style";
 import {Audio, AVPlaybackStatus} from "expo-av";
 
+// @ts-ignore
 const AudioPlayer = ({soundURI}) => {
     const [sound, setSound] = useState<Audio.Sound | null>(null);
     const [paused, setPaused] = useState(true);
@@ -20,7 +21,7 @@ const AudioPlayer = ({soundURI}) => {
             return;
         }
 
-        const {sound} = await Audio.Sound.createAsync({uri}, {}, onPlaybackStatusUpdate);
+        const {sound} = await Audio.Sound.createAsync({uri: soundURI}, {}, onPlaybackStatusUpdate);
         setSound(sound);
     }
 
