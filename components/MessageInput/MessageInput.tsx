@@ -99,13 +99,8 @@ const MessageInput = ({chatRoom}) => {
         if (!image) {
             return;
         }
-        const blob = getImageBlob();
-        await Storage.put('test.png', blob, {
-            contentType: 'image/png',
-            progressCallback(progress) {
-                // console.log(progress);
-            }
-        });
+        const blob = await getImageBlob();
+        await Storage.put('test.png', blob);
     }
 
     const getImageBlob = async () => {
