@@ -22,6 +22,7 @@ const MessageInput = ({chatRoom}) => {
     const [paused, setPaused] = useState(true);
     const [audioProgress, setAudioProgress] = useState(0);
     const [audioDuration, setAudioDuration] = useState(0);
+    const [soundURI, setSoundURI] = useState<string | null>(null);
 
 
     // console.warn(message);
@@ -202,6 +203,7 @@ const MessageInput = ({chatRoom}) => {
         if(!uri) {
             return;
         }
+        setSoundURI(uri);
         const { sound } = await Audio.Sound.createAsync({ uri }, {}, onPlaybackStatusUpdate);
         setSound(sound);
     }
