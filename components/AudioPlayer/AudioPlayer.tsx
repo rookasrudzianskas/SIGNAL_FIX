@@ -65,7 +65,7 @@ const AudioPlayer = ({soundURI}) => {
 
     return (
         <View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden', padding: 10}}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden', padding: 10, backgroundColor: 'white'}}>
                 <TouchableOpacity activeOpacity={0.6} onPress={playPauseSound}>
                     <Feather name={paused ? 'play' : 'pause'} size={24} color="gray" style={{}} />
                 </TouchableOpacity>
