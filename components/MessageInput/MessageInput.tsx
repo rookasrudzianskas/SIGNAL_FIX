@@ -234,6 +234,7 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         const blob = await getBlob(soundURI);
+        // @ts-ignore
         const {sound} = await Storage.put(`${uuidv4()}.mp3`, blob, {
             progressCallback
         });
@@ -335,7 +336,7 @@ const MessageInput = ({chatRoom}) => {
 
 
                 <TouchableOpacity onPress={onPress}  style={styles.buttonContainer}>
-                    {message || image ? (
+                    {message || image || soundURI ? (
                         <Ionicons name="ios-send" size={18} color="white" />
                     ) : (
                         <AntDesign name="plus" size={24} color="white" />
