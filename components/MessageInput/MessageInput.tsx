@@ -230,8 +230,8 @@ const MessageInput = ({chatRoom}) => {
                     </TouchableOpacity>
 
                     {/*@ts-ignore*/}
-                    <Pressable onPressIn={startRecording()} onPressOut={stopRecording()}>
-                        <MaterialCommunityIcons  name="microphone-outline" size={24} color="#595959" />
+                    <Pressable onPressIn={startRecording} onPressOut={stopRecording}>
+                        <MaterialCommunityIcons  name={recording ? 'microphone' : 'microphone-outline'} size={24} color="#595959" />
                     </Pressable>
                 </View>
 
