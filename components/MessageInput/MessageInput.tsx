@@ -6,7 +6,8 @@ import {Auth, DataStore, Storage} from "aws-amplify";
 import {ChatRoom, Message} from '../../src/models';
 import EmojiSelector, {Categories} from "react-native-emoji-selector";
 import * as ImagePicker from 'expo-image-picker';
-import { v4 as uuidv4 } from "uuid";
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 
 
 // @ts-ignore
