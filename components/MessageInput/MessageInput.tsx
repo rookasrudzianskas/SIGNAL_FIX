@@ -18,6 +18,8 @@ const MessageInput = ({chatRoom}) => {
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     const [progress, setProgress] = useState(0);
     const [recording, setRecording] = useState<Audio.Recording | null>(null);
+    const [sound, setSound] = useState<Audio.Recording | null>(null);
+
 
     // console.warn(message);
 
@@ -176,6 +178,11 @@ const MessageInput = ({chatRoom}) => {
         await recording.stopAndUnloadAsync();
         const uri = recording.getURI();
         console.log('Recording stopped and stored at', uri);
+
+
+        // sound things
+        const { sound } = await Audio.Sound.createAsync({ uri });
+        setSound(sound);
     }
 
     // @ts-ignore
@@ -231,7 +238,7 @@ const MessageInput = ({chatRoom}) => {
 
                     {/*@ts-ignore*/}
                     <Pressable onPressIn={startRecording} onPressOut={stopRecording}>
-                        <MaterialCommunityIcons  name={recording ? 'microphone' : 'microphone-outline'} size={24} color="#595959" />
+                        <MaterialCommunityIcons  name={recording ? 'microphone' : 'microphone-outline'} size={24} color={recording ? 'red' : '#595959'} />
                     </Pressable>
                 </View>
 
