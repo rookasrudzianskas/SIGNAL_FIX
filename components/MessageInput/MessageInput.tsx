@@ -20,6 +20,7 @@ const MessageInput = ({chatRoom}) => {
     const [recording, setRecording] = useState<Audio.Recording | null>(null);
     const [sound, setSound] = useState<Audio.Sound | null>(null);
     const [paused, setPaused] = useState(true);
+    const [audioProgress, setAudioProgress] = useState(0);
 
 
     // console.warn(message);
@@ -251,6 +252,7 @@ const MessageInput = ({chatRoom}) => {
                             backgroundColor: '#3777f0',
                             position: 'absolute',
                             top: -3,
+                            left: `${audioProgress * 100}%`,
                         }}>
 
                         </View>
