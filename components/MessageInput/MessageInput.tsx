@@ -218,7 +218,7 @@ const MessageInput = ({chatRoom}) => {
     };
 
     const getDurationFormatted = () => {
-        const minutes = Math.floor(audioDuration / 60 * 1000);
+        const minutes = Math.floor(audioDuration % (60 * 1000));
         const seconds = Math.floor(audioDuration - minutes);
     }
 
