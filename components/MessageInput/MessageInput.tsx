@@ -18,7 +18,7 @@ const MessageInput = ({chatRoom}) => {
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     const [progress, setProgress] = useState(0);
     const [recording, setRecording] = useState<Audio.Recording | null>(null);
-    const [sound, setSound] = useState<Audio.Recording | null>(null);
+    const [sound, setSound] = useState<Audio.Sound | null>(null);
 
 
     // console.warn(message);
@@ -217,6 +217,15 @@ const MessageInput = ({chatRoom}) => {
                     </TouchableOpacity>
                 </View>
             )}
+
+            {sound && (
+                <View style={{flexDirection: 'row', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden'}}>
+                    <TouchableOpacity activeOpacity={0.6} onPress={() => setSound(null)}>
+                        <Feather name="play" size={24} color="black" style={{}} />
+                    </TouchableOpacity>
+                </View>
+            )}
+
             <View style={[styles.row]}>
                 <View style={styles.inputContainer}>
                     <TouchableOpacity activeOpacity={0.6} onPress={() => setIsEmojiPickerOpen(!isEmojiPickerOpen)}>
