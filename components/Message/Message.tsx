@@ -45,13 +45,15 @@ const Message = ({message}) => {
     return (
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer]}>
             {message.image && (
-                <S3Image
-                    style={{ width: width * 0.7, aspectRatio: 4 / 3, borderRadius: 10 }}
-                    resizeMode={'contain'}
-                    imgKey={message.image}
-                    theme={'dark'}
-                    level={'public'}
-                />
+                <View style={{marginBottom: 10}}>
+                    <S3Image
+                        style={{ width: width * 0.7, aspectRatio: 4 / 3, borderRadius: 10 }}
+                        resizeMode={'contain'}
+                        imgKey={message.image}
+                        theme={'dark'}
+                        level={'public'}
+                    />
+                </View>
             )}
             <Text style={{color: isMe ? 'black' : 'white'}}>
                 {message?.content}
