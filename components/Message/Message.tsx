@@ -15,7 +15,7 @@ const myID = 'u1';
 const Message = ({message}) => {
     const [user, setUser] = useState<User|undefined>();
     const [isMe, setIsMe] = useState<boolean>(false);
-    const [soundURI, setSoundURI] = useState<string|null>(null);
+    const [soundURI, setSoundURI] = useState<any>(null);
     const { width } = useWindowDimensions();
 
 
@@ -63,9 +63,13 @@ const Message = ({message}) => {
                     />
                 </View>
             )}
-            {message.audio && (
-                <AudioPlayer soundURI={message.audio} />
+
+            {soundURI && (
+                <View>
+                    <Text>2xl</Text>
+                </View>
             )}
+
             {!!message.content && (
                 <Text style={{color: isMe ? 'black' : 'white'}}>
                     {message?.content}
