@@ -26,7 +26,6 @@ const Message = ({message}) => {
 
     useEffect(() => {
         if (message.audio) {
-            console.log('I am in')
             Storage.get(message.audio).then(setSoundURI);
         }
     }, [message]);
@@ -65,13 +64,13 @@ const Message = ({message}) => {
                 </View>
             )}
 
-            {/*{soundURI && <AudioPlayer soundURI={soundURI} />}*/}
+            {soundURI && <AudioPlayer soundURI={soundURI} />}
 
-            {soundURI && (
-                <View>
-                    <Text>Rokas</Text>
-                </View>
-            )}
+            {/*{soundURI && (*/}
+            {/*    <View>*/}
+            {/*        <Text>Rokas</Text>*/}
+            {/*    </View>*/}
+            {/*)}*/}
             {/*<AudioPlayer  soundURI={soundURI}/>*/}
             {!!message.content && (
                 <Text style={{color: isMe ? 'black' : 'white'}}>
