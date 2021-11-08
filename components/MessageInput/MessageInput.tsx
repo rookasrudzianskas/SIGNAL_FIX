@@ -242,6 +242,15 @@ const MessageInput = ({chatRoom}) => {
                     <TouchableOpacity activeOpacity={0.6} onPress={playPauseSound}>
                         <Feather name={paused ? 'play' : 'pause'} size={24} color="gray" style={{}} />
                     </TouchableOpacity>
+
+                    <View style={{
+                        height: 3,
+                        borderRadius: 10,
+                        backgroundColor: "#3777f0",
+                        width: `${progress * 100}%`,
+                    }}>
+
+                    </View>
                 </View>
             )}
 
