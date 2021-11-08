@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Image, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, View} from 'react-native';
+import {Image, KeyboardAvoidingView, Platform, Pressable, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from "./style";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore, Storage} from "aws-amplify";
@@ -178,6 +178,7 @@ const MessageInput = ({chatRoom}) => {
         console.log('Recording stopped and stored at', uri);
     }
 
+    // @ts-ignore
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
             {image && (
@@ -228,7 +229,10 @@ const MessageInput = ({chatRoom}) => {
                         <Feather name="image" size={24} color="#595959"  style={{marginHorizontal: 5,}}/>
                     </TouchableOpacity>
 
-                    <MaterialCommunityIcons  name="microphone-outline" size={24} color="#595959" />
+                    {/*@ts-ignore*/}
+                    <Pressable onPressIn={startRecording()} onPressOut={stopRecording()}>
+                        <MaterialCommunityIcons  name="microphone-outline" size={24} color="#595959" />
+                    </Pressable>
                 </View>
 
 
