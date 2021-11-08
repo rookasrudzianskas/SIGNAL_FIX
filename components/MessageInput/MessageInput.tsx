@@ -179,8 +179,10 @@ const MessageInput = ({chatRoom}) => {
         const uri = recording.getURI();
         console.log('Recording stopped and stored at', uri);
 
-
         // sound things
+        if(!uri) {
+            return;
+        }
         const { sound } = await Audio.Sound.createAsync({ uri });
         setSound(sound);
     }
