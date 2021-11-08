@@ -215,16 +215,6 @@ const MessageInput = ({chatRoom}) => {
         setSound(sound);
     }
 
-    const playPauseSound = async () => {
-        if (!sound) {
-            return;
-        }
-        if (paused) {
-            await sound.playFromPositionAsync(0);
-        } else {
-            await sound.pauseAsync();
-        }
-    };
 
     const sendAudio = async () => {
         // upload the sound to S3 and send the url to the server
