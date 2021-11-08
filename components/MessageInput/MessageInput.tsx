@@ -31,6 +31,7 @@ const MessageInput = ({chatRoom}) => {
     }, []);
 
 
+    // image picker
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
