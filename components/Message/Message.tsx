@@ -46,7 +46,8 @@ const Message = ({message}) => {
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer]}>
             {message.image && (
                 <S3Image
-                    style={{ width: width * 0.7, aspectRatio: 4 / 3 }}
+                    style={{ width: width * 0.7, aspectRatio: 4 / 3, borderRadius: 10 }}
+                    resizeMode={'contain'}
                     imgKey={message.image}
                     theme={'dark'}
                     level={'public'}
