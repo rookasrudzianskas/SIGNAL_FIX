@@ -154,7 +154,7 @@ const MessageInput = ({chatRoom}) => {
 
 
                 <TouchableOpacity onPress={onPress}  style={styles.buttonContainer}>
-                    {message ? (
+                    {message || image ? (
                         <Ionicons name="ios-send" size={18} color="white" />
                     ) : (
                         <AntDesign name="plus" size={24} color="white" />
