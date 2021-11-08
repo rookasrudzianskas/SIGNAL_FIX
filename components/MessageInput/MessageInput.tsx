@@ -224,6 +224,30 @@ const MessageInput = ({chatRoom}) => {
         return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     };
 
+    const sendAudio = async () => {
+        // upload the sound to S3 and send the url to the server
+        if (!image) {
+            return;
+        }
+        const blob = await getImageBlob();
+        const {key} = await Storage.put(`${uuidv4()}.png`, blob, {
+            progressCallback
+        });
+
+        // send message
+        const user = await Auth.currentAuthenticatedUser();
+        const newMessage = await DataStore.save(new Message({
+            content: message,
+            image: key,
+            userID: user.attributes.sub,
+            chatroomID: chatRoom?.id,
+        }));
+
+        // // @ts-ignore
+        updateLastMessage(newMessage);
+        resetFields();
+    };
+
     // @ts-ignore
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
