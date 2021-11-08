@@ -12,8 +12,17 @@ const AudioPlayer = ({soundURI}) => {
 
 
     useEffect(() => {
-
+        loadSound();
     }, []);
+
+    const loadSound = async () => {
+        if(!soundURI) {
+            return;
+        }
+
+        const {sound} = await Audio.Sound.createAsync({uri}, {}, onPlaybackStatusUpdate);
+        setSound(sound);
+    }
 
     const getDuration = () => {
         const minutes = Math.floor(audioDuration / (60 * 1000));
