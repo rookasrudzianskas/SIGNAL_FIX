@@ -7,6 +7,7 @@ import {ChatRoom, Message} from '../../src/models';
 import EmojiSelector, {Categories} from "react-native-emoji-selector";
 import * as ImagePicker from 'expo-image-picker';
 import 'react-native-get-random-values';
+// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 
 
