@@ -101,7 +101,7 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         const blob = await getImageBlob();
-        await Storage.put(`${uuidv4()}`, blob);
+        await Storage.put(`${uuidv4()}.png`, blob);
     }
 
     const getImageBlob = async () => {
