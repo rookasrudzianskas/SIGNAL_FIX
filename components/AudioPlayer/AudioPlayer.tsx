@@ -23,21 +23,27 @@ const AudioPlayer = ({soundURI}) => {
     }, [soundURI]);
 
     const loadSound = async () => {
-        if(!soundURI) {
+        if (!soundURI) {
             return;
         }
 
-        const {sound} = await Audio.Sound.createAsync({uri: soundURI}, {}, onPlaybackStatusUpdate);
+        const { sound } = await Audio.Sound.createAsync(
+            { uri: soundURI },
+            {},
+            onPlaybackStatusUpdate
+        );
         setSound(sound);
-    }
-
-    const getDuration = () => {
-        const minutes = Math.floor(audioDuration / (60 * 1000));
-        const seconds = Math.floor((audioDuration % (60 * 1000)) / 1000);
-
-        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
     };
 
+    // Audio
+    const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
+        if (!status.isLoaded) {
+            return;
+        }
+        setAudioProgress(status.positionMillis / (status.durationMillis || 1));
+        setPaused(!status.isPlaying);
+        setAudioDuration(status.durationMillis || 0);
+    };
 
     const playPauseSound = async () => {
         if (!sound) {
@@ -50,16 +56,12 @@ const AudioPlayer = ({soundURI}) => {
         }
     };
 
-    // @ts-ignore
-    const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
-        if(!status.isLoaded) {
-            return;
-        }
+    const getDuration = () => {
+        const minutes = Math.floor(audioDuration / (60 * 1000));
+        const seconds = Math.floor((audioDuration % (60 * 1000)) / 1000);
 
-        setAudioProgress(status.positionMillis / (status.durationMillis || 1));
-        setPaused(!status.isPlaying);
-        setAudioDuration(status.durationMillis || 0);
-    }
+        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    };
 
     return (
         <View>

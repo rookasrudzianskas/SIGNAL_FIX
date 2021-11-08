@@ -198,29 +198,29 @@ const MessageInput = ({chatRoom}) => {
     }
 
     const sendAudio = async () => {
-        // upload the sound to S3 and send the url to the server
         if (!soundURI) {
             return;
         }
-        const uriParts = soundURI.split('.');
-        const extension = uriParts[uriParts.length - 1];
+        const uriParts = soundURI.split(".");
+        const extenstion = uriParts[uriParts.length - 1];
         const blob = await getBlob(soundURI);
-        // @ts-ignore
-        const {sound} = await Storage.put(`${uuidv4()}.${extension}`, blob, {
-            progressCallback
+        const { key } = await Storage.put(`${uuidv4()}.${extenstion}`, blob, {
+            progressCallback,
         });
 
         // send message
         const user = await Auth.currentAuthenticatedUser();
-        const newMessage = await DataStore.save(new Message({
-            content: message,
-            audio: sound,
-            userID: user.attributes.sub,
-            chatroomID: chatRoom?.id,
-        }));
+        const newMessage = await DataStore.save(
+            new Message({
+                content: message,
+                audio: key,
+                userID: user.attributes.sub,
+                chatroomID: chatRoom.id,
+            })
+        );
 
-        // // @ts-ignore
         updateLastMessage(newMessage);
+
         resetFields();
     };
 
@@ -255,9 +255,8 @@ const MessageInput = ({chatRoom}) => {
                 </View>
             )}
 
-            {soundURI && (
-               <AudioPlayer soundURI={soundURI} />
-            )}
+            {soundURI && <AudioPlayer soundURI={soundURI} />}
+
 
             <View style={[styles.row]}>
                 <View style={styles.inputContainer}>
