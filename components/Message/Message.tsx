@@ -63,9 +63,9 @@ const Message = ({message}) => {
                     />
                 </View>
             )}
-            {/*{message.audio && (*/}
-            {/*    <AudioPlayer soundURI={message.audio} />*/}
-            {/*)}*/}
+            {message.audio && (
+                <AudioPlayer soundURI={message.audio} />
+            )}
             {!!message.content && (
                 <Text style={{color: isMe ? 'black' : 'white'}}>
                     {message?.content}
