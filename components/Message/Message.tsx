@@ -5,6 +5,7 @@ import {User} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
 // @ts-ignore
 import {S3Image} from "aws-amplify-react-native";
+import AudioPlayer from "../AudioPlayer";
 
 const blue = '#3777f0';
 const grey = 'lightgrey';
@@ -54,6 +55,9 @@ const Message = ({message}) => {
                         level={'public'}
                     />
                 </View>
+            )}
+            {message.audio && (
+                <AudioPlayer soundURI={sound.URI} />
             )}
             {!!message.content && (
                 <Text style={{color: isMe ? 'black' : 'white'}}>
