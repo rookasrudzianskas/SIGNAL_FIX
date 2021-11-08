@@ -78,8 +78,7 @@ const MessageInput = ({chatRoom}) => {
         // @ts-ignore
         updateLastMessage(newMessage);
 
-        setMessage('');
-        setIsEmojiPickerOpen(false);
+        resetFields();
     }
 
     // @ts-ignore
