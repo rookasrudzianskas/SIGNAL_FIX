@@ -6,7 +6,7 @@ import {Auth, DataStore, Storage} from "aws-amplify";
 import {ChatRoom, Message} from '../../src/models';
 import EmojiSelector, {Categories} from "react-native-emoji-selector";
 import * as ImagePicker from 'expo-image-picker';
-import {v4 as uuid} from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 
 // @ts-ignore
@@ -42,7 +42,7 @@ const MessageInput = ({chatRoom}) => {
         // console.log(result);
 
         if(!result.cancelled) {
-            setImage(result.uri)
+            setImage(result.uri);
         }
 
     };
@@ -101,7 +101,7 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         const blob = await getImageBlob();
-        await Storage.put('rokas.png', blob);
+        await Storage.put(`${uuidv4()}`, blob);
     }
 
     const getImageBlob = async () => {
