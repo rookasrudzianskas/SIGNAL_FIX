@@ -244,7 +244,16 @@ const MessageInput = ({chatRoom}) => {
                     </TouchableOpacity>
 
                     <View style={styles.audioProgressBG}>
+                        <View style={{
+                            width: 10,
+                            height: 10,
+                            borderRadius: 10,
+                            backgroundColor: '#3777f0',
+                            position: 'absolute',
+                            top: -3,
+                        }}>
 
+                        </View>
                     </View>
                 </View>
             )}
