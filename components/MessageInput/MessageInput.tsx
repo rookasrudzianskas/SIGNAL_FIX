@@ -193,11 +193,11 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
         if (paused) {
-            await sound.playAsync();
             setPaused(false);
+            await sound.playAsync();
         } else {
-            await sound.pauseAsync();
             setPaused(true);
+            await sound.pauseAsync();
         }
     }
 
@@ -235,7 +235,7 @@ const MessageInput = ({chatRoom}) => {
             {sound && (
                 <View style={{flexDirection: 'row', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden', padding: 10}}>
                     <TouchableOpacity activeOpacity={0.6} onPress={playPauseSound}>
-                        <Feather name="play" size={24} color="black" style={{}} />
+                        <Feather name={paused ? 'play' : 'pause'} size={24} color="black" style={{}} />
                     </TouchableOpacity>
                 </View>
             )}
