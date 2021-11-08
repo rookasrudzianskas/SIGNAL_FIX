@@ -102,6 +102,11 @@ const MessageInput = ({chatRoom}) => {
         }
     }
 
+    // @ts-ignore
+    const progressCallback = (progress) => {
+        console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+    }
+
     const sendImage = async () => {
         // upload the image to S3 and send the url to the server
         if (!image) {
@@ -125,10 +130,7 @@ const MessageInput = ({chatRoom}) => {
         updateLastMessage(newMessage);
         resetFields();
     };
-    // @ts-ignore
-    const progressCallback = (progress) => {
-        console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
-    }
+
 
     const getImageBlob = async () => {
         if (!image) {
