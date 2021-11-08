@@ -291,8 +291,8 @@ const MessageInput = ({chatRoom}) => {
                 </View>
             )}
 
-            {sound && (
-               <AudioPlayer />
+            {soundURI && (
+               <AudioPlayer soundURI={soundURI} />
             )}
 
             <View style={[styles.row]}>
