@@ -51,7 +51,7 @@ const Message = ({message}) => {
     }
 
     return (
-        <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer]}>
+        <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
             {message.image && (
                 <View style={{marginBottom: message.content ? 10 : 0}}>
                     <S3Image
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 10,
         borderRadius: 10,
-        maxWidth: '75%',
+        // maxWidth: '75%',
     },
     leftContainer: {
         backgroundColor: blue,
