@@ -161,7 +161,7 @@ const MessageInput = ({chatRoom}) => {
             return;
         }
 
-
+        setAudioProgress(status.positionMillis / (status.durationMillis || 1));
     }
 
     async function startRecording() {
