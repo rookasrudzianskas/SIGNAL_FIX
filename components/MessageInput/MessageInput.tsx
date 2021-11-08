@@ -9,7 +9,7 @@ import * as ImagePicker from 'expo-image-picker';
 import 'react-native-get-random-values';
 // @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
-import {Audio} from "expo-av";
+import {Audio, AVPlaybackStatus} from "expo-av";
 
 
 // @ts-ignore
@@ -156,8 +156,12 @@ const MessageInput = ({chatRoom}) => {
     // the code for the audio recording
 
     // @ts-ignore
-    const onPlaybackStatusUpdate = (data) => {
-        console.log(data);
+    const onPlaybackStatusUpdate = (status: AVPlaybackStatus) => {
+        if(!status.isLoaded) {
+            return;
+        }
+
+
     }
 
     async function startRecording() {
