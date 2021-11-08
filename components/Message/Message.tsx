@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, ActivityIndicator} from 'react-native';
+import {Text, View, StyleSheet, ActivityIndicator, useWindowDimensions} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {User} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
@@ -14,6 +14,8 @@ const myID = 'u1';
 const Message = ({message}) => {
     const [user, setUser] = useState<User|undefined>();
     const [isMe, setIsMe] = useState<boolean>(false);
+    const { width } = useWindowDimensions();
+
 
     useEffect(() => {
         // @ts-ignore
@@ -44,7 +46,7 @@ const Message = ({message}) => {
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer]}>
             {message.image && (
                 <S3Image
-                    style={{width: 200, height: 200}}
+                    style={{ width: width * 0.7, aspectRatio: 4 / 3 }}
                     imgKey={message.image}
                     theme={'dark'}
                     level={'public'}
