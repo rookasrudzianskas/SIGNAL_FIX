@@ -47,7 +47,6 @@ const Message = ({message}) => {
         )
     }
 
-
     return (
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer]}>
             {message.image && (
