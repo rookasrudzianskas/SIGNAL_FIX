@@ -177,6 +177,11 @@ const MessageInput = ({chatRoom}) => {
         }
         setRecording(null);
         await recording.stopAndUnloadAsync();
+
+        await Audio.setAudioModeAsync({
+           allowsRecordingIOS: false,
+        });
+
         const uri = recording.getURI();
         console.log('Recording stopped and stored at', uri);
 
@@ -235,7 +240,7 @@ const MessageInput = ({chatRoom}) => {
             {sound && (
                 <View style={{flexDirection: 'row', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden', padding: 10}}>
                     <TouchableOpacity activeOpacity={0.6} onPress={playPauseSound}>
-                        <Feather name={paused ? 'play' : 'pause'} size={24} color="black" style={{}} />
+                        <Feather name={paused ? 'play' : 'pause'} size={24} color="gray" style={{}} />
                     </TouchableOpacity>
                 </View>
             )}
