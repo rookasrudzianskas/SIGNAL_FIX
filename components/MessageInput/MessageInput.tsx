@@ -15,6 +15,7 @@ import { v4 as uuidv4 } from 'uuid';
 const MessageInput = ({chatRoom}) => {
     const [message, setMessage] = useState('');
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+    const [progress, setProgress] = useState(0);
     // console.warn(message);
 
     const [image, setImage] = useState<string|null>(null);
@@ -23,6 +24,7 @@ const MessageInput = ({chatRoom}) => {
         setMessage('');
         setIsEmojiPickerOpen(false);
         setImage(null);
+        setProgress(0);
     }
 
     useEffect(() => {
@@ -104,8 +106,9 @@ const MessageInput = ({chatRoom}) => {
 
     // @ts-ignore
     const progressCallback = (progress) => {
-        console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
-    }
+        // console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
+        setProgress(progress.loaded / progress.total);
+    };
 
     const sendImage = async () => {
         // upload the image to S3 and send the url to the server
