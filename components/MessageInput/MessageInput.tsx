@@ -168,8 +168,11 @@ const MessageInput = ({chatRoom}) => {
     }
 
     async function stopRecording() {
-        console.log('Stopping recording..');
-        setRecording(undefined);
+        console.log('Recording is stopping');
+        if(!recording) {
+            return;
+        }
+        setRecording(null);
         await recording.stopAndUnloadAsync();
         const uri = recording.getURI();
         console.log('Recording stopped and stored at', uri);
