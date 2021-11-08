@@ -150,6 +150,13 @@ const MessageInput = ({chatRoom}) => {
                 <View style={{flexDirection: 'row', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden'}}>
     {/*// @ts-ignore*/}
                     <Image  source={{uri: image}} style={{width: 150, height: 100, resizeMode: 'contain', borderRadius: 10,}}/>
+
+                    <View style={{flex: 1}}>
+                        <View style={{height: 3, backgroundColor: '#3777f0', width: '50%', alignSelf: 'flex-end', borderRadius: 10, marginLeft: 'auto'}}>
+
+                        </View>
+                    </View>
+
                     <TouchableOpacity activeOpacity={0.6} onPress={() => setImage(null)}>
                         <AntDesign name="close" size={24} color="black" style={{margin: 10,}} />
                     </TouchableOpacity>
