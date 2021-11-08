@@ -104,13 +104,13 @@ const MessageInput = ({chatRoom}) => {
     }
 
     const getImageBlob = async () => {
-        if (image) {
+        if (!image) {
             return null;
         }
-        // @ts-ignore
         const response = await fetch(image);
-        return await response.blob();
-    }
+        const blob = await response.blob();
+        return blob;
+    };
 
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
