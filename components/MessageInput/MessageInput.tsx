@@ -153,13 +153,11 @@ const MessageInput = ({chatRoom}) => {
 
     async function startRecording() {
         try {
-            console.log('Requesting permissions..');
-            await Audio.requestPermissionsAsync();
             await Audio.setAudioModeAsync({
                 allowsRecordingIOS: true,
                 playsInSilentModeIOS: true,
             });
-            console.log('Starting recording..');
+            console.log('Recoding is starting');
             const { recording } = await Audio.Recording.createAsync(
                 Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
             );
