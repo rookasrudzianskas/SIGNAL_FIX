@@ -41,6 +41,14 @@ const Message = ({message}) => {
 
     return (
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer]}>
+            {message.image && (
+                <S3Image
+                    style={{width: 200, height: 200}}
+                    imgKey={message.image}
+                    theme={'dark'}
+                    level={'public'}
+                />
+            )}
             <Text style={{color: isMe ? 'black' : 'white'}}>
                 {message?.content}
             </Text>
