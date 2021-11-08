@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Image, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, View} from 'react-native';
 import styles from "./style";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
-import {Auth, DataStore} from "aws-amplify";
+import {Auth, DataStore, Storage} from "aws-amplify";
 import {ChatRoom, Message} from '../../src/models';
 import EmojiSelector, {Categories} from "react-native-emoji-selector";
 import * as ImagePicker from 'expo-image-picker';
@@ -94,9 +94,18 @@ const MessageInput = ({chatRoom}) => {
         }
     }
 
-    const sendImage = () => {
+    const sendImage = async () => {
         // upload the image to S3 and send the url to the server
-
+        if (!image) {
+            return;
+        }
+        const blob = getImageBlob();
+        await Storage.put('test.png', blob, {
+            contentType: 'image/png',
+            progressCallback(progress) {
+                // console.log(progress);
+            }
+        });
     }
 
     const getImageBlob = async () => {
