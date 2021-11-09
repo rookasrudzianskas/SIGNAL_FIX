@@ -37,6 +37,10 @@ const Message = (props) => {
         return () => subscription.unsubscribe();
     }, []);
 
+    useEffect(()  => {
+        setAsRead();
+    }, [isMe]);
+
     useEffect(() => {
         if (message.audio) {
             Storage.get(message.audio).then(setSoundURI);
@@ -53,6 +57,12 @@ const Message = (props) => {
         }
         checkIfMe();
     }, [user]);
+
+    const setAsRead = () => {
+        if(!isMe && message.status !== 'READ') {
+            DataStore.save(Message.copyOf, );
+        }
+    }
 
 
     if(!user) {
