@@ -81,7 +81,7 @@ const Message = ({message}) => {
                             {message?.content}
                         </Text>
                     )}
-                    {isMe && (
+                    {isMe && message.status !== "SENT" && (
                         <Ionicons name={message.status === 'DELIVERED' ? 'checkmark' : 'checkmark-done'} size={16} color="gray" style={{
                             marginHorizontal: 5,
                         }} />
