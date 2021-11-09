@@ -31,7 +31,7 @@ const App = () => {
        console.log(`User has a network connection: ${data.active}`)
      }
      if(event === 'outboxMutationProcessed'){
-       console.log('User is outboxMutationProcessed')
+       console.log('Mutation was synced with the cloud' + data);
      }
    })
 
