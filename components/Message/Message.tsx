@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet, ActivityIndicator, useWindowDimensions} from 'react-native';
 import tw from "tailwind-react-native-classnames";
-import {User} from "../../src/models";
+import {Message as MessageModel, User} from "../../src/models";
 import {Auth, DataStore, Storage} from "aws-amplify";
 // @ts-ignore
 import {S3Image} from "aws-amplify-react-native";
@@ -23,6 +23,17 @@ const Message = ({message}) => {
     useEffect(() => {
         // @ts-ignore
         DataStore.query(User, message.userID).then(setUser);
+    }, []);
+
+    useEffect(() => {
+        const subscription = DataStore.observe(MessageModel).subscribe(msg => {
+            // console.log(msg.model, msg.opType, msg.element);
+            if (msg.model === MessageModel && msg.opType === 'INSERT') {
+                setMessages(existingMessage => [msg.element,...existingMessage])
+            }
+        });
+
+        return () => subscription.unsubscribe();
     }, []);
 
     useEffect(() => {
