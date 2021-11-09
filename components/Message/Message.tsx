@@ -57,7 +57,7 @@ const Message = ({message}) => {
                 {message.image && (
                     <View style={{marginBottom: message.content ? 10 : 0}}>
                         <S3Image
-                            style={{ width: width * 0.7, aspectRatio: 4 / 3, borderRadius: 10 }}
+                            style={{ width: width * 0.6, aspectRatio: 4 / 3, borderRadius: 10 }}
                             resizeMode={'contain'}
                             imgKey={message.image}
                             theme={'dark'}
