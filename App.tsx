@@ -10,7 +10,7 @@ import config from './src/aws-exports';
 // @ts-ignore
 import { withAuthenticator } from 'aws-amplify-react-native';
 import {Picker} from '@react-native-picker/picker';
-import Message from "./components/Message";
+import { Message } from './src/models';
 
 
 Amplify.configure({
@@ -26,7 +26,7 @@ const App = () => {
 
  useEffect(() => {
    // Create listener
-   const listener = Hub.listen('datastore', async hubData => {
+   const listener = Hub.listen('datastore', async (hubData) => {
      const  { event, data } = hubData.payload;
      // console.log(event);
      // console.log(data);
@@ -38,8 +38,10 @@ const App = () => {
        console.log('Mutation was synced with the cloud' + data);
        if(data.model === Message) {
          // set the message status to delivered
+           console.log('This is working 🔥');
             // @ts-ignore
            await DataStore.save(Message.copyOf(data.element, (updated) => {
+               //@ts-ignore
                updated.status = "DELIVERED";
             })
            );
