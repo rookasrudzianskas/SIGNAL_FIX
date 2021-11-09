@@ -40,7 +40,7 @@ const App = () => {
          // set the message status to delivered
             // @ts-ignore
            await DataStore.save(Message.copyOf(data.element, (updated) => {
-               updated.status = "DELIVERED"
+               updated.status = "DELIVERED";
             })
            );
          }
