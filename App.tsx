@@ -28,14 +28,8 @@ const App = () => {
    // Create listener
    const listener = Hub.listen('datastore', async (hubData) => {
      const  { event, data } = hubData.payload;
-     // console.log(event);
-     // console.log(data);
-     // console.log('datastore')
-     if (event === 'networkStatus') {
-       console.log(`User has a network connection: ${data.active}`)
-     }
      if(event === 'outboxMutationProcessed'){
-       console.log('Mutation was synced with the cloud' + data);
+       // console.log('Mutation was synced with the cloud' + data);
        if(data.model === Message) {
          // set the message status to delivered
            console.log('This is working 🔥');
