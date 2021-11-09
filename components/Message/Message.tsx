@@ -59,8 +59,10 @@ const Message = (props) => {
     }, [user]);
 
     const setAsRead = () => {
+        //@ts-ignore
         if(!isMe && message.status !== 'READ') {
-            DataStore.save(Message.copyOf, );
+            // @ts-ignore
+            DataStore.save(MessageModel.copyOf(message, (updated) => updated.status = 'READ'));
         }
     }
 
