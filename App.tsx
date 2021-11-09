@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useCachedResources from './hooks/useCachedResources';
@@ -10,7 +10,7 @@ import config from './src/aws-exports';
 // @ts-ignore
 import { withAuthenticator } from 'aws-amplify-react-native';
 import {Picker} from '@react-native-picker/picker';
-import { Message } from './src/models';
+import {Message, User} from './src/models';
 
 
 Amplify.configure({
@@ -23,6 +23,9 @@ Amplify.configure({
 const App = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
+
+  const [user, setUser] = useState<User|null>(null);
+
 
  useEffect(() => {
    // Create listener
