@@ -30,7 +30,7 @@ const Message = (props) => {
         const subscription = DataStore.observe(MessageModel, message.id).subscribe(msg => {
             // console.log(msg.model, msg.opType, msg.element);
             if (msg.model === MessageModel && msg.opType === 'UPDATE') {
-                setMessage(msg.element);
+                setMessage(message => ({...message, ...msg.element}));
             }
         });
 
