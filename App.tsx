@@ -37,9 +37,12 @@ const App = () => {
      if(event === 'outboxMutationProcessed'){
        console.log('Mutation was synced with the cloud' + data);
        if(data.model === Message) {
-         console.log('Message was synced with the cloud' + data);
+         // set the message status to delivered
+            Message.update(data.id,  {
+              status: 'delivered'
+            })
+        }
        }
-     }
    })
 
 // Remove listener
