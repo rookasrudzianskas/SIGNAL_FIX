@@ -81,9 +81,11 @@ const Message = ({message}) => {
                             {message?.content}
                         </Text>
                     )}
-                    <Ionicons name="checkmark" size={16} color="gray" style={{
-                        marginHorizontal: 5,
-                    }} />
+                    {isMe && (
+                        <Ionicons name="checkmark" size={16} color="gray" style={{
+                            marginHorizontal: 5,
+                        }} />
+                    )}
                 </View>
             {/*</View>*/}
 
