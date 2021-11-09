@@ -63,6 +63,7 @@ const Message = (props) => {
         )
     }
 
+    // @ts-ignore
     return (
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
             {/*<View style={{alignItems: 'flex-end'}}>*/}
@@ -93,7 +94,9 @@ const Message = (props) => {
                             {message?.content}
                         </Text>
                     )}
+                    {/*@ts-ignore*/}
                     {isMe && message.status !== "SENT" && !!message.status && (
+                    // @ts-ignore
                         <Ionicons name={message.status === 'DELIVERED' ? 'checkmark' : 'checkmark-done'} size={16} color="gray" style={{
                             marginHorizontal: 5,
                         }} />
