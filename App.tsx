@@ -50,6 +50,14 @@ const App = () => {
    return () => listener();
  }, []);
 
+ useEffect(() => {
+     fetchUser();
+ }, []);
+
+    const fetchUser = () => {
+
+    }
+
 
   if (!isLoadingComplete) {
     return null;
