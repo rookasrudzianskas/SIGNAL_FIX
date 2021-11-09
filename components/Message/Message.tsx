@@ -13,10 +13,11 @@ const grey = 'lightgrey';
 const myID = 'u1';
 
 // @ts-ignore
-const Message = ({message}) => {
+const Message = (props) => {
     const [user, setUser] = useState<User|undefined>();
     const [isMe, setIsMe] = useState<boolean>(false);
     const [soundURI, setSoundURI] = useState<any>(null);
+    const [message, setMessage] = useState(props.message);
     const { width } = useWindowDimensions();
 
 
@@ -26,10 +27,10 @@ const Message = ({message}) => {
     }, []);
 
     useEffect(() => {
-        const subscription = DataStore.observe(MessageModel).subscribe(msg => {
+        const subscription = DataStore.observe(MessageModel, message.id).subscribe(msg => {
             // console.log(msg.model, msg.opType, msg.element);
-            if (msg.model === MessageModel && msg.opType === 'INSERT') {
-                setMessages(existingMessage => [msg.element,...existingMessage])
+            if (msg.model === MessageModel && msg.opType === 'UPDATE') {
+                setMessage(message => [msg.element,...existingMessage])
             }
         });
 
