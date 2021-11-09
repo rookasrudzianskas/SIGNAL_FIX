@@ -6,6 +6,7 @@ import {Auth, DataStore, Storage} from "aws-amplify";
 // @ts-ignore
 import {S3Image} from "aws-amplify-react-native";
 import AudioPlayer from "../AudioPlayer";
+import {Ionicons} from "@expo/vector-icons";
 
 const blue = '#3777f0';
 const grey = 'lightgrey';
@@ -77,6 +78,8 @@ const Message = ({message}) => {
                     {message?.content}
                 </Text>
             )}
+
+            <Ionicons name="checkmark" size={16} color="gray" />
         </View>
     );
 };
@@ -89,6 +92,7 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 10,
         borderRadius: 10,
+        flexDirection: 'row',
         // maxWidth: '75%',
     },
     leftContainer: {
