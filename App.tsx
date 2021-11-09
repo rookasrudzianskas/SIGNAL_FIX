@@ -32,8 +32,8 @@ const App = () => {
            && data.model === Message
            && !(["DELIVERED", "READ"].includes(data.element.status))) {
            // console.log('Mutation was synced with the cloud' + data);
-         // set the message status to delivered
-         //   console.log('This is working 🔥');
+           // set the message status to delivered
+           //   console.log('This is working 🔥');
             // @ts-ignore
            await DataStore.save(Message.copyOf(data.element, (updated) => {
                //@ts-ignore
