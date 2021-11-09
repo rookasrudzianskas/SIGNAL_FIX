@@ -15,7 +15,7 @@ const myID = 'u1';
 // @ts-ignore
 const Message = (props) => {
     const [user, setUser] = useState<User|undefined>();
-    const [isMe, setIsMe] = useState<boolean>(null);
+    const [isMe, setIsMe] = useState<boolean | null>(null);
     const [soundURI, setSoundURI] = useState<any>(null);
     const [message, setMessage] = useState<MessageModel>(props.message);
     const { width } = useWindowDimensions();
@@ -60,7 +60,7 @@ const Message = (props) => {
 
     const setAsRead = () => {
         //@ts-ignore
-        if(!isMe && message.status !== 'READ') {
+        if(isMe === false && message.status !== 'READ') {
             // @ts-ignore
             DataStore.save(MessageModel.copyOf(message, (updated) => updated.status = 'READ'));
         }
