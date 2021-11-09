@@ -53,33 +53,35 @@ const Message = ({message}) => {
 
     return (
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
-            {message.image && (
-                <View style={{marginBottom: message.content ? 10 : 0}}>
-                    <S3Image
-                        style={{ width: width * 0.7, aspectRatio: 4 / 3, borderRadius: 10 }}
-                        resizeMode={'contain'}
-                        imgKey={message.image}
-                        theme={'dark'}
-                        level={'public'}
-                    />
-                </View>
-            )}
+            <View style={{}}>
+                {message.image && (
+                    <View style={{marginBottom: message.content ? 10 : 0}}>
+                        <S3Image
+                            style={{ width: width * 0.7, aspectRatio: 4 / 3, borderRadius: 10 }}
+                            resizeMode={'contain'}
+                            imgKey={message.image}
+                            theme={'dark'}
+                            level={'public'}
+                        />
+                    </View>
+                )}
 
-            {soundURI && <AudioPlayer soundURI={soundURI} />}
+                {soundURI && <AudioPlayer soundURI={soundURI} />}
 
-            {/*{soundURI && (*/}
-            {/*    <View>*/}
-            {/*        <Text>Rokas</Text>*/}
-            {/*    </View>*/}
-            {/*)}*/}
-            {/*<AudioPlayer  soundURI={soundURI}/>*/}
-            {!!message.content && (
-                <Text style={{color: isMe ? 'black' : 'white'}}>
-                    {message?.content}
-                </Text>
-            )}
-
+                {/*{soundURI && (*/}
+                {/*    <View>*/}
+                {/*        <Text>Rokas</Text>*/}
+                {/*    </View>*/}
+                {/*)}*/}
+                {/*<AudioPlayer  soundURI={soundURI}/>*/}
+                {!!message.content && (
+                    <Text style={{color: isMe ? 'black' : 'white'}}>
+                        {message?.content}
+                    </Text>
+                )}
             <Ionicons name="checkmark" size={16} color="gray" />
+            </View>
+
         </View>
     );
 };
@@ -92,7 +94,10 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 10,
         borderRadius: 10,
-        flexDirection: 'row',
+        // flexDirection: 'row',
+
+        alignItems: "flex-end",
+
         // maxWidth: '75%',
     },
     leftContainer: {
