@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
-import Amplify, {Hub} from 'aws-amplify';
+import Amplify, {DataStore, Hub} from 'aws-amplify';
 import config from './src/aws-exports';
 // @ts-ignore
 import { withAuthenticator } from 'aws-amplify-react-native';
@@ -38,12 +38,14 @@ const App = () => {
        console.log('Mutation was synced with the cloud' + data);
        if(data.model === Message) {
          // set the message status to delivered
-            Message.update(data.id,  {
-              status: 'delivered'
+            // @ts-ignore
+           await DataStore.save(Message.copyOf(data.element, (updated) => {
+               updated.status = "DELIVERED"
             })
-        }
+           );
+         }
        }
-   })
+   });
 
 // Remove listener
    return () => listener();
