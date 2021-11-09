@@ -10,6 +10,7 @@ import config from './src/aws-exports';
 // @ts-ignore
 import { withAuthenticator } from 'aws-amplify-react-native';
 import {Picker} from '@react-native-picker/picker';
+import Message from "./components/Message";
 
 
 Amplify.configure({
@@ -35,6 +36,9 @@ const App = () => {
      }
      if(event === 'outboxMutationProcessed'){
        console.log('Mutation was synced with the cloud' + data);
+       if(data.model === Message) {
+         console.log('Message was synced with the cloud' + data);
+       }
      }
    })
 
