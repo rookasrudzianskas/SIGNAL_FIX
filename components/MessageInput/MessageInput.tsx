@@ -84,6 +84,8 @@ const MessageInput = ({chatRoom}) => {
             content: message,
             userID: user.attributes.sub,
             chatroomID: chatRoom?.id,
+        // @ts-ignore
+            status: 'SENT',
         }));
 
         // @ts-ignore
