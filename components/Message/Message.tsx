@@ -15,7 +15,7 @@ const myID = 'u1';
 // @ts-ignore
 const Message = (props) => {
     const [user, setUser] = useState<User|undefined>();
-    const [isMe, setIsMe] = useState<boolean>(false);
+    const [isMe, setIsMe] = useState<boolean>(null);
     const [soundURI, setSoundURI] = useState<any>(null);
     const [message, setMessage] = useState<MessageModel>(props.message);
     const { width } = useWindowDimensions();
