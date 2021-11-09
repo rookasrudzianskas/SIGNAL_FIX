@@ -39,7 +39,7 @@ const Message = (props) => {
 
     useEffect(()  => {
         setAsRead();
-    }, [isMe]);
+    }, [isMe, message]);
 
     useEffect(() => {
         if (message.audio) {
