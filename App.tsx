@@ -28,9 +28,8 @@ const App = () => {
    // Create listener
    const listener = Hub.listen('datastore', async (hubData) => {
      const  { event, data } = hubData.payload;
-     if(event === 'outboxMutationProcessed'){
+     if(event === 'outboxMutationProcessed' && data.model === Message && ["DELIVERED", "STATUS"].includes(data.element.status)){
        // console.log('Mutation was synced with the cloud' + data);
-       if(data.model === Message) {
          // set the message status to delivered
            console.log('This is working 🔥');
             // @ts-ignore
@@ -39,7 +38,6 @@ const App = () => {
                updated.status = "DELIVERED";
             })
            );
-         }
        }
    });
 
