@@ -53,7 +53,7 @@ const Message = ({message}) => {
 
     return (
         <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
-            <View style={{alignItems: 'flex-end'}}>
+            {/*<View style={{alignItems: 'flex-end'}}>*/}
                 {message.image && (
                     <View style={{marginBottom: message.content ? 10 : 0}}>
                         <S3Image
@@ -66,8 +66,9 @@ const Message = ({message}) => {
                     </View>
                 )}
 
+            <View style={{width: '100%'}}>
                 {soundURI && <AudioPlayer soundURI={soundURI} />}
-
+            </View>
                 {/*{soundURI && (*/}
                 {/*    <View>*/}
                 {/*        <Text>Rokas</Text>*/}
@@ -80,9 +81,11 @@ const Message = ({message}) => {
                             {message?.content}
                         </Text>
                     )}
-                    <Ionicons name="checkmark" size={16} color="gray" />
+                    <Ionicons name="checkmark" size={16} color="gray" style={{
+                        marginHorizontal: 5,
+                    }} />
                 </View>
-            </View>
+            {/*</View>*/}
 
         </View>
     );
