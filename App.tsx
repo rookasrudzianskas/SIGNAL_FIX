@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
-import Amplify, {DataStore, Hub} from 'aws-amplify';
+import Amplify, {Auth, DataStore, Hub} from 'aws-amplify';
 import config from './src/aws-exports';
 // @ts-ignore
 import { withAuthenticator } from 'aws-amplify-react-native';
@@ -55,8 +55,11 @@ const App = () => {
  }, []);
 
   const fetchUser = async () => {
-    const user = await DataStore.query(User);
-    setUser(user[0]);
+    const userData = await Auth.currentAuthenticatedUser();
+    const user = await DataStore.query(User, userData.attributes.sub);
+    if(user) {
+        setUser(user);
+    }
   };
 
 
