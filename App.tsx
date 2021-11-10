@@ -54,9 +54,13 @@ const App = () => {
      fetchUser();
  }, []);
 
-    const fetchUser = () => {
+  const fetchUser = async () => {
+    const user = await DataStore.query(User);
+    setUser(user[0]);
+  };
 
-    }
+
+
 
 
   if (!isLoadingComplete) {
