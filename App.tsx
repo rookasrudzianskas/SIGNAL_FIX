@@ -85,8 +85,8 @@ const App = () => {
     };
 
     const updateLastOnline = async () => {
-        const userData = await Auth.currentAuthenticatedUser();
-        const user = await DataStore.query(User, userData.attributes.sub);
+        // const userData = await Auth.currentAuthenticatedUser();
+        // const user = await DataStore.query(User, userData.attributes.sub);
 
         if (!user) {
             return;
