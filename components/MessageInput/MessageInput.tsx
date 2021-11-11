@@ -11,6 +11,7 @@ import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import {Audio, AVPlaybackStatus} from "expo-av";
 import AudioPlayer from '../AudioPlayer';
+import MessageComponent from '../Message';
 
 
 // @ts-ignore
@@ -232,7 +233,7 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
 
             {messageReplyTo && (
                 <View>
-                    <Message message={messageReplyTo} />
+                    <MessageComponent message={messageReplyTo} />
                 </View>
             )}
 
