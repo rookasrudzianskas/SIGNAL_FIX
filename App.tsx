@@ -11,6 +11,7 @@ import config from './src/aws-exports';
 import { withAuthenticator } from 'aws-amplify-react-native';
 import {Picker} from '@react-native-picker/picker';
 import {Message, User} from './src/models';
+import moment from "moment";
 
 
 Amplify.configure({
@@ -69,7 +70,7 @@ const App = () => {
       }
 
       await DataStore.save(User.copyOf(user, (updated) => {
-          updated.lastOnline = new Date();
+          updated.lastOnlineAt = moment().seconds();
       }));
   }
 
