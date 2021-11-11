@@ -90,3 +90,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 });
+
+
+// fixed bug, was some big caching issue
