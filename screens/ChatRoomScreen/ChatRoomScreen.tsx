@@ -10,6 +10,7 @@ import {DataStore, SortDirection} from "aws-amplify";
 const ChatRoomScreen = () => {
     const [messages, setMessages] = useState<MessageModel[]>([]);
     const [chatRoom, setChatRoom] = useState<ChatRoom|null>(null);
+    const [messageReplyTo, setMessageReplyTo] = useState<MessageModel|null>(null);
     const route = useRoute();
     const navigation = useNavigation();
 
@@ -74,7 +75,7 @@ const ChatRoomScreen = () => {
     return (
         <>
             <SafeAreaView style={styles.container}>
-                <FlatList inverted data={messages} showsVerticalScrollIndicator={false} renderItem={({item}) => (
+                <FlatList inverted data={messages} showsVerticalScrollIndicator={false} onLongPress={} renderItem={({item}) => (
                     <Message message={item} />
                 )} />
                 <MessageInput chatRoom={chatRoom} />
