@@ -39,7 +39,7 @@ const ChatRoomHeader = ({id, children}) => {
         }
         // if last online is less than 5 minutes, show him as online, otherwise offline
         // if(moment(user.lastOnlineAt).diff(moment())) {
-            console.log(moment(user.lastOnlineAt).diff(moment()));
+            console.log(moment().diff(moment(user.lastOnlineAt)));
 
         // }
     }
