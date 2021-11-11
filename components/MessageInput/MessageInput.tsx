@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {Audio, AVPlaybackStatus} from "expo-av";
 import AudioPlayer from '../AudioPlayer';
 import MessageComponent from '../Message';
+import tw from 'tailwind-react-native-classnames';
 
 
 // @ts-ignore
@@ -232,8 +233,11 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
 
             {messageReplyTo && (
-                <View>
-                    <MessageComponent message={messageReplyTo} />
+                <View style={tw`rounded-md p-2`}>
+                    <View style={tw`bg-gray-100 rounded-md`}>
+                        <Text style={tw`p-2`}>Reply to:</Text>
+                        <MessageComponent message={messageReplyTo} />
+                    </View>
                 </View>
             )}
 
