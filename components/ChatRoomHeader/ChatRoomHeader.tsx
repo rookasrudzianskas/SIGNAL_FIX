@@ -40,7 +40,10 @@ const ChatRoomHeader = ({id, children}) => {
                     <Image source={{uri: user?.imageUri}} style={{width: 30, height: 30, borderRadius: 30, marginRight: -200}} />
                 </View>
                 <View style={tw`flex-1 ml-10`}>
-                    <Text style={{ fontSize: 20, fontWeight: '600',}}>{user?.name}</Text>
+                    <View style={tw`flex-col justify-center`}>
+                        <Text style={{ fontSize: 20, fontWeight: '600', marginTop: -6}}>{user?.name}</Text>
+                        <Text style={{ fontSize: 12, fontWeight: '400', }}>{user?.name}</Text>
+                    </View>
                 </View>
                 <View style={tw``}>
                     <View style={tw`mr-6 flex-row mr-16`}>
