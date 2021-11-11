@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, ActivityIndicator, useWindowDimensions} from 'react-native';
+import {Text, View, StyleSheet, ActivityIndicator, useWindowDimensions, Pressable} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {Message as MessageModel, User} from "../../src/models";
 import {Auth, DataStore, Storage} from "aws-amplify";
@@ -80,7 +80,7 @@ const Message = (props) => {
 
     // @ts-ignore
     return (
-        <View style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
+        <Pressable onLongPress={setAsMessageReply} style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
             {/*<View style={{alignItems: 'flex-end'}}>*/}
                 {message.image && (
                     <View style={{marginBottom: message.content ? 10 : 0}}>
@@ -119,7 +119,7 @@ const Message = (props) => {
                 </View>
             {/*</View>*/}
 
-        </View>
+        </Pressable>
     );
 };
 
