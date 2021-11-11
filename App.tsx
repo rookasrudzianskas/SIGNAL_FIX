@@ -56,8 +56,8 @@ const App = () => {
  }, []);
 
  useEffect(() => {
-
- }, []);
+    updateLastOnline();
+ }, [user]);
 
   const fetchUser = async () => {
     const userData = await Auth.currentAuthenticatedUser();
