@@ -43,8 +43,8 @@ const ChatRoomHeader = ({id, children}) => {
                     <View style={tw`flex-col justify-center`}>
                         <Text style={{ fontSize: 20, fontWeight: '600', marginTop: -6}}>{user?.name}</Text>
                         <View style={tw`flex flex-row items-center `}>
-                            <Text style={{ fontSize: 12, fontWeight: '400', }}>Online</Text>
-                            <Entypo name="dot-single" size={24} color="green" />
+                            <Text style={{ fontSize: 12, fontWeight: '400', }}>{user?.lastOnlineAt || "Offline"}</Text>
+                            <Entypo name="dot-single" size={24} color={!user?.lastOnlineAt ? 'red' : 'green'} />
                         </View>
                     </View>
                 </View>
