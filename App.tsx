@@ -51,32 +51,51 @@ const App = () => {
    return () => listener();
  }, []);
 
+    useEffect(() => {
+        if (!user) {
+            return;
+        }
+
+        const subscription = DataStore.observe(User, user.id).subscribe((msg) => {
+            if (msg.model === User && msg.opType === "UPDATE") {
+                setUser(msg.element);
+            }
+        });
+
+        return () => subscription.unsubscribe();
+    }, [user?.id]);
+
  useEffect(() => {
      fetchUser();
  }, []);
 
- useEffect(() => {
-    updateLastOnline();
- }, [user]);
+    useEffect(() => {
+        const interval = setInterval(async () => {
+            await updateLastOnline();
+        }, 1 * 60 * 1000);
+        return () => clearInterval(interval);
+    }, [user]);
 
-  const fetchUser = async () => {
-    const userData = await Auth.currentAuthenticatedUser();
-    const user = await DataStore.query(User, userData.attributes.sub);
+    const fetchUser = async () => {
+        const userData = await Auth.currentAuthenticatedUser();
+        const user = await DataStore.query(User, userData.attributes.sub);
+        if (user) {
+            setUser(user);
+        }
+    };
 
-    if(user) {
-        setUser(user);
-    }
-  };
+    const updateLastOnline = async () => {
+        if (!user) {
+            return;
+        }
 
-  const updateLastOnline = async () => {
-      if(!user) {
-          return;
-      }
-
-      await DataStore.save(User.copyOf(user, (updated) => {
-          updated.lastOnlineAt = +(new Date());
-      }));
-  }
+        const response = await DataStore.save(
+            User.copyOf(user, (updated) => {
+                updated.lastOnlineAt = +new Date();
+            })
+        );
+        setUser(response);
+    };
 
   if (!isLoadingComplete) {
     return null;
