@@ -1,6 +1,6 @@
 import {Image, Text, useWindowDimensions, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
-import {Feather} from "@expo/vector-icons";
+import {Entypo, Feather} from "@expo/vector-icons";
 import * as React from "react";
 import {useRoute} from "@react-navigation/native";
 import {useEffect, useState} from "react";
@@ -42,7 +42,10 @@ const ChatRoomHeader = ({id, children}) => {
                 <View style={tw`flex-1 ml-10`}>
                     <View style={tw`flex-col justify-center`}>
                         <Text style={{ fontSize: 20, fontWeight: '600', marginTop: -6}}>{user?.name}</Text>
-                        <Text style={{ fontSize: 12, fontWeight: '400', }}>{user?.name}</Text>
+                        <View style={tw`flex flex-row items-center `}>
+                            <Text style={{ fontSize: 12, fontWeight: '400', }}>Online</Text>
+                            <Entypo name="dot-single" size={24} color="green" />
+                        </View>
                     </View>
                 </View>
                 <View style={tw``}>
