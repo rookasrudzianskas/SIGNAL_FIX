@@ -62,10 +62,6 @@ const App = () => {
     }
   };
 
-
-
-
-
   if (!isLoadingComplete) {
     return null;
   } else {
