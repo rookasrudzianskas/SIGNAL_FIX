@@ -14,7 +14,7 @@ import AudioPlayer from '../AudioPlayer';
 
 
 // @ts-ignore
-const MessageInput = ({chatRoom}) => {
+const MessageInput = ({chatRoom, messageReplyTo}) => {
     const [message, setMessage] = useState('');
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     const [progress, setProgress] = useState(0);
