@@ -229,6 +229,14 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
     // @ts-ignore
     return (
         <KeyboardAvoidingView keyboardVerticalOffset={100} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={[styles.root, {height: isEmojiPickerOpen ? '50%' : 'auto'}]}>
+
+            {messageReplyTo && (
+                <View>
+                    <Message message={messageReplyTo} />
+                </View>
+            )}
+
+
             {image && (
                 <View style={{flexDirection: 'row', margin: 10, alignSelf: 'stretch', justifyContent: 'space-between', borderWidth: 1, borderColor: "lightgray", borderRadius: 10, overflow: 'hidden'}}>
     {/*// @ts-ignore*/}
