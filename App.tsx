@@ -63,6 +63,16 @@ const App = () => {
     }
   };
 
+  const updateLastOnline = async () => {
+      if(!user) {
+          return;
+      }
+
+      await DataStore.save(User.copyOf(user, (updated) => {
+          updated.lastOnline = new Date();
+      }));
+  }
+
   if (!isLoadingComplete) {
     return null;
   } else {
