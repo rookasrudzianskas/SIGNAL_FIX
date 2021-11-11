@@ -3,7 +3,7 @@ import {Image, KeyboardAvoidingView, Platform, Pressable, TextInput, TouchableOp
 import styles from "./style";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore, Storage} from "aws-amplify";
-import {ChatRoom, Message as MessageModel} from '../../src/models';
+import {ChatRoom, Message} from '../../src/models';
 import EmojiSelector, {Categories} from "react-native-emoji-selector";
 import * as ImagePicker from 'expo-image-picker';
 import 'react-native-get-random-values';
@@ -11,7 +11,6 @@ import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import {Audio, AVPlaybackStatus} from "expo-av";
 import AudioPlayer from '../AudioPlayer';
-import Message from '../Message';
 
 
 // @ts-ignore
@@ -81,7 +80,7 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
     const sendMessage = async () => {
         // send message
         const user = await Auth.currentAuthenticatedUser();
-        const newMessage = await DataStore.save(new MessageModel({
+        const newMessage = await DataStore.save(new Message({
             content: message,
             userID: user.attributes.sub,
             chatroomID: chatRoom?.id,
@@ -136,7 +135,7 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
 
         // send message
         const user = await Auth.currentAuthenticatedUser();
-        const newMessage = await DataStore.save(new MessageModel({
+        const newMessage = await DataStore.save(new Message({
             content: message,
             image: key,
             userID: user.attributes.sub,
@@ -214,7 +213,7 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
         // send message
         const user = await Auth.currentAuthenticatedUser();
         const newMessage = await DataStore.save(
-            new MessageModel({
+            new Message({
                 content: message,
                 audio: key,
                 userID: user.attributes.sub,

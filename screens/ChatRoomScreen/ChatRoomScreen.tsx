@@ -60,7 +60,7 @@ const ChatRoomScreen = () => {
         const fetchedMessages = await DataStore.query(MessageModel,
             message => message.chatroomID("eq", chatRoom?.id),
             {
-                sort: message => message.createdAt(SortDirection.DESCENDING)
+                sort: (message) => message.createdAt(SortDirection.DESCENDING),
             }
         );
 
@@ -73,22 +73,20 @@ const ChatRoomScreen = () => {
     }
 
     return (
-        <>
-            <SafeAreaView style={styles.container}>
-                <FlatList data={messages} showsVerticalScrollIndicator={false}  renderItem={({item}) => <Message message={item} setAsMessageReply={() => setMessageReplyTo(item)} inverted />} />
-                <MessageInput chatRoom={chatRoom} messageReplyTo={messageReplyTo} />
-            </SafeAreaView>
-        </>
+        <SafeAreaView style={styles.container}>
+            <FlatList  showsVerticalScrollIndicator={false}  inverted data={messages} renderItem={({item}) => (
+                <Message message={item} setAsMessageReply={() => setMessageReplyTo(item)} />
+            )} />
+            <MessageInput chatRoom={chatRoom}  messageReplyTo={messageReplyTo} />
+        </SafeAreaView>
     );
-};
-
+}
 
 export default ChatRoomScreen;
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: "white",
         flex: 1,
-        backgroundColor: 'white',
-    }
-
+    },
 });
