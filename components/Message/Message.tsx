@@ -14,6 +14,7 @@ const myID = 'u1';
 
 // @ts-ignore
 const Message = (props) => {
+    const {setAsMessageReply } = props;
     const [user, setUser] = useState<User|undefined>();
     const [isMe, setIsMe] = useState<boolean | null>(null);
     const [soundURI, setSoundURI] = useState<any>(null);
