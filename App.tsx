@@ -57,6 +57,7 @@ const App = () => {
   const fetchUser = async () => {
     const userData = await Auth.currentAuthenticatedUser();
     const user = await DataStore.query(User, userData.attributes.sub);
+
     if(user) {
         setUser(user);
     }
