@@ -33,14 +33,15 @@ const ChatRoomHeader = ({id, children}) => {
         fetchUsers();
     }, []);
 
-    const getLastOnlineText = () => {\
+    const getLastOnlineText = () => {
         if(!user?.lastOnlineAt) {
             return null;
         }
         // if last online is less than 5 minutes, show him as online, otherwise offline
-        if(moment(user.lastOnlineAt)) {
+        // if(moment(user.lastOnlineAt).diff(moment())) {
+            console.log(moment(user.lastOnlineAt).diff(moment()));
 
-        }
+        // }
     }
 
     return (
@@ -54,7 +55,7 @@ const ChatRoomHeader = ({id, children}) => {
                     <View style={tw`flex-col justify-center`}>
                         <Text style={{ fontSize: 20, fontWeight: '600', marginTop: -6}}>{user?.name}</Text>
                         <View style={tw`flex flex-row items-center `}>
-                            <Text style={{ fontSize: 12, fontWeight: '400', }}>{user?.lastOnlineAt || "Offline"}</Text>
+                            <Text style={{ fontSize: 12, fontWeight: '400', }}>{getLastOnlineText()}</Text>
                             <Entypo name="dot-single" size={24} color={!user?.lastOnlineAt ? 'red' : 'green'} />
                         </View>
                     </View>
