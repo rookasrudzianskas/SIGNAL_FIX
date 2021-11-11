@@ -74,7 +74,7 @@ const App = () => {
       }
 
       await DataStore.save(User.copyOf(user, (updated) => {
-          updated.lastOnlineAt = moment().seconds();
+          updated.lastOnlineAt = +(new Date());
       }));
   }
 
