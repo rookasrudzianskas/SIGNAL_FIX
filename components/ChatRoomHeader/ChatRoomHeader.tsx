@@ -32,6 +32,13 @@ const ChatRoomHeader = ({id, children}) => {
         fetchUsers();
     }, []);
 
+    const getLastOnlineText = () => {
+        // if last online is less than 5 minutes, show him as online, otherwise offline
+        if(user?.lastOnlineAt) {
+
+        }
+    }
+
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>
             {/*<Text>Rokas</Text>*/}
