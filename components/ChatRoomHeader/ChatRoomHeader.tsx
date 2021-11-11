@@ -6,6 +6,7 @@ import {useRoute} from "@react-navigation/native";
 import {useEffect, useState} from "react";
 import {Auth, DataStore} from "aws-amplify";
 import {ChatRoomUser, User} from "../../src/models";
+import moment from "moment";
 
 // @ts-ignore
 const ChatRoomHeader = ({id, children}) => {
@@ -32,9 +33,12 @@ const ChatRoomHeader = ({id, children}) => {
         fetchUsers();
     }, []);
 
-    const getLastOnlineText = () => {
+    const getLastOnlineText = () => {\
+        if(!user?.lastOnlineAt) {
+            return null;
+        }
         // if last online is less than 5 minutes, show him as online, otherwise offline
-        if(user?.lastOnlineAt) {
+        if(moment(user.lastOnlineAt)) {
 
         }
     }
