@@ -28,7 +28,6 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
 
 
 
-
     // console.warn(message);
 
     const [image, setImage] = useState<string|null>(null);
