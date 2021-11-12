@@ -26,7 +26,6 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
     const [sound, setSound] = useState<Audio.Sound | null>(null);
     const [soundURI, setSoundURI] = useState<string | null>(null);
 
-
     // console.warn(message);
 
     const [image, setImage] = useState<string|null>(null);
