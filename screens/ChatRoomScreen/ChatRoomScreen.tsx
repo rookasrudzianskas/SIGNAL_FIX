@@ -72,6 +72,8 @@ const ChatRoomScreen = () => {
         return <ActivityIndicator size={'large' } color={'green'} />
     }
 
+    console.log(messageReplyTo.content);
+
     return (
         <SafeAreaView style={styles.container}>
             <FlatList  showsVerticalScrollIndicator={false}  inverted data={messages} renderItem={({item}) => (
