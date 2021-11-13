@@ -18,6 +18,7 @@ import tw from 'tailwind-react-native-classnames';
 
 
 
+
 // @ts-ignore
 const MessageInput = ({chatRoom, messageReplyTo}) => {
     console.log("Message input")
