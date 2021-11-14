@@ -28,7 +28,7 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
 
 
     const [image, setImage] = useState<string|null>(null);
-
+    // reset all the fields at one function 🔥
     const resetFields = () => {
         setMessage('');
         setIsEmojiPickerOpen(false);
