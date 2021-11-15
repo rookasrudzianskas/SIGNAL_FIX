@@ -14,6 +14,7 @@ const ChatRoomHeader = ({id, children}) => {
     const {width, height} = useWindowDimensions();
     const [user, setUser] = useState<User|null>(null); // the display user
     const [chatRoom, setChatRoom] = useState<ChatRoom|undefined>(undefined);
+    const [allUsers, setAllUsers] = useState<User[]>([]);
 
 
     const fetchUsers = async () => {
