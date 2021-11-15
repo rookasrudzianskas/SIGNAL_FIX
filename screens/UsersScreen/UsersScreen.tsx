@@ -55,7 +55,10 @@ const UsersScreen = ()  => {
         // otherwise, create a new chatroom with these users.
 
         // Create a chat room
-        const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
+        const newChatRoomData = {
+            newMessages: 0
+        };
+        const newChatRoom = await DataStore.save(new ChatRoom(newChatRoomData));
 
         // connect authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
