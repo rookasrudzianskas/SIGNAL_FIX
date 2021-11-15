@@ -15,7 +15,7 @@ import MessageComponent from '../Message';
 import tw from 'tailwind-react-native-classnames';
 
 // @ts-ignore
-const MessageInput = ({chatRoom, messageReplyTo}) => {
+const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
     const [message, setMessage] = useState('');
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     const [progress, setProgress] = useState(0);
@@ -141,8 +141,7 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
             userID: user.attributes.sub,
             chatroomID: chatRoom?.id,
             status: 'SENT',
-
-
+            replyToMessageID: messageReplyTo?.id,
         }));
 
         // // @ts-ignore
@@ -237,7 +236,12 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
             {messageReplyTo && (
                 <View style={tw`rounded-md p-2`}>
                     <View style={tw`bg-gray-100 rounded-md`}>
-                        <Text style={tw`p-2`}>Reply to:</Text>
+                        <View style={tw`flex flex-row items-center`}>
+                            <Text style={tw`p-2 flex-1`}>Reply to:</Text>
+                            <TouchableOpacity activeOpacity={0.5} onPress={() => removeMessageReplyTo()}>
+                                <AntDesign style={tw`mr-2`} name="close" size={20} color="black" />
+                            </TouchableOpacity>
+                        </View>
                         <MessageComponent message={messageReplyTo} />
                     </View>
                 </View>
