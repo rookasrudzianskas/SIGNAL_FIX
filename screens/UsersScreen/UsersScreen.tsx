@@ -35,7 +35,7 @@ const UsersScreen = ()  => {
 
     const navigation = useNavigation();
 
-    const createChatRoom = async () => {
+    const createChatRoom = async (users) => {
 
         // TODO if there is already a chat room between these 2 users
         // then redirect to the existing chat room
@@ -47,13 +47,16 @@ const UsersScreen = ()  => {
         // connect authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
+        if(dbUser){
+            await DataStore.save(new ChatRoomUser({
+                // @ts-ignore
+                user: dbUser,
+                chatroom: newChatRoom
+            }));
+        }
 
-        await DataStore.save(new ChatRoomUser({
-            // @ts-ignore
-            user: dbUser,
-            chatroom: newChatRoom
-        }));
 
+        // connect the users with the chat room
         await DataStore.save(new ChatRoomUser({
             user: user,
             chatroom: newChatRoom,
