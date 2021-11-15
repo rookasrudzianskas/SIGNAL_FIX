@@ -22,7 +22,7 @@ const ChatRoomHeader = ({id, children}) => {
             .filter(chatRoomUser => chatRoomUser.chatroom.id === id)
             .map(chatRoomUser => chatRoomUser.user);
 
-        // setUsers(fetchedUsers);
+        setAllUsers(fetchedUsers);
 
         const authUser = await Auth.currentAuthenticatedUser();
         setUser(fetchedUsers.find(user => user.id !== authUser.attributes.sub) || null);
@@ -40,6 +40,10 @@ const ChatRoomHeader = ({id, children}) => {
         fetchUsers();
         fetchChatRoom();
     }, []);
+
+    const isGroup = () => {
+        return allUsers.length > 2;
+    }
 
     const getLastOnlineText = () => {
         if(!user?.lastOnlineAt) {
