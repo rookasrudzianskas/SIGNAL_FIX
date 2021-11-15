@@ -1,0 +1,12 @@
+{
+  "resourceName": "SignalMedia",
+  "bucketName": "signalmediafiles",
+  "policyUUID": "0eece3af",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE"
+}
