@@ -18,6 +18,7 @@ const UsersScreen = ()  => {
 
     const [users, setUsers] = useState<User[]>([]);
     const [isNewGroup, setIsNewGroup] = useState(false);
+    const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
 
     // useEffect(() => {
     //     DataStore.query(User).then(setUsers);
@@ -74,8 +75,16 @@ const UsersScreen = ()  => {
 
     }
 
+    const isUserSelected = (user: any) => {
+        return selectedUsers.some((selectedUser) => selectedUser.id === user.id);
+    }
+
     const onUserPress = async (user: any) => {
-        await createChatRoom([user]);
+        if(isNewGroup) {
+
+        } else {
+            await createChatRoom([user]);
+        }
     }
 
   return (
