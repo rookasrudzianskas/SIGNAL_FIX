@@ -66,7 +66,7 @@ const UsersScreen = ()  => {
 
         if(users?.length > 1) {
             newChatRoomData.name = 'New Group';
-
+            newChatRoomData.imageUri = "https://www.teahub.io/photos/full/42-424438_friends-group-photo-hd.jpg";
         }
 
         const newChatRoom = await DataStore.save(new ChatRoom(newChatRoomData));
