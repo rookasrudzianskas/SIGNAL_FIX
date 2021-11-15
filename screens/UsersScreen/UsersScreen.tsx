@@ -9,6 +9,7 @@ import UserItem from "../../components/UserItem";
 import {DataStore} from 'aws-amplify';
 import {useEffect, useState} from "react";
 import {User} from "../../src/models";
+import NewGroupButton from "../../components/NewGroupButton";
 
 
 
@@ -33,9 +34,12 @@ const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
   return (
         <View style={styles.page}>
 
-            <FlatList showsVerticalScrollIndicator={false} data={users} renderItem={({item}) => (
+            <FlatList showsVerticalScrollIndicator={false}
+                      ListHeaderComponent={NewGroupButton}
+                      data={users} renderItem={({item}) => (
                 <UserItem key={item.id} user={item} />
-            )}  />
+            )}
+            />
 
         </View>
   );
