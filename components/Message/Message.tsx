@@ -17,6 +17,7 @@ const Message = (props) => {
     const {setAsMessageReply, message: propMessage } = props;
 
     const [user, setUser] = useState<User|undefined>();
+    const [repliedTo, setRepliedTo] = useState<MessageModel|null>(null);
     const [isMe, setIsMe] = useState<boolean | null>(null);
     const [soundURI, setSoundURI] = useState<any>(null);
     const [message, setMessage] = useState<MessageModel>(props.message);
