@@ -57,6 +57,12 @@ const UsersScreen = ()  => {
 
 
         // connect the users with the chat room
+        users.map(users => DataStore.save(
+            new ChatRoomUser({
+                user,
+                chatroom: newChatRoom,
+            })
+        ))
         await DataStore.save(new ChatRoomUser({
             user: user,
             chatroom: newChatRoom,
