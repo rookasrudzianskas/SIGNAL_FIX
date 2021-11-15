@@ -10,7 +10,7 @@ import {Auth, DataStore} from "aws-amplify";
 import {Feather} from "@expo/vector-icons";
 
 // @ts-ignore
-const UserItem = ({user, onPress}) => {
+const UserItem = ({user, onPress, isSelected}) => { // null, false, true
 
     const navigation = useNavigation();
 
@@ -27,7 +27,7 @@ const UserItem = ({user, onPress}) => {
                         </View>
                     </View>
                 </View>
-                    <Feather name="circle" size={24} color="black" />
+                    <Feather name="circle" size={20} color="black" />
             </View>
         </TouchableOpacity>
     );
