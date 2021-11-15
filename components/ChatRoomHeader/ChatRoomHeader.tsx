@@ -41,10 +41,6 @@ const ChatRoomHeader = ({id, children}) => {
         fetchChatRoom();
     }, []);
 
-    const isGroup = () => {
-        return allUsers.length > 2;
-    }
-
     const getLastOnlineText = () => {
         if(!user?.lastOnlineAt) {
             return null;
@@ -66,6 +62,9 @@ const ChatRoomHeader = ({id, children}) => {
         allUsers.map(user => user.name).join(', ');
     }
 
+    const isGroup = allUsers.length > 2;
+
+
     // console.log('This is image uri', chatRoom?.imageUri);
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>
@@ -78,7 +77,8 @@ const ChatRoomHeader = ({id, children}) => {
                     <View style={tw`flex-col justify-center`}>
                         <Text style={{ fontSize: 19, fontWeight: '600', marginTop: -6}}>{chatRoom?.name ? chatRoom.name : user?.name}</Text>
                         <View style={tw`flex flex-row items-center `}>
-                            <Text style={{ fontSize: 12, fontWeight: '400', }}>{isGroup() ? getUsernames() : getLastOnlineText() || 'Offline for a long time'}</Text>
+                            <Text style={{ fontSize: 12, fontWeight: '400', }}>{isGroup ? getUsernames() : getLastOnlineText()}
+                            </Text>
                             <Entypo name="dot-single" size={24} color={!user?.lastOnlineAt ? 'red' : 'green'} />
                         </View>
                     </View>
