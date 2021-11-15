@@ -97,6 +97,10 @@ const Message = (props) => {
     return (
         <Pressable onLongPress={setAsMessageReply} style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
             {/*<View style={{alignItems: 'flex-end'}}>*/}
+
+            {repliedTo && <Text>in reply to: {repliedTo.content}</Text>}
+
+
                 {message.image && (
                     <View style={{marginBottom: message.content ? 10 : 0}}>
                         <S3Image
