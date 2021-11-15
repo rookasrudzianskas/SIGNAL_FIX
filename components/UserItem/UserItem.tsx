@@ -10,7 +10,8 @@ import {Auth, DataStore} from "aws-amplify";
 import {Feather} from "@expo/vector-icons";
 
 // @ts-ignore
-const UserItem = ({user, onPress, isSelected = false}) => { // null, false, true
+const UserItem = ({user, onPress, isSelected}) => { // null, false, trues
+    // console.log(isSelected);
 
     const navigation = useNavigation();
 
@@ -27,8 +28,8 @@ const UserItem = ({user, onPress, isSelected = false}) => { // null, false, true
                         </View>
                     </View>
                 </View>
-                {isSelected === null || isSelected === undefined && (
-                    <Feather name={isSelected ? 'check-circle' : 'circle'} size={20} color="black" />
+                {isSelected !== null && (
+                    <Feather name={isSelected ? 'check-circle' : 'circle'} size={20} color="black"/>
                 )}
             </View>
         </TouchableOpacity>

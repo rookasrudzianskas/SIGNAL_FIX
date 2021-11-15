@@ -84,7 +84,7 @@ const UsersScreen = ()  => {
             <FlatList showsVerticalScrollIndicator={false}
                       ListHeaderComponent={() => <NewGroupButton onPress={() => setIsNewGroup(!isNewGroup)} />}
                       data={users} renderItem={({item}) => (
-                        <UserItem user={item} onPress={() => onUserPress(item)} key={item.id} />
+                        <UserItem user={item} isSelected={true} onPress={() => onUserPress(item)} key={item.id}  />
             )}
             />
 
