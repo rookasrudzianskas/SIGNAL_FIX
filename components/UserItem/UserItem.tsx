@@ -28,7 +28,7 @@ const UserItem = ({user, onPress, isSelected}) => { // null, false, trues
                         </View>
                     </View>
                 </View>
-                {isSelected !== null && (
+                {isSelected !== undefined && (
                     <Feather name={isSelected ? 'check-circle' : 'circle'} size={20} color="black"/>
                 )}
             </View>
