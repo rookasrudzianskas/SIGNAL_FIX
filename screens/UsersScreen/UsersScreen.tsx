@@ -17,6 +17,7 @@ import {useNavigation} from "@react-navigation/native";
 const UsersScreen = ()  => {
 
     const [users, setUsers] = useState<User[]>([]);
+    const [isNewGroup, setIsNewGroup] = useState(false);
 
     // useEffect(() => {
     //     DataStore.query(User).then(setUsers);
@@ -88,11 +89,13 @@ const UsersScreen = ()  => {
             />
 
 
-            <TouchableOpacity activeOpacity={0.5}>
-                <View style={tw`px-5 py-4 bg-blue-500 mx-16 items-center justify-center  rounded-sm shadow-md`}>
-                    <Text style={tw`font-bold text-gray-200`}>Create a Group</Text>
-                </View>
-            </TouchableOpacity>
+            {isNewGroup && (
+                <TouchableOpacity activeOpacity={0.5}>
+                    <View style={tw`px-5 py-4 bg-blue-500 mx-16 items-center justify-center  rounded-sm shadow-md`}>
+                        <Text style={tw`font-bold text-gray-200`}>Create a Group</Text>
+                    </View>
+                </TouchableOpacity>
+            )}
 
         </SafeAreaView>
   );
