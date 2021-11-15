@@ -57,16 +57,13 @@ const UsersScreen = ()  => {
 
 
         // connect the users with the chat room
-        users.map(users => DataStore.save(
+        await Promise.all(users.map((user) => DataStore.save(
             new ChatRoomUser({
                 user,
                 chatroom: newChatRoom,
             })
-        ))
-        await DataStore.save(new ChatRoomUser({
-            user: user,
-            chatroom: newChatRoom,
-        }));
+        )));
+
 
         // @ts-ignore
         navigation.navigate('ChatRoomScreen', { id: newChatRoom.id });
