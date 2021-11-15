@@ -7,6 +7,7 @@ import {Auth, DataStore, Storage} from "aws-amplify";
 import {S3Image} from "aws-amplify-react-native";
 import AudioPlayer from "../AudioPlayer";
 import {Ionicons} from "@expo/vector-icons";
+import MessageReply from '../MessageReply';
 
 const blue = '#3777f0';
 const grey = 'lightgrey';
@@ -99,10 +100,7 @@ const Message = (props) => {
             {/*<View style={{alignItems: 'flex-end'}}>*/}
 
             {repliedTo && (
-                <View style={tw`my-3 flex flex-row bg-blue-400 px-5 py-2 rounded-lg`}>
-                    <Text style={tw`font-bold text-gray-600`}>in reply to: </Text>
-                    <Text style={tw`font-bold text-gray-800`}>{repliedTo.content}</Text>
-                </View>
+                <MessageReply messageReply={repliedTo.content} />
             )}
 
 
