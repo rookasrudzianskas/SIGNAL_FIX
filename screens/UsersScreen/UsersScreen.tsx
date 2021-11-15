@@ -82,7 +82,7 @@ const UsersScreen = ()  => {
         <SafeAreaView style={styles.page}>
 
             <FlatList showsVerticalScrollIndicator={false}
-                      ListHeaderComponent={NewGroupButton}
+                      ListHeaderComponent={() => <NewGroupButton onPress={() => setIsNewGroup(!isNewGroup)} />}
                       data={users} renderItem={({item}) => (
                         <UserItem user={item} onPress={() => onUserPress(item)} key={item.id} />
             )}

@@ -3,9 +3,10 @@ import {Text, View, StyleSheet, Pressable, TouchableOpacity} from 'react-native'
 import {FontAwesome} from "@expo/vector-icons";
 import tw from "tailwind-react-native-classnames";
 
-const NewGroupButton = () => {
+// @ts-ignore
+const NewGroupButton = ({onPress}) => {
     return (
-        <TouchableOpacity activeOpacity={0.5}>
+        <TouchableOpacity activeOpacity={0.5} onPress={onPress}>
             <View style={tw`flex flex-row p-4 items-center`}>
                 <FontAwesome style={tw`flex-1`} name="group" size={24} color="#4f4f4f" />
                 <TouchableOpacity activeOpacity={0.5}>
