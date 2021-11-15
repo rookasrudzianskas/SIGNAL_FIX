@@ -15,7 +15,6 @@ const myID = 'u1';
 // @ts-ignore
 const MessageReply = ({messageReply}) => {
 
-
     // @ts-ignore
     return (
         <View>
