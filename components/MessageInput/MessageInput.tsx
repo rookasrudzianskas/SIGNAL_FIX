@@ -85,8 +85,8 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
             content: message,
             userID: user.attributes.sub,
             chatroomID: chatRoom?.id,
-        // @ts-ignore
             status: 'SENT',
+            replyToMessageID: messageReplyTo?.id,
         }));
 
         // @ts-ignore
@@ -221,6 +221,8 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
                 audio: key,
                 userID: user.attributes.sub,
                 chatroomID: chatRoom.id,
+                status: 'SENT',
+                replyToMessageID: messageReplyTo?.id,
 
             })
         );
