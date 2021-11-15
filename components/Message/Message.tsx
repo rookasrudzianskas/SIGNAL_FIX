@@ -98,7 +98,12 @@ const Message = (props) => {
         <Pressable onLongPress={setAsMessageReply} style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
             {/*<View style={{alignItems: 'flex-end'}}>*/}
 
-            {repliedTo && <Text>in reply to: {repliedTo.content}</Text>}
+            {repliedTo && (
+                <View style={tw`my-3 flex flex-row`}>
+                    <Text style={tw`font-bold text-gray-600`}>in reply to: </Text>
+                    <Text style={tw`font-bold text-gray-800`}>{repliedTo.content}</Text>
+                </View>
+            )}
 
 
                 {message.image && (
