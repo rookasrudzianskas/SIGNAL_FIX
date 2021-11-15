@@ -7,8 +7,10 @@ const NewGroupButton = () => {
     return (
         <TouchableOpacity activeOpacity={0.5}>
             <View style={tw`flex flex-row p-4 items-center`}>
-                <FontAwesome style={tw`flex-1`} name="group" size={24} color="gray" />
-                <Text style={tw`ml-5 font-bold`}>New Group</Text>
+                <FontAwesome style={tw`flex-1`} name="group" size={24} color="#4f4f4f" />
+                <TouchableOpacity activeOpacity={0.5}>
+                    <Text style={tw`ml-5 font-bold`}>New Group</Text>
+                </TouchableOpacity>
             </View>
         </TouchableOpacity>
     );
