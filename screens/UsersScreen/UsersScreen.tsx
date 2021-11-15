@@ -90,6 +90,10 @@ const UsersScreen = ()  => {
         } else {
             await createChatRoom([user]);
         }
+    };
+
+    const saveGroup = async () => {
+        await createChatRoom(selectedUsers);
     }
 
   return (
@@ -104,9 +108,9 @@ const UsersScreen = ()  => {
 
 
             {isNewGroup && (
-                <TouchableOpacity activeOpacity={0.5}>
+                <TouchableOpacity activeOpacity={0.5} onPress={saveGroup}>
                     <View style={tw`px-5 py-4 bg-blue-500 mx-16 items-center justify-center  rounded-sm shadow-md`}>
-                        <Text style={tw`font-bold text-gray-200`}>Create a Group</Text>
+                        <Text style={tw`font-bold text-gray-200`}>Create a Group ({selectedUsers.length})</Text>
                     </View>
                 </TouchableOpacity>
             )}
