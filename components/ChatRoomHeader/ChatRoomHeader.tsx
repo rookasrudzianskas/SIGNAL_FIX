@@ -60,12 +60,13 @@ const ChatRoomHeader = ({id, children}) => {
         // }
     }
 
+    // console.log('This is image uri', chatRoom?.imageUri);
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>
             {/*<Text>Rokas</Text>*/}
             <View style={tw`flex-row`}>
                 <View style={tw``}>
-                    <Image source={{uri: user?.imageUri}} style={{width: 30, height: 30, borderRadius: 30, marginRight: -200}} />
+                    <Image source={{uri: chatRoom?.imageUri ? "https://www.teahub.io/photos/full/42-424438_friends-group-photo-hd.jpg" : user?.imageUri}} style={{width: 30, height: 30, borderRadius: 30, marginRight: -200}} />
                 </View>
                 <View style={tw`flex-1 ml-10`}>
                     <View style={tw`flex-col justify-center`}>
