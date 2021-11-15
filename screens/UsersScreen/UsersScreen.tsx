@@ -63,6 +63,12 @@ const UsersScreen = ()  => {
             newMessages: 0,
             admin: dbUser,
         };
+
+        if(users?.length > 1) {
+            newChatRoomData.name = 'New Group';
+
+        }
+
         const newChatRoom = await DataStore.save(new ChatRoom(newChatRoomData));
 
         if(dbUser){
