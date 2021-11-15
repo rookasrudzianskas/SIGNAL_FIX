@@ -140,6 +140,9 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
             image: key,
             userID: user.attributes.sub,
             chatroomID: chatRoom?.id,
+            status: 'SENT',
+
+
         }));
 
         // // @ts-ignore
@@ -218,6 +221,7 @@ const MessageInput = ({chatRoom, messageReplyTo}) => {
                 audio: key,
                 userID: user.attributes.sub,
                 chatroomID: chatRoom.id,
+
             })
         );
 
