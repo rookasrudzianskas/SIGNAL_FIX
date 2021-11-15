@@ -35,6 +35,7 @@ const UsersScreen = ()  => {
 
     const navigation = useNavigation();
 
+    // @ts-ignore
     const addUserToChatRoom = async (user, chatroom) => {
         await DataStore.save(
             new ChatRoomUser({
@@ -44,6 +45,7 @@ const UsersScreen = ()  => {
         )
     }
 
+    // @ts-ignore
     const createChatRoom = async (users) => {
 
         // TODO if there is already a chat room between these 2 users
@@ -62,6 +64,7 @@ const UsersScreen = ()  => {
 
 
         // connect the users with the chat room
+        // @ts-ignore
         await Promise.all(users.map((user) => addUserToChatRoom(user, newChatRoom)));
 
 
@@ -70,13 +73,17 @@ const UsersScreen = ()  => {
 
     }
 
+    const onUserPress = async (user: any) => {
+        await createChatRoom([user]);
+    }
+
   return (
         <View style={styles.page}>
 
             <FlatList showsVerticalScrollIndicator={false}
                       ListHeaderComponent={NewGroupButton}
                       data={users} renderItem={({item}) => (
-                <UserItem key={item.id} user={item} />
+                        <UserItem user={item} onPress={() => onUserPress(item)} key={item.id} />
             )}
             />
 
