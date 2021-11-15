@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FlatList, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {FlatList, Image, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
 import { Text, View } from '../../components/Themed';
 import { RootTabScreenProps } from '../../types';
 import tw from "tailwind-react-native-classnames";
@@ -78,7 +78,7 @@ const UsersScreen = ()  => {
     }
 
   return (
-        <View style={styles.page}>
+        <SafeAreaView style={styles.page}>
 
             <FlatList showsVerticalScrollIndicator={false}
                       ListHeaderComponent={NewGroupButton}
@@ -87,7 +87,14 @@ const UsersScreen = ()  => {
             )}
             />
 
-        </View>
+
+            <TouchableOpacity activeOpacity={0.5}>
+                <View style={tw`px-5 py-4 bg-blue-500 mx-16 items-center justify-center  rounded-sm shadow-md`}>
+                    <Text style={tw`font-bold text-gray-200`}>Create a Group</Text>
+                </View>
+            </TouchableOpacity>
+
+        </SafeAreaView>
   );
 }
 
