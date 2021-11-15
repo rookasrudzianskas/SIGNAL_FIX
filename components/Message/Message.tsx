@@ -99,7 +99,7 @@ const Message = (props) => {
             {/*<View style={{alignItems: 'flex-end'}}>*/}
 
             {repliedTo && (
-                <View style={tw`my-3 flex flex-row`}>
+                <View style={tw`my-3 flex flex-row bg-blue-400 px-5 py-2 rounded-lg`}>
                     <Text style={tw`font-bold text-gray-600`}>in reply to: </Text>
                     <Text style={tw`font-bold text-gray-800`}>{repliedTo.content}</Text>
                 </View>
