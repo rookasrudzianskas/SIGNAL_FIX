@@ -31,7 +31,16 @@ const Message = (props) => {
 
     useEffect(() => {
         setMessage(propMessage);
-    }, [propMessage])
+    }, [propMessage]);
+
+    useEffect(() => {
+        if(message?.replyToMessageID) {
+            // @ts-ignore}
+            DataStore.query(MessageModel, message.replyToMessageID).then(setRepliedTo);
+        }
+    }, [message]);
+
+
 
     useEffect(() => {
         const subscription = DataStore.observe(MessageModel, message.id).subscribe(msg => {
