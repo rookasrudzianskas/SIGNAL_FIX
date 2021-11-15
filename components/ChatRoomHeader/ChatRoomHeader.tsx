@@ -28,11 +28,8 @@ const ChatRoomHeader = ({id, children}) => {
     };
 
     const fetchChatRoom = async () => {
-        if(!id) {
-            return;
-        }
         DataStore.query(ChatRoom, id).then(setChatRoom);
-    }
+    };
 
     useEffect(() => {
         if(!id) {
