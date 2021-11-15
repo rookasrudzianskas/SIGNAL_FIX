@@ -6,14 +6,15 @@ import tw from "tailwind-react-native-classnames";
 import styles from "./style";
 import ChatRoomItem from "../../components/ChatRoomItem";
 import UserItem from "../../components/UserItem";
-import {DataStore} from 'aws-amplify';
+import {Auth, DataStore} from 'aws-amplify';
 import {useEffect, useState} from "react";
-import {User} from "../../src/models";
+import {ChatRoom, ChatRoomUser, User} from "../../src/models";
 import NewGroupButton from "../../components/NewGroupButton";
+import {useNavigation} from "@react-navigation/native";
 
 
 
-const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
+const UsersScreen = ()  => {
 
     const [users, setUsers] = useState<User[]>([]);
 
@@ -30,6 +31,38 @@ const UsersScreen = ({ navigation }: RootTabScreenProps<'TabOne'>)  => {
 
         fetchUsers();
     }, []);
+
+
+    const navigation = useNavigation();
+
+    const createChatRoom = async () => {
+
+        // TODO if there is already a chat room between these 2 users
+        // then redirect to the existing chat room
+        // otherwise, create a new chatroom with these users.
+
+        // Create a chat room
+        const newChatRoom = await DataStore.save(new ChatRoom({newMessages: 0}));
+
+        // connect authenticated user with the chat room
+        const authUser = await Auth.currentAuthenticatedUser();
+        const dbUser = await DataStore.query(User, authUser.attributes.sub);
+
+        await DataStore.save(new ChatRoomUser({
+            // @ts-ignore
+            user: dbUser,
+            chatroom: newChatRoom
+        }));
+
+        await DataStore.save(new ChatRoomUser({
+            user: user,
+            chatroom: newChatRoom,
+        }));
+
+        // @ts-ignore
+        navigation.navigate('ChatRoomScreen', { id: newChatRoom.id });
+
+    }
 
   return (
         <View style={styles.page}>
