@@ -5,7 +5,7 @@ import * as React from "react";
 import {useRoute} from "@react-navigation/native";
 import {useEffect, useState} from "react";
 import {Auth, DataStore} from "aws-amplify";
-import {ChatRoomUser, User} from "../../src/models";
+import {ChatRoom, ChatRoomUser, User} from "../../src/models";
 import moment from "moment";
 
 // @ts-ignore
@@ -13,24 +13,34 @@ const ChatRoomHeader = ({id, children}) => {
 
     const {width, height} = useWindowDimensions();
     const [user, setUser] = useState<User|null>(null); // the display user
+    const [chatRoom, setChatRoom] = useState<ChatRoom|undefined>(undefined);
 
+
+    const fetchUsers = async () => {
+        const fetchedUsers = (await DataStore.query(ChatRoomUser))
+            .filter(chatRoomUser => chatRoomUser.chatroom.id === id)
+            .map(chatRoomUser => chatRoomUser.user);
+
+        // setUsers(fetchedUsers);
+
+        const authUser = await Auth.currentAuthenticatedUser();
+        setUser(fetchedUsers.find(user => user.id !== authUser.attributes.sub) || null);
+    };
+
+    const fetchChatRoom = async () => {
+        if(!id) {
+            return;
+        }
+        DataStore.query(ChatRoom, id).then(setChatRoom);
+    }
 
     useEffect(() => {
         if(!id) {
             return;
         }
 
-        const fetchUsers = async () => {
-            const fetchedUsers = (await DataStore.query(ChatRoomUser))
-                .filter(chatRoomUser => chatRoomUser.chatroom.id === id)
-                .map(chatRoomUser => chatRoomUser.user);
-
-            // setUsers(fetchedUsers);
-
-            const authUser = await Auth.currentAuthenticatedUser();
-            setUser(fetchedUsers.find(user => user.id !== authUser.attributes.sub) || null);
-        };
         fetchUsers();
+        fetchChatRoom();
     }, []);
 
     const getLastOnlineText = () => {
