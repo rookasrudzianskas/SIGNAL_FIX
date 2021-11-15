@@ -7,6 +7,7 @@ import moment from 'moment';
 import {useNavigation} from "@react-navigation/native";
 import {ChatRoom, ChatRoomUser, User} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
+import {Feather} from "@expo/vector-icons";
 
 // @ts-ignore
 const UserItem = ({user, onPress}) => {
@@ -26,6 +27,7 @@ const UserItem = ({user, onPress}) => {
                         </View>
                     </View>
                 </View>
+                    <Feather name="circle" size={24} color="black" />
             </View>
         </TouchableOpacity>
     );
