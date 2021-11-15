@@ -16,8 +16,6 @@ import tw from 'tailwind-react-native-classnames';
 
 // @ts-ignore
 const MessageInput = ({chatRoom, messageReplyTo}) => {
-    console.log("Message input")
-    console.log(messageReplyTo);
     const [message, setMessage] = useState('');
     const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
     const [progress, setProgress] = useState(0);
