@@ -57,16 +57,12 @@ const UsersScreen = ()  => {
         const authUser = await Auth.currentAuthenticatedUser();
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
         if(dbUser){
-            await DataStore.save(new ChatRoomUser({
-                // @ts-ignore
-                user: dbUser,
-                chatroom: newChatRoom
-            }));
+            await addUserToChatRoom(dbUser, newChatRoom);
         }
 
 
         // connect the users with the chat room
-        await Promise.all(users.map((user) => ));
+        await Promise.all(users.map((user) => addUserToChatRoom(user, newChatRoom)));
 
 
         // @ts-ignore
