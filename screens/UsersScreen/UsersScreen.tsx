@@ -65,7 +65,9 @@ const UsersScreen = ()  => {
         };
 
         if(users?.length > 1) {
+            // @ts-ignore
             newChatRoomData.name = 'New Group';
+            // @ts-ignore
             newChatRoomData.imageUri = "https://www.teahub.io/photos/full/42-424438_friends-group-photo-hd.jpg";
         }
 
