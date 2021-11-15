@@ -81,7 +81,12 @@ const UsersScreen = ()  => {
 
     const onUserPress = async (user: any) => {
         if(isNewGroup) {
-
+            if(isUserSelected(user)) {
+                // remove it from selected
+                setSelectedUsers(selectedUsers.filter((selectedUser) => selectedUser.id !== user.id));
+            } else {
+                setSelectedUsers([...selectedUsers, user]);
+            }
         } else {
             await createChatRoom([user]);
         }
@@ -93,7 +98,7 @@ const UsersScreen = ()  => {
             <FlatList showsVerticalScrollIndicator={false}
                       ListHeaderComponent={() => <NewGroupButton onPress={() => setIsNewGroup(!isNewGroup)} />}
                       data={users} renderItem={({item}) => (
-                        <UserItem user={item} isSelected={isNewGroup ? false : undefined} onPress={() => onUserPress(item)} key={item.id}  />
+                        <UserItem user={item} isSelected={isNewGroup ? isUserSelected(item) : undefined} onPress={() => onUserPress(item)} key={item.id}  />
             )}
             />
 
