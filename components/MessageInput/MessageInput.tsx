@@ -33,6 +33,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         setImage(null);
         setProgress(0);
         setSoundURI(null);
+        removeMessageReplyTo();
     };
 
     useEffect(() => {
