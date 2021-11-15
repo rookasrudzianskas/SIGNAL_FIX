@@ -35,6 +35,15 @@ const UsersScreen = ()  => {
 
     const navigation = useNavigation();
 
+    const addUserToChatRoom = async (user, chatroom) => {
+        await DataStore.save(
+            new ChatRoomUser({
+                user,
+                chatroom: chatroom,
+            })
+        )
+    }
+
     const createChatRoom = async (users) => {
 
         // TODO if there is already a chat room between these 2 users
@@ -57,12 +66,7 @@ const UsersScreen = ()  => {
 
 
         // connect the users with the chat room
-        await Promise.all(users.map((user) => DataStore.save(
-            new ChatRoomUser({
-                user,
-                chatroom: newChatRoom,
-            })
-        )));
+        await Promise.all(users.map((user) => ));
 
 
         // @ts-ignore
