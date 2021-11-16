@@ -66,7 +66,6 @@ const ChatRoomHeader = ({id, children}) => {
 
 
 
-
     // console.log('This is image uri', chatRoom?.imageUri);
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>
