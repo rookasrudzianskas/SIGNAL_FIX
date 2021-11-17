@@ -20,6 +20,7 @@ export type RootStackParamList = {
   HomeScreen: undefined;
   ChatRoomScreen: undefined;
   UsersScreen: undefined;
+  GroupInfoScreen: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -33,6 +34,7 @@ export type RootTabParamList = {
   HomeScreen: undefined;
   ChatRoomScreen: undefined;
   UsersScreen: undefined;
+  GroupInfoScreen: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<

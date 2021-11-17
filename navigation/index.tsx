@@ -15,6 +15,7 @@ import tw from "tailwind-react-native-classnames";
 import {Auth} from "aws-amplify";
 import UsersScreen from "../screens/UsersScreen/UsersScreen";
 import ChatRoomHeader from "../components/ChatRoomHeader";
+import GroupInfoScreen from '../screens/GroupInfoScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -53,6 +54,15 @@ function RootNavigator() {
                           headerBackTitleVisible: false,
                       })}
         />
+
+        <Stack.Screen name="ChatRoomInfo" component={GroupInfoScreen}
+                      options={({ route }) => ({
+                          //@ts-ignore
+                          headerTitle: () => <ChatRoomHeader id={route.params?.id} />,
+                          headerBackTitleVisible: false,
+                      })}
+        />
+
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
