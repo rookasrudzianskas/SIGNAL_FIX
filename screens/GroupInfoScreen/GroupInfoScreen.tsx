@@ -3,6 +3,7 @@ import {Text, View, StyleSheet} from 'react-native';
 import {ChatRoom} from "../../src/models";
 import {DataStore} from "aws-amplify";
 import {useRoute} from "@react-navigation/native";
+import tw from "tailwind-react-native-classnames";
 
 const GroupInfoScreen = () => {
 
@@ -32,12 +33,12 @@ const GroupInfoScreen = () => {
     };
 
     return (
-        <View>
-            <View>
-                <Text>{chatRoom?.name} 🚀</Text>
+        <View style={tw`bg-gray-100`}>
+            <View style={tw``}>
+                <Text style={tw``}>{chatRoom?.name} 🚀</Text>
             </View>
-            <View>
-                <Text>Users</Text>
+            <View style={tw``}>
+                <Text style={tw``}>Users</Text>
             </View>
 
         </View>
