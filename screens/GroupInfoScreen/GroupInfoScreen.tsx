@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {ChatRoom} from "../../src/models";
 import {DataStore} from "aws-amplify";
+import {useRoute} from "@react-navigation/native";
 
 const GroupInfoScreen = () => {
 
     const [chatRoom, setChatRoom] = useState<ChatRoom | null>(null);
+    const route = useRoute();
 
     useEffect(() => {
         fetchChatRoom();
