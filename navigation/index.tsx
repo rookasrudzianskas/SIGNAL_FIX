@@ -55,12 +55,7 @@ function RootNavigator() {
                       })}
         />
 
-        <Stack.Screen name="ChatRoomInfo" component={GroupInfoScreen}
-                      options={({ route }) => ({
-                          //@ts-ignore
-                          headerTitle: () => <ChatRoomHeader id={route.params?.id} />,
-                          headerBackTitleVisible: false,
-                      })}
+        <Stack.Screen name="GroupInfoScreen" component={GroupInfoScreen}
         />
 
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
