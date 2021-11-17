@@ -51,7 +51,7 @@ const UsersScreen = ()  => {
     const createChatRoom = async (users) => {
 
         // TODO if there is already a chat room between these 2 users
-        // then redirect to the existing chat room
+        // then redirect to the existing chat room.
         // otherwise, create a new chatroom with these users.
 
         // connect authenticated user with the chat room
