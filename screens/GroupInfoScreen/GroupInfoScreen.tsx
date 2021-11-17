@@ -53,6 +53,7 @@ const GroupInfoScreen = () => {
             <View style={tw``}>
                 <Text style={tw`text-xl font-bold`}>Users</Text>
 
+                {/* @ts-ignore*/}
                 <FlatList data={allUsers} renderItem={({ item }) => <UserItem user={item} />} />
             </View>
 
