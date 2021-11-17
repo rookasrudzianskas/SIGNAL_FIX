@@ -24,7 +24,10 @@ const UserItem = ({user, onPress, isSelected}) => { // null, false, trues
                 <View style={tw`flex-1 justify-center`}>
                     <View style={tw`flex-row items-center`}>
                         <View style={tw`flex flex-row flex-1`}>
-                            <Text style={tw`text-xl font-bold`}>{user?.name}</Text>
+                            <View style={tw`flex flex-col`}>
+                                <Text style={tw`text-xl font-bold`}>{user?.name}</Text>
+                                <Text>Admin</Text>
+                            </View>
                         </View>
                     </View>
                 </View>
