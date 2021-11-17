@@ -8,6 +8,7 @@ const GroupInfoScreen = () => {
 
     const [chatRoom, setChatRoom] = useState<ChatRoom | null>(null);
     const route = useRoute();
+    // console.log(chatRoom);
 
     useEffect(() => {
         fetchChatRoom();
@@ -33,7 +34,7 @@ const GroupInfoScreen = () => {
     return (
         <View>
             <Text>
-                byrookas 🚀
+                {chatRoom?.name} 🚀
             </Text>
         </View>
     );
