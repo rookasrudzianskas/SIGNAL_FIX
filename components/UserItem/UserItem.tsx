@@ -10,7 +10,7 @@ import {Auth, DataStore} from "aws-amplify";
 import {Feather} from "@expo/vector-icons";
 
 // @ts-ignore
-const UserItem = ({user, onPress, isSelected, isAdmin = false}) => { // null, false, trues
+const UserItem = ({user, onPress, isSelected, isAdmin}) => { // null, false, trues
     // console.log(isSelected);
 
     const navigation = useNavigation();

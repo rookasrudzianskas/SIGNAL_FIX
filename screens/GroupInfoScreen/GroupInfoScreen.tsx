@@ -56,7 +56,7 @@ const GroupInfoScreen = () => {
                     <Text style={tw`text-xl font-bold`}>Users in this chatRoom ({allUsers.length})</Text>
                 </View>
                 {/* @ts-ignore*/}
-                <FlatList data={allUsers} renderItem={({ item }) => <UserItem user={item} />} />
+                <FlatList data={allUsers} renderItem={({ item }) => <UserItem user={item} isAdmin={chatRoom?.Admin?.id === item.id} />} />
             </View>
 
         </View>
