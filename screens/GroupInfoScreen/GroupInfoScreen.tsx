@@ -33,7 +33,13 @@ const GroupInfoScreen = () => {
 
     return (
         <View>
-            <Text>{chatRoom?.name} 🚀</Text>
+            <View>
+                <Text>{chatRoom?.name} 🚀</Text>
+            </View>
+            <View>
+                <Text>Users</Text>
+            </View>
+
         </View>
     );
 };
