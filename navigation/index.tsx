@@ -55,8 +55,7 @@ function RootNavigator() {
                       })}
         />
 
-        <Stack.Screen name="GroupInfoScreen" component={GroupInfoScreen}
-        />
+        <Stack.Screen name="GroupInfoScreen" component={GroupInfoScreen} />
 
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>

@@ -1,4 +1,4 @@
-import {Image, Text, useWindowDimensions, View} from "react-native";
+import {Image, Text, TouchableOpacity, useWindowDimensions, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import {Entypo, Feather} from "@expo/vector-icons";
 import * as React from "react";
@@ -64,6 +64,10 @@ const ChatRoomHeader = ({id, children}) => {
 
     const isGroup = allUsers.length > 2;
 
+    const openInfo = () => {
+        // redirect to the info page
+    }
+
     // console.log('This is image uri', chatRoom?.imageUri);
     return (
         <View style={{flexDirection: 'row', justifyContent: 'space-between', width: -50, paddingRight: 10, alignItems: 'center'}}>
@@ -72,7 +76,7 @@ const ChatRoomHeader = ({id, children}) => {
                 <View style={tw``}>
                     <Image source={{ uri: chatRoom?.imageUri || user?.imageUri }} style={{width: 30, height: 30, borderRadius: 30, marginRight: -200}} />
                 </View>
-                <View style={tw`flex-1 ml-10`}>
+                <TouchableOpacity activeOpacity={0.5} onPress={openInfo} style={tw`flex-1 ml-10`}>
                     <View style={tw`flex-col justify-center`}>
                         <Text style={{ fontSize: 19, fontWeight: '600', marginTop: -6}}>{chatRoom?.name ? chatRoom.name : user?.name}</Text>
                         <View style={tw`flex flex-row items-center `}>
@@ -81,7 +85,7 @@ const ChatRoomHeader = ({id, children}) => {
                             <Entypo name="dot-single" size={24} color={!user?.lastOnlineAt ? 'red' : 'green'} />
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
                 <View style={tw``}>
                     <View style={tw`mr-6 flex-row mr-16`}>
                         <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
