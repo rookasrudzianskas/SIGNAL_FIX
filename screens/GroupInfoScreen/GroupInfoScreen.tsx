@@ -49,7 +49,7 @@ const GroupInfoScreen = () => {
     return (
         <View style={tw`bg-white flex-1`}>
             <View style={tw` px-4 pt-4`}>
-                <Text style={tw`text-xl font-bold`}>{chatRoom?.name} 🚀</Text>
+                <Text style={tw`text-xl font-bold`}>{chatRoom?.name || 'Chat'} 🚀</Text>
             </View>
             <View style={tw``}>
                 <View style={tw`px-4`}>
