@@ -57,7 +57,7 @@ const ChatRoomItem = ({chatRoom}) => {
         <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
             <View style={tw`flex-row px-3`}>
                 <View style={tw`p-3`}>
-                    <Image source={{uri: user?.imageUri}} style={styles.image}/>
+                    <Image source={{uri: chatRoom.imageUri || user?.imageUri}} style={styles.image}/>
                     {!!chatRoom.newMessages && (
                         <View style={[tw`bg-blue-500 flex items-center justify-center`, {width: 20, height: 20, borderRadius: 20, position: 'absolute', left: 54, top: 10, borderWidth: 1, borderColor: 'white'}]}>
                             <Text style={[tw`text-white  font-bold`, {}]}>{chatRoom?.newMessages}</Text>
