@@ -22,6 +22,7 @@ const GroupInfoScreen = () => {
 
     const fetchUsers = async () => {
         const fetchedUsers = (await DataStore.query(ChatRoomUser))
+            //@ts-ignore
             .filter(chatRoomUser => chatRoomUser.chatroom.id === route?.params?.id)
             .map(chatRoomUser => chatRoomUser.user);
 
@@ -52,7 +53,7 @@ const GroupInfoScreen = () => {
             </View>
             <View style={tw``}>
                 <View style={tw`px-4`}>
-                    <Text style={tw`text-xl font-bold`}>Users ({allUsers.length})</Text>
+                    <Text style={tw`text-xl font-bold`}>Users in this chatRoom ({allUsers.length})</Text>
                 </View>
                 {/* @ts-ignore*/}
                 <FlatList data={allUsers} renderItem={({ item }) => <UserItem user={item} />} />
