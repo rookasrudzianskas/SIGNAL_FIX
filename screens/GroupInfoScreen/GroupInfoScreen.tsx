@@ -51,7 +51,7 @@ const GroupInfoScreen = () => {
                 <Text style={tw`text-xl font-bold`}>{chatRoom?.name} 🚀</Text>
             </View>
             <View style={tw``}>
-                <Text style={tw`text-xl font-bold`}>Users</Text>
+                <Text style={tw`text-xl font-bold`}>Users ({allUsers.length})</Text>
 
                 {/* @ts-ignore*/}
                 <FlatList data={allUsers} renderItem={({ item }) => <UserItem user={item} />} />
