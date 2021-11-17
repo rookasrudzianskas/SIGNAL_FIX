@@ -67,7 +67,7 @@ const ChatRoomItem = ({chatRoom}) => {
                 <View style={tw`flex-1 justify-center mt-4`}>
                     <View style={tw`flex-row items-center`}>
                         <View style={tw`flex flex-row flex-1`}>
-                            <Text style={tw`text-xl font-bold`}>{user?.name}</Text>
+                            <Text style={tw`text-xl font-bold`}>{chatRoom.name || user?.name}</Text>
                         </View>
                         <View style={tw``}>
                             <Text style={tw`text-lg text-gray-500`}>{moment(lastMessage?.createdAt).fromNow()}</Text>
