@@ -10,7 +10,7 @@ import {Auth, DataStore} from "aws-amplify";
 import {Feather} from "@expo/vector-icons";
 
 // @ts-ignore
-const UserItem = ({user, onPress, isSelected, isAdmin}) => { // null, false, trues
+const UserItem = ({user, onPress, isSelected, isAdmin = false}) => { // null, false, trues
     // console.log(isSelected);
 
     const navigation = useNavigation();
@@ -26,7 +26,7 @@ const UserItem = ({user, onPress, isSelected, isAdmin}) => { // null, false, tru
                         <View style={tw`flex flex-row flex-1`}>
                             <View style={tw`flex flex-col`}>
                                 <Text style={tw`text-xl font-bold`}>{user?.name}</Text>
-                                <Text>Admin</Text>
+                                {isAdmin && <Text>Admin</Text>}
                             </View>
                         </View>
                     </View>
