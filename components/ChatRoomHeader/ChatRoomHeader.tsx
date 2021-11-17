@@ -2,7 +2,7 @@ import {Image, Text, TouchableOpacity, useWindowDimensions, View} from "react-na
 import tw from "tailwind-react-native-classnames";
 import {Entypo, Feather} from "@expo/vector-icons";
 import * as React from "react";
-import {useRoute} from "@react-navigation/native";
+import {useNavigation, useRoute} from "@react-navigation/native";
 import {useEffect, useState} from "react";
 import {Auth, DataStore} from "aws-amplify";
 import {ChatRoom, ChatRoomUser, User} from "../../src/models";
@@ -15,6 +15,8 @@ const ChatRoomHeader = ({id, children}) => {
     const [user, setUser] = useState<User|null>(null); // the display user
     const [chatRoom, setChatRoom] = useState<ChatRoom|undefined>(undefined);
     const [allUsers, setAllUsers] = useState<User[]>([]);
+
+    const navigation = useNavigation();
 
 
     const fetchUsers = async () => {
@@ -66,6 +68,8 @@ const ChatRoomHeader = ({id, children}) => {
 
     const openInfo = () => {
         // redirect to the info page
+        // @ts-ignore
+        navigation.navigate("GroupInfoScreen", {id});
     }
 
     // console.log('This is image uri', chatRoom?.imageUri);
