@@ -47,6 +47,7 @@ const GroupInfoScreen = () => {
     };
 
     const confirmDelete = (user: any) => {
+        // @ts-ignore
         if(user.id === chatRoom?.Admin.id) {
             Alert.alert('Cannot delete the group admin');
             return;
