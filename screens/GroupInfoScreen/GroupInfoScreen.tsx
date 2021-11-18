@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, FlatList} from 'react-native';
+import {Text, View, StyleSheet, FlatList, Alert} from 'react-native';
 import {ChatRoom, ChatRoomUser, User} from "../../src/models";
 import {Auth, DataStore} from "aws-amplify";
 import {useRoute} from "@react-navigation/native";
@@ -47,11 +47,16 @@ const GroupInfoScreen = () => {
     };
 
     const confirmDelete = (user: any) => {
-
+        Alert.alert('Confirm delete', `Hey are you sure you want to delete ${user?.name} from this group??`, [
+            {
+                title: 'Yes, I want',
+                onPress: () => deleteUser(user),
+            }
+        ]);
     }
 
     const deleteUser = () => {
-
+        console.warn('delete user');
     }
 
     return (
