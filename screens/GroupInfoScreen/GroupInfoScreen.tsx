@@ -49,13 +49,18 @@ const GroupInfoScreen = () => {
     const confirmDelete = (user: any) => {
         Alert.alert('Confirm delete', `Hey are you sure you want to delete ${user?.name} from this group??`, [
             {
-                title: 'Yes, I want',
+                text: 'Yes, I want',
                 onPress: () => deleteUser(user),
+                style: 'destructive',
+            },
+            {
+                text: 'Cancel',
+                // onPress: () => deleteUser(user),
             }
         ]);
     }
 
-    const deleteUser = () => {
+    const deleteUser = (user: any) => {
         console.warn('delete user');
     }
 
