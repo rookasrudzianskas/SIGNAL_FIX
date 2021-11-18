@@ -47,6 +47,11 @@ const GroupInfoScreen = () => {
     };
 
     const confirmDelete = (user: any) => {
+        if(user.id === chatRoom?.Admin.id) {
+            Alert.alert('Cannot delete the group admin');
+            return;
+        }
+
         Alert.alert('Confirm delete', `Hey are you sure you want to delete ${user?.name} from this group??`, [
             {
                 text: 'Yes, I want',
