@@ -46,6 +46,14 @@ const GroupInfoScreen = () => {
         // const fetchMessages = await DataStore.query(MessageModel);
     };
 
+    const confirmDelete = () => {
+
+    }
+
+    const deleteUser = () => {
+
+    }
+
     return (
         <View style={tw`bg-white flex-1`}>
             <View style={tw` px-4 pt-4`}>
