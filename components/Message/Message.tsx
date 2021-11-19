@@ -25,6 +25,7 @@ const Message = (props) => {
     const [message, setMessage] = useState<MessageModel>(props.message);
     const { width } = useWindowDimensions();
     const { showActionSheetWithOptions } = useActionSheet();
+    const [isDeleted, setIsDeleted] = useState(false);
 
 
 
@@ -99,6 +100,7 @@ const Message = (props) => {
 
     const deleteMessage = async () => {
         await DataStore.delete(message);
+        setIsDeleted(true);
     }
 
     const confirmDelete = () => {
