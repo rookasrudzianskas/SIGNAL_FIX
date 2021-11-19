@@ -56,9 +56,10 @@ const UsersScreen = ()  => {
 
         // connect authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
-        console.log(authUser)
+        // console.log(authUser)
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
-        console.log(dbUser);
+        // console.log(dbUser);
+
         if(dbUser) {
             Alert.alert('There was an error creating the group');
             return;
