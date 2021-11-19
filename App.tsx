@@ -12,7 +12,7 @@ import { withAuthenticator } from 'aws-amplify-react-native';
 import {Picker} from '@react-native-picker/picker';
 import {Message, User} from './src/models';
 import moment from "moment";
-import { ActionSheetProvider } from '@expo/react-native-action-sheet';
+import {ActionSheetProvider} from "@expo/react-native-action-sheet";
 
 
 
@@ -107,10 +107,14 @@ const App = () => {
   } else {
     return (
       <SafeAreaProvider>
-          <ActionSheetProvider>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar />
-          </ActionSheetProvider>
+          <>
+              <ActionSheetProvider>
+                  <>
+                      <Navigation colorScheme={colorScheme} />
+                      <StatusBar />
+                  </>
+              </ActionSheetProvider>
+          </>
       </SafeAreaProvider>
     );
   }
