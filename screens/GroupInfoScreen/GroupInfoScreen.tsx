@@ -69,7 +69,8 @@ const GroupInfoScreen = () => {
     const deleteUser = async (user: any) => {
         // fixing deletion of user from chat room
         // console.warn('delete user');
-
+        const chatRoomUsers = await DataStore.query(ChatRoomUser, )
+        // @ts-ignore
         // await DataStore.delete(user);
     }
 
