@@ -60,7 +60,7 @@ const UsersScreen = ()  => {
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
         // console.log(dbUser);
 
-        if(dbUser) {
+        if(!dbUser) {
             Alert.alert('There was an error creating the group');
             return;
         }
