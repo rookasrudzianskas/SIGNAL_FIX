@@ -67,6 +67,7 @@ const GroupInfoScreen = () => {
     }
 
     const deleteUser = async (user: any) => {
+        // fixing deletion of user from chat room
         // console.warn('delete user');
 
         // await DataStore.delete(user);
