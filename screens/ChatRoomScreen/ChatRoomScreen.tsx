@@ -72,16 +72,13 @@ const ChatRoomScreen = () => {
         return <ActivityIndicator size={'large' } color={'green'} />
     }
 
-    const deleteConfirmation = (message: MessageModel) => {
-
-    }
 
     // console.log(messageReplyTo?.content);
 
     return (
         <SafeAreaView style={styles.container}>
             <FlatList  showsVerticalScrollIndicator={false}  inverted data={messages} renderItem={({item}) => (
-                <Message message={item} setAsMessageReply={() => setMessageReplyTo(item)} onLongPress={() => deleteConfirmation(item)} />
+                <Message message={item} setAsMessageReply={() => setMessageReplyTo(item)} />
             )} />
             <MessageInput chatRoom={chatRoom}  messageReplyTo={messageReplyTo} removeMessageReplyTo={() => setMessageReplyTo(null)} />
         </SafeAreaView>

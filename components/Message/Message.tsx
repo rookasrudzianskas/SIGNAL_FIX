@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, ActivityIndicator, useWindowDimensions, Pressable} from 'react-native';
+import {Text, View, StyleSheet, ActivityIndicator, useWindowDimensions, Pressable, Alert} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {Message as MessageModel, User} from "../../src/models";
 import {Auth, DataStore, Storage} from "aws-amplify";
@@ -97,9 +97,37 @@ const Message = (props) => {
         );
     }
 
+    const deleteMessage = async () => {
+        await DataStore.delete(message);
+    }
+
+    const confirmDelete = () => {
+        Alert.alert(
+            "Confirm delete",
+            "Are you sure you want to delete the message? 🚀",
+            [
+                {
+                    text: "Delete",
+                    onPress: deleteMessage,
+                    style: "destructive",
+                },
+                {
+                    text: "Cancel",
+                },
+            ]
+        );
+    }
 
     const onActionPress = (index: any) => {
-        console.warn(index);
+        if (index === 0) {
+            setAsMessageReply();
+        } else if (index === 1) {
+            if (isMe) {
+                confirmDelete();
+            } else {
+                Alert.alert("Can't perform action", "This is not your message");
+            }
+        }
     }
 
     const openActionMenu = () => {
