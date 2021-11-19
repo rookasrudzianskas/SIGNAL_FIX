@@ -15,6 +15,7 @@ const ChatRoomItem = ({chatRoom}) => {
     // const [users, setUsers] = useState<User[]>([]); // all users in this chatroom
     const [user, setUser] = useState<User|null>(null); // the display user
     const [lastMessage, setLastMessage] = useState<Message|undefined>();
+    const [isLoading, setIsLoading] = useState(true);
 
     const navigation = useNavigation();
     // console.log("THis is clear chatRoom", chatRoom);
@@ -29,6 +30,7 @@ const ChatRoomItem = ({chatRoom}) => {
 
             const authUser = await Auth.currentAuthenticatedUser();
             setUser(fetchedUsers.find(user => user.id !== authUser.attributes.sub) || null);
+            setIsLoading(false);
         };
         fetchUsers();
     }, []);
@@ -45,7 +47,7 @@ const ChatRoomItem = ({chatRoom}) => {
     }
 
 
-    if(!user) {
+    if(isLoading) {
         return (
             <View style={tw`flex items-center justify-center mt-10`}>
                 <ActivityIndicator style={tw` items-center justify-center`} color={'lightblue'} size={'large'} />
