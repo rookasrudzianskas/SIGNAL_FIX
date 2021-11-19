@@ -47,6 +47,10 @@ const GroupInfoScreen = () => {
     };
 
     const confirmDelete = (user: any) => {
+        // check if authenticated user is admin of this group
+
+
+
         // @ts-ignore
         if(user.id === chatRoom?.Admin?.id) {
             Alert.alert('Cannot delete the group admin');
@@ -69,7 +73,19 @@ const GroupInfoScreen = () => {
     const deleteUser = async (user: any) => {
         // fixing deletion of user from chat room
         // console.warn('delete user');
-        const chatRoomUsers = await DataStore.query(ChatRoomUser, )
+        // @ts-ignore
+        const chatRoomUsersToDelete = (
+            await DataStore.query(ChatRoomUser)).filter((cru) => cru.chatroom.id === chatRoom?.id && cru.user.id === user.id);
+
+        // console.log(chatRoomUsersToDelete);
+
+        if(chatRoomUsersToDelete.length > 0) {
+            // @ts-ignore
+            await DataStore.delete(chatRoomUsersToDelete[0]);
+
+            setAllUsers(allUsers.filter(u => u.id !== user.id));
+        }
+
         // @ts-ignore
         // await DataStore.delete(user);
     }
