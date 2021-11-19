@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FlatList, Image, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Alert, FlatList, Image, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
 import { Text, View } from '../../components/Themed';
 import { RootTabScreenProps } from '../../types';
 import tw from "tailwind-react-native-classnames";
@@ -56,8 +56,13 @@ const UsersScreen = ()  => {
 
         // connect authenticated user with the chat room
         const authUser = await Auth.currentAuthenticatedUser();
+        console.log(authUser)
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
-
+        console.log(dbUser);
+        if(dbUser) {
+            Alert.alert('There was an error creating the group');
+            return;
+        }
         // Create a chat room
         const newChatRoomData = {
             newMessages: 0,
