@@ -8,6 +8,7 @@ import {S3Image} from "aws-amplify-react-native";
 import AudioPlayer from "../AudioPlayer";
 import {Ionicons} from "@expo/vector-icons";
 import MessageReply from '../MessageReply';
+import {useActionSheet} from "@expo/react-native-action-sheet";
 
 const blue = '#3777f0';
 const grey = 'lightgrey';
@@ -23,6 +24,8 @@ const Message = (props) => {
     const [soundURI, setSoundURI] = useState<any>(null);
     const [message, setMessage] = useState<MessageModel>(props.message);
     const { width } = useWindowDimensions();
+    const { showActionSheetWithOptions } = useActionSheet();
+
 
 
     useEffect(() => {
@@ -91,7 +94,13 @@ const Message = (props) => {
             <View style={tw`flex items-center justify-center mt-10`}>
                 <ActivityIndicator style={tw` items-center justify-center`} color={'lightblue'} size={'large'} />
             </View>
-        )
+        );
+    }
+
+
+    const openActionMenu = () => {
+        const options = ["Reply", "Delete", "Cancel"];
+        showActionSheetWithOptions(options);
     }
 
     // @ts-ignore
