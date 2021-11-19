@@ -98,9 +98,23 @@ const Message = (props) => {
     }
 
 
+    const onActionPress = (index: number) => {
+
+    }
+
     const openActionMenu = () => {
         const options = ["Reply", "Delete", "Cancel"];
-        showActionSheetWithOptions(options);
+        const destructiveButtonIndex = 1;
+        const cancelButtonIndex = 2;
+
+        showActionSheetWithOptions(
+            {
+                options,
+                destructiveButtonIndex,
+                cancelButtonIndex,
+            },
+            onActionPress
+    };
     }
 
     // @ts-ignore
