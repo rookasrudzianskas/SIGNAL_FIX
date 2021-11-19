@@ -12,6 +12,8 @@ import { withAuthenticator } from 'aws-amplify-react-native';
 import {Picker} from '@react-native-picker/picker';
 import {Message, User} from './src/models';
 import moment from "moment";
+import { ActionSheetProvider } from '@expo/react-native-action-sheet';
+
 
 
 Amplify.configure({
@@ -105,8 +107,10 @@ const App = () => {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+          <ActionSheetProvider>
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar />
+          </ActionSheetProvider>
       </SafeAreaProvider>
     );
   }
