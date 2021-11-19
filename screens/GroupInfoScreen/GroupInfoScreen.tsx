@@ -46,13 +46,18 @@ const GroupInfoScreen = () => {
         // const fetchMessages = await DataStore.query(MessageModel);
     };
 
-    const confirmDelete = (user: any) => {
+    const confirmDelete = async (user: any) => {
         // check if authenticated user is admin of this group
 
+        const authData = await Auth.currentAuthenticatedUser({bypassCache: true});
 
+        if(chatRoom?.Admin?.id !== authData.attributes.sub) {
+            Alert.alert('You are not the admin of this group.');
+            return;
+        }
 
         // @ts-ignore
-        if(user.id === chatRoom?.Admin?.id) {
+        if (user.id === chatRoom?.Admin?.id) {
             Alert.alert('Cannot delete the group admin');
             return;
         }
