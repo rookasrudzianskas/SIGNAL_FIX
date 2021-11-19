@@ -50,8 +50,12 @@ const Message = (props) => {
     useEffect(() => {
         const subscription = DataStore.observe(MessageModel, message.id).subscribe(msg => {
             // console.log(msg.model, msg.opType, msg.element);
-            if (msg.model === MessageModel && msg.opType === 'UPDATE') {
-                setMessage(message => ({...message, ...msg.element}));
+            if (msg.model === MessageModel) {
+                if (msg.opType === "UPDATE") {
+                    setMessage((message) => ({ ...message, ...msg.element }));
+                } else if (msg.opType === "DELETE") {
+                    setIsDeleted(true);
+                }
             }
         });
 
@@ -100,7 +104,7 @@ const Message = (props) => {
 
     const deleteMessage = async () => {
         await DataStore.delete(message);
-        setIsDeleted(true);
+        // setIsDeleted(true);
     }
 
     const confirmDelete = () => {
