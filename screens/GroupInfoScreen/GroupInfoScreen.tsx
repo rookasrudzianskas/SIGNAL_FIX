@@ -20,6 +20,7 @@ const GroupInfoScreen = () => {
         fetchUsers();
     }, []);
 
+
     const fetchUsers = async () => {
         const fetchedUsers = (await DataStore.query(ChatRoomUser))
             //@ts-ignore
