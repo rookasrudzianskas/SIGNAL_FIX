@@ -13,7 +13,6 @@ type Message @model @auth(rules: [{allow: public}]) @key(name: "byUser", fields:
   audio: String
   status: MessageStatus
   replyToMessageID: ID
-  untitledfield: String
 }
 
 type ChatRoom @model @auth(rules: [{allow: public}]) {
