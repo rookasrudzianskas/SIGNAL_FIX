@@ -98,15 +98,14 @@ const Message = (props) => {
     }
 
 
-    const onActionPress = (index: number) => {
-
+    const onActionPress = (index: any) => {
+        console.warn(index);
     }
 
     const openActionMenu = () => {
         const options = ["Reply", "Delete", "Cancel"];
         const destructiveButtonIndex = 1;
         const cancelButtonIndex = 2;
-
         showActionSheetWithOptions(
             {
                 options,
@@ -114,12 +113,12 @@ const Message = (props) => {
                 cancelButtonIndex,
             },
             onActionPress
-    };
+        );
     }
 
     // @ts-ignore
     return (
-        <Pressable onLongPress={setAsMessageReply} style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
+        <Pressable onLongPress={openActionMenu} style={[styles.container, isMe ? styles.rightContainer : styles.leftContainer, {width: soundURI ? '75%' : 'auto'}]}>
             {/*<View style={{alignItems: 'flex-end'}}>*/}
 
             {repliedTo && (
