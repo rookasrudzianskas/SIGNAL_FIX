@@ -68,7 +68,8 @@ const GroupInfoScreen = () => {
 
     const deleteUser = async (user: any) => {
         // console.warn('delete user');
-        await DataStore.delete(user);
+
+        // await DataStore.delete(user);
     }
 
     return (
