@@ -12,7 +12,7 @@ import ChatRoomScreen from "../screens/ChatRoomScreen/ChatRoomScreen";
 import {Text} from 'react-native';
 import {Component} from "react";
 import tw from "tailwind-react-native-classnames";
-import {Auth} from "aws-amplify";
+import {Auth, DataStore} from "aws-amplify";
 import UsersScreen from "../screens/UsersScreen/UsersScreen";
 import ChatRoomHeader from "../components/ChatRoomHeader";
 import GroupInfoScreen from '../screens/GroupInfoScreen';
@@ -76,6 +76,7 @@ const HomeHeader = (props) => {
     const navigation = useNavigation();
 
     const onPress = () => {
+        DataStore.clear();
         Auth.signOut();
     }
 
