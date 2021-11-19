@@ -48,16 +48,17 @@ const Message = (props) => {
 
 
     useEffect(() => {
-        const subscription = DataStore.observe(MessageModel, message.id).subscribe(msg => {
-            // console.log(msg.model, msg.opType, msg.element);
-            if (msg.model === MessageModel) {
-                if (msg.opType === "UPDATE") {
-                    setMessage((message) => ({ ...message, ...msg.element }));
-                } else if (msg.opType === "DELETE") {
-                    setIsDeleted(true);
+        const subscription = DataStore.observe(MessageModel, message.id).subscribe(
+            (msg) => {
+                if (msg.model === MessageModel) {
+                    if (msg.opType === "UPDATE") {
+                        setMessage((message) => ({ ...message, ...msg.element }));
+                    } else if (msg.opType === "DELETE") {
+                        setIsDeleted(true);
+                    }
                 }
             }
-        });
+        );
 
         return () => subscription.unsubscribe();
     }, []);
