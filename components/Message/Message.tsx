@@ -180,7 +180,7 @@ const Message = (props) => {
                 <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
                     {!!message.content && (
                         <Text style={{color: isMe ? 'black' : 'white'}}>
-                            {isDeleted ? 'message deleted 🚶‍♂️' : message?.content}
+                            {isDeleted ? 'message unsent 🚶‍♂️' : message?.content}
                         </Text>
                     )}
                     {/*@ts-ignore*/}
