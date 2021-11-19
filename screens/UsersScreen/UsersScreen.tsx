@@ -109,12 +109,13 @@ const UsersScreen = ()  => {
         await createChatRoom(selectedUsers);
     }
 
-  return (
+    return (
         <SafeAreaView style={styles.page}>
 
             <FlatList showsVerticalScrollIndicator={false}
                       ListHeaderComponent={() => <NewGroupButton onPress={() => setIsNewGroup(!isNewGroup)} />}
                       data={users} renderItem={({item}) => (
+  // @ts-ignore
                         <UserItem user={item} isSelected={isNewGroup ? isUserSelected(item) : undefined} onPress={() => onUserPress(item)} key={item.id}  />
             )}
             />
