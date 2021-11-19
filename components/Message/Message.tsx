@@ -136,6 +136,7 @@ const Message = (props) => {
         const options = ["Reply", "Delete", "Cancel"];
         const destructiveButtonIndex = 1;
         const cancelButtonIndex = 2;
+
         showActionSheetWithOptions(
             {
                 options,
