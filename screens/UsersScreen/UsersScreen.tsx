@@ -55,7 +55,7 @@ const UsersScreen = ()  => {
         // otherwise, create a new chatroom with these users.
 
         // connect authenticated user with the chat room
-        const authUser = await Auth.currentAuthenticatedUser();
+        const authUser = await Auth.currentAuthenticatedUser({ bypassCache: true });
         // console.log(authUser)
         const dbUser = await DataStore.query(User, authUser.attributes.sub);
         // console.log(dbUser);
