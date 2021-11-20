@@ -10,6 +10,14 @@ const SettingsScreen = () => {
         await Auth.signOut();
     }
 
+    const updateKeyPair = async () => {
+        // generate private and public key
+
+        // save private key to async storage
+
+        // save public key to UserModel in DataStore
+    }
+
 
     return (
         <View style={tw`p-4`}>
