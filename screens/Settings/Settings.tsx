@@ -26,6 +26,9 @@ const SettingsScreen = () => {
         await AsyncStorage.setItem(PUBLIC_KEY, secretKey.toString());
 
         // save public key to UserModel in DataStore
+
+        const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
+        const dbUser = await DataStore.query(UserModel);
     }
 
 
