@@ -1,20 +1,21 @@
-import {getRandomBytes, box, setPRNG} from "expo-random";
-import { decode as decodeUTF8, encode as encodeUTF8 } from '@stablelib/utf8';
-import { decode as decodeBase64, encode as encodeBase64 } from '@stablelib/base64';
-import {randomBytes} from "tweetnacl";
+import { getRandomBytes } from "expo-random";
+import { box, setPRNG } from "tweetnacl";
+import { decode as decodeUTF8, encode as encodeUTF8 } from "@stablelib/utf8";
+import {
+        decode as decodeBase64,
+        encode as encodeBase64,
+} from "@stablelib/base64";
 
-export const PRNG = (x, n) => {
-        // we get random bytes
+
+setPRNG((x, n) => {
         const randomBytes = getRandomBytes(n);
-        for(let i = 0; i < n; i++) {
+        for (let i = 0; i < n; i++) {
                 x[i] = randomBytes[i];
         }
-};
-
-setPRNG(PRNG);
+});
 
 
-const newNonce = () => randomBytes(box.nonceLength);
+const newNonce = () => getRandomBytes(box.nonceLength);
 export const generateKeyPair = () => box.keyPair();
 
 
@@ -23,7 +24,7 @@ export const encrypt = (
         json,
         key) => {
         const nonce = newNonce();
-        const messageUint8 = decodeUTF8(JSON.stringify(json));
+        const messageUint8 = encodeUTF8(JSON.stringify(json));
         const encrypted = key
                 ? box(messageUint8, nonce, key, secretOrSharedKey)
                 : box.after(messageUint8, nonce, secretOrSharedKey);
@@ -56,7 +57,7 @@ export const decrypt = (
                 throw new Error('Could not decrypt message');
         }
 
-        const base64DecryptedMessage = encodeUTF8(decrypted);
+        const base64DecryptedMessage = decodeUTF8(decrypted);
         return JSON.parse(base64DecryptedMessage);
 };
 
