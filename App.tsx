@@ -20,6 +20,8 @@ import {
     encodeBase64,
     decodeBase64
 } from "tweetnacl-util";
+import * as Random from 'expo-random';
+
 
 
 
