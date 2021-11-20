@@ -20,7 +20,6 @@ import {
     encodeBase64,
     decodeBase64
 } from "tweetnacl-util";
-import {getRandomBytes} from 'expo-random';
 import {PRNG} from "./utils/crypto";
 
 

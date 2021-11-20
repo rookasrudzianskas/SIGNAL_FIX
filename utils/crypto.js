@@ -6,4 +6,6 @@ export const PRNG = (x, n) => {
         for(let i = 0; i < n; i++) {
                 x[i] = randomBytes[i];
         }
-}
+};
+
+
