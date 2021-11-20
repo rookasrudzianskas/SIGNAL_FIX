@@ -60,6 +60,3 @@ export const decrypt = (
         const base64DecryptedMessage = decodeUTF8(decrypted);
         return JSON.parse(base64DecryptedMessage);
 };
-
-
-
