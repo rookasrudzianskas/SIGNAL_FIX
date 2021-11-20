@@ -16,6 +16,7 @@ import {Auth, DataStore} from "aws-amplify";
 import UsersScreen from "../screens/UsersScreen/UsersScreen";
 import ChatRoomHeader from "../components/ChatRoomHeader";
 import GroupInfoScreen from '../screens/GroupInfoScreen';
+import SettingsScreen from '../screens/Settings/Settings';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -56,6 +57,7 @@ function RootNavigator() {
         />
 
         <Stack.Screen name="GroupInfoScreen" component={GroupInfoScreen} />
+        <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
 
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
@@ -87,7 +89,9 @@ const HomeHeader = (props) => {
             </TouchableOpacity>
             <Text style={{flex: 1, textAlign: 'center', fontSize: 20, fontWeight: '600', marginLeft: 40,}}>Signal</Text>
             <View style={tw`mr-6 flex-row`}>
-                <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
+                <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('SettingsScreen')}>
+                    <Feather style={tw`mr-4`} name="camera" size={24} color="black" />
+                </TouchableOpacity>
                 <TouchableOpacity activeOpacity={0.5} onPress={() => navigation.navigate('UsersScreen')} >
                     <Feather name="edit-2" size={24} color="black" />
                 </TouchableOpacity>
