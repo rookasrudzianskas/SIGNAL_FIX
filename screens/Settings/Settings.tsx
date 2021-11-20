@@ -14,6 +14,10 @@ const SettingsScreen = () => {
     return (
         <View>
             <View style={tw`bg-blue-600 px-6 py-3 items-center justify-center`}>
+                <Text>Log out</Text>
+            </View>
+
+            <View style={tw`bg-blue-600 px-6 py-3 items-center justify-center`}>
                 <Text>Settings</Text>
             </View>
         </View>
