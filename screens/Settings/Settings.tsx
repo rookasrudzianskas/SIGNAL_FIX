@@ -14,7 +14,8 @@ const SettingsScreen = () => {
     const updateKeyPair = async () => {
         // generate private and public key
 
-        const pairA = generateKeyPair();
+        const {} = generateKeyPair();
+
         // save private key to async storage
 
         // save public key to UserModel in DataStore
