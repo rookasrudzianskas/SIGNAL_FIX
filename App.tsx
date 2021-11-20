@@ -14,7 +14,7 @@ import {Message, User} from './src/models';
 import moment from "moment";
 import {ActionSheetProvider} from "@expo/react-native-action-sheet";
 import {secretbox, randomBytes, setPRNG, box} from "tweetnacl";
-import {decrypt, encrypt, generateKeyPair, PRNG} from "./utils/crypto";
+import {decrypt, encrypt, generateKeyPair} from "./utils/crypto";
 
 
 
