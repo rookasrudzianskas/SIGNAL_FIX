@@ -30,6 +30,8 @@ const SettingsScreen = () => {
 
         const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
         const dbUser = await DataStore.query(UserModel, userData.attributes.sub);
+
+
     }
 
 
