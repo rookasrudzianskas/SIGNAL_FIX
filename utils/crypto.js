@@ -15,6 +15,10 @@ export const PRNG = (x, n) => {
         }
 };
 
+const newNonce = () => randomBytes(box.nonceLength);
+export const generateKeyPair = () => box.keyPair();
+
+
 export const encrypt = (
         secretOrSharedKey,
         json,
