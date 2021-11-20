@@ -13,14 +13,14 @@ import {Picker} from '@react-native-picker/picker';
 import {Message, User} from './src/models';
 import moment from "moment";
 import {ActionSheetProvider} from "@expo/react-native-action-sheet";
-import { secretbox, randomBytes, setPRNG } from "tweetnacl";
+import {secretbox, randomBytes, setPRNG, box} from "tweetnacl";
 import {
     decodeUTF8,
     encodeUTF8,
     encodeBase64,
     decodeBase64
 } from "tweetnacl-util";
-import {PRNG} from "./utils/crypto";
+import {decrypt, encrypt, generateKeyPair, PRNG} from "./utils/crypto";
 
 
 
@@ -34,8 +34,14 @@ Amplify.configure({
 
 setPRNG(PRNG);
 
-console.log(randomBytes(secretbox.nonceLength));
-
+const obj = { hello: 'world' };
+const pairA = generateKeyPair();
+const pairB = generateKeyPair();
+const sharedA = box.before(pairB.publicKey, pairA.secretKey);
+const sharedB = box.before(pairA.publicKey, pairB.secretKey);
+const encrypted = encrypt(sharedA, obj);
+const decrypted = decrypt(sharedB, encrypted);
+console.log(obj, encrypted, decrypted);
 
 const App = () => {
   const isLoadingComplete = useCachedResources();
