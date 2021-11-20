@@ -14,12 +14,6 @@ import {Message, User} from './src/models';
 import moment from "moment";
 import {ActionSheetProvider} from "@expo/react-native-action-sheet";
 import {secretbox, randomBytes, setPRNG, box} from "tweetnacl";
-import {
-    decodeUTF8,
-    encodeUTF8,
-    encodeBase64,
-    decodeBase64
-} from "tweetnacl-util";
 import {decrypt, encrypt, generateKeyPair, PRNG} from "./utils/crypto";
 
 
@@ -32,15 +26,18 @@ Amplify.configure({
   },
 });
 
-setPRNG(PRNG);
+// setPRNG(PRNG);
 
 const obj = { hello: 'world' };
 const pairA = generateKeyPair();
 const pairB = generateKeyPair();
+
 const sharedA = box.before(pairB.publicKey, pairA.secretKey);
-const sharedB = box.before(pairA.publicKey, pairB.secretKey);
 const encrypted = encrypt(sharedA, obj);
+
+const sharedB = box.before(pairA.publicKey, pairB.secretKey);
 const decrypted = decrypt(sharedB, encrypted);
+
 console.log(obj, encrypted, decrypted);
 
 const App = () => {
