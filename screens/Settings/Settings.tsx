@@ -15,6 +15,7 @@ const SettingsScreen = () => {
         // generate private and public key
 
         const {publicKey, secretKey} = generateKeyPair();
+        console.log(publicKey, secretKey);
 
         // save private key to async storage
 
