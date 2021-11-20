@@ -18,6 +18,8 @@ const SettingsScreen = () => {
 
         // save private key to async storage
 
+
+
         // save public key to UserModel in DataStore
     }
 
