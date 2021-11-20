@@ -1,11 +1,6 @@
 import {getRandomBytes} from "expo-random";
-import { box, randomBytes } from 'tweetnacl';
-import {
-        decodeUTF8,
-        encodeUTF8,
-        encodeBase64,
-        decodeBase64
-} from 'tweetnacl-util';
+import {box, randomBytes} from 'tweetnacl';
+import {decodeBase64, decodeUTF8, encodeBase64, encodeUTF8} from 'tweetnacl-util';
 
 export const PRNG = (x, n) => {
         // we get random bytes
@@ -33,8 +28,7 @@ export const encrypt = (
         fullMessage.set(nonce);
         fullMessage.set(encrypted, nonce.length);
 
-        const base64FullMessage = encodeBase64(fullMessage);
-        return base64FullMessage;
+        return encodeBase64(fullMessage);
 };
 
 export const decrypt = (
