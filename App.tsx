@@ -20,7 +20,7 @@ import {
     encodeBase64,
     decodeBase64
 } from "tweetnacl-util";
-import * as Random from 'expo-random';
+import {getRandomBytes} from 'expo-random';
 
 
 
@@ -33,7 +33,11 @@ Amplify.configure({
 });
 
 setPRNG(function(x, n) {
-    return Random.getRandomBytesAsync(n);
+    // we get random bytes
+    const randomBytes = getRandomBytes(n);
+    for(let i = 0; i < n; i++) {
+        x[i] = randomBytes[i];
+    }
 });
 
 console.log(randomBytes(secretbox.nonceLength));
