@@ -4,6 +4,7 @@ import tw from "tailwind-react-native-classnames";
 import {Auth, DataStore} from "aws-amplify";
 import {generateKeyPair} from "../../utils/crypto";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {User as UserModel} from "../../src/models";
 
 
 const PUBLIC_KEY = "PUBLIC_KEY";
@@ -28,7 +29,7 @@ const SettingsScreen = () => {
         // save public key to UserModel in DataStore
 
         const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
-        const dbUser = await DataStore.query(UserModel);
+        const dbUser = await DataStore.query(UserModel, userData.attributes.sub);
     }
 
 
