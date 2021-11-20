@@ -1,6 +1,7 @@
 import {getRandomBytes} from "expo-random";
 import {box, randomBytes} from 'tweetnacl';
-import {decodeBase64, decodeUTF8, encodeBase64, encodeUTF8} from 'tweetnacl-util';
+import { decode as decodeUTF8, encode as encodeUTF8 } from '@stablelib/utf8';
+import { decode as decodeBase64, encode as encodeBase64 } from '@stablelib/base64';
 
 export const PRNG = (x, n) => {
         // we get random bytes
