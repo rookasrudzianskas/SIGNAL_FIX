@@ -13,6 +13,13 @@ import {Picker} from '@react-native-picker/picker';
 import {Message, User} from './src/models';
 import moment from "moment";
 import {ActionSheetProvider} from "@expo/react-native-action-sheet";
+import { secretbox, randomBytes } from "tweetnacl";
+import {
+    decodeUTF8,
+    encodeUTF8,
+    encodeBase64,
+    decodeBase64
+} from "tweetnacl-util";
 
 
 
@@ -28,6 +35,8 @@ const App = () => {
   const colorScheme = useColorScheme();
 
   const [user, setUser] = useState<User|null>(null);
+
+    console.log(randomBytes(secretbox.nonceLength));
 
 
  useEffect(() => {
