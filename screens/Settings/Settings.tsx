@@ -3,6 +3,10 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {Auth, DataStore} from "aws-amplify";
 import {generateKeyPair} from "../../utils/crypto";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+const PUBLIC_KEY = "PUBLIC_KEY";
 
 const SettingsScreen = () => {
 
@@ -19,7 +23,7 @@ const SettingsScreen = () => {
 
         // save private key to async storage
 
-
+        await AsyncStorage.setItem(PUBLIC_KEY, secretKey.toString());
 
         // save public key to UserModel in DataStore
     }
