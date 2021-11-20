@@ -54,9 +54,7 @@ const ChatRoomItem = ({chatRoom}) => {
             </View>
         )
     }
-
-
-
+    
     return (
         <TouchableOpacity onPress={onPress} activeOpacity={0.6}>
             <View style={tw`flex-row px-3`}>
