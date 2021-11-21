@@ -72,7 +72,7 @@ export const stringToUint8Array = (string) => Uint8Array.from(string.split(',').
 
 export const getMySecretKey = async () => {
         const keyString = await AsyncStorage.getItem(PRIVATE_KEY);
-        const navigation = useNavigation();
+        // const navigation = useNavigation();
         if (!keyString) {
                 Alert.alert(
                         "You haven't set your keypair yet",
@@ -80,7 +80,7 @@ export const getMySecretKey = async () => {
                         [
                                 {
                                         text: "Open setting",
-                                        onPress: () => navigation.navigate("Settings"),
+                                        // onPress: () => navigation.navigate("Settings"),
                                 },
                         ]
                 );
