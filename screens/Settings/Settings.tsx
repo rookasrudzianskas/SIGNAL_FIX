@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {User as UserModel} from "../../src/models";
 
 
-const PRIVATE_KEY = "PRIVATE_KEY";
+export const PRIVATE_KEY = "PRIVATE_KEY";
 
 const SettingsScreen = () => {
 

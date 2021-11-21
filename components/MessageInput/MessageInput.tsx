@@ -1,5 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Image, KeyboardAvoidingView, Platform, Pressable, TextInput, TouchableOpacity, View, Text} from 'react-native';
+import {
+    Image,
+    KeyboardAvoidingView,
+    Platform,
+    Pressable,
+    TextInput,
+    TouchableOpacity,
+    View,
+    Text,
+    Alert
+} from 'react-native';
 import styles from "./style";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore, Storage} from "aws-amplify";
@@ -14,6 +24,8 @@ import AudioPlayer from '../AudioPlayer';
 import MessageComponent from '../Message';
 import tw from 'tailwind-react-native-classnames';
 import {box} from "tweetnacl";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {PRIVATE_KEY} from "../../screens/Settings/Settings";
 
 // @ts-ignore
 const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
@@ -81,7 +93,13 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
     const sendMessageToUser = async (user: any, fromUserId: any) => {
 
-        const sharedA = box.before(pairB.publicKey, pairA.secretKey);
+        const ourSecretKey = await AsyncStorage.getItem('PRIVATE_KEY');
+
+        if(!ourSecretKey) {
+            Alert.alert('Error', 'Private key not found');
+            return;
+        }
+        const sharedKey = box.before(user.publicKey, ourSecretKey);
 
         const newMessage = await DataStore.save(new Message({
             content: message, // this message should be encrypted
