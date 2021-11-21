@@ -78,10 +78,10 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         }
     };
 
-    const sendMessageToUser = async (user: any) => {
+    const sendMessageToUser = async (user: any, fromUserId: any) => {
         const newMessage = await DataStore.save(new Message({
             content: message, // this message should be encrypted
-            userID: user.attributes.sub,
+            userID: fromUserId,
             chatroomID: chatRoom?.id,
             status: 'SENT',
             replyToMessageID: messageReplyTo?.id,
@@ -100,7 +100,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
         // for each user, encrypt the content with his or her public key and save it as the new message
 
-        await Promise.all(users.map((user) => sendMessageToUser(user)));
+        await Promise.all(users.map((user) => sendMessageToUser(user, user.attributes.sub)));
 
         // done 🔥
 
