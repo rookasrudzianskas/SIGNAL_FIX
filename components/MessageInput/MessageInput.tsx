@@ -78,7 +78,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         }
     };
 
-    const sendMessageToUser = async (user) => {
+    const sendMessageToUser = async (user: any) => {
 
     }
 
