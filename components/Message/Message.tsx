@@ -26,6 +26,7 @@ const Message = (props) => {
     const { width } = useWindowDimensions();
     const { showActionSheetWithOptions } = useActionSheet();
     const [isDeleted, setIsDeleted] = useState(false);
+    const [decryptedContent, setDecryptedContent] = useState<string>('');
 
 
 
