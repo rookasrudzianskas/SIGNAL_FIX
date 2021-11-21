@@ -3,7 +3,7 @@ import {Image, KeyboardAvoidingView, Platform, Pressable, TextInput, TouchableOp
 import styles from "./style";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore, Storage} from "aws-amplify";
-import {ChatRoom, ChatRoomUser, Message} from '../../src/models';
+import {ChatRoom, ChatRoomUser, Message, User} from '../../src/models';
 import EmojiSelector, {Categories} from "react-native-emoji-selector";
 import * as ImagePicker from 'expo-image-picker';
 import 'react-native-get-random-values';
@@ -79,12 +79,20 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
     };
 
     const sendMessageToUser = async (user: any) => {
-
+        const newMessage = await DataStore.save(new Message({
+            content: message, // this message should be encrypted
+            userID: user.attributes.sub,
+            chatroomID: chatRoom?.id,
+            status: 'SENT',
+            replyToMessageID: messageReplyTo?.id,
+        }));
     }
 
     const sendMessage = async () => {
 
         // get all the users of this chatRoom
+
+        const user = await Auth.currentAuthenticatedUser({ bypassCache: true });
 
         const users = (await DataStore.query(ChatRoomUser)).filter(cru => cru.chatroom.id === chatRoom.id).map(cru => cru.user);
         console.log('this is users');
@@ -98,14 +106,14 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
 
         // send message
-        const user = await Auth.currentAuthenticatedUser();
-        const newMessage = await DataStore.save(new Message({
-            content: message, // this message should be encrypted
-            userID: user.attributes.sub,
-            chatroomID: chatRoom?.id,
-            status: 'SENT',
-            replyToMessageID: messageReplyTo?.id,
-        }));
+        // const user = await Auth.currentAuthenticatedUser();
+        // const newMessage = await DataStore.save(new Message({
+        //     content: message, // this message should be encrypted
+        //     userID: user.attributes.sub,
+        //     chatroomID: chatRoom?.id,
+        //     status: 'SENT',
+        //     replyToMessageID: messageReplyTo?.id,
+        // }));
 
         // @ts-ignore
         updateLastMessage(newMessage);
