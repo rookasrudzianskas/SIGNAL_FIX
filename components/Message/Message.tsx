@@ -99,18 +99,22 @@ const Message = (props) => {
 
     //@ts-ignore
     useEffect(async () => {
+
         if (!message?.content || user?.publicKey) {
             return null;
         }
 
-        // decrypt the message content
+        const decryptContent = async () => {
+            // decrypt the message content
+            const myKey = await getMySecretKey();
 
-        const myKey = await getMySecretKey();
+            const sharedB = box.before(stringToUint8Array(user?.publicKey), myKey);
+            const decrypted = decrypt(sharedB, encrypted);
 
-        const sharedB = box.before(stringToUint8Array(user?.publicKey), pairB.secretKey);
-        const decrypted = decrypt(sharedB, encrypted);
+            setDecryptedContent('decrypted');
+        }
 
-        setDecryptedContent('decrypted')
+        decryptContent();
 
     }, [message]);
 
