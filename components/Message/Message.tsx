@@ -113,7 +113,9 @@ const Message = (props) => {
             }
 
             const sharedKey = box.before(stringToUint8Array(user?.publicKey), myKey);
+            console.log("🔫 this is a shared Key 👉", sharedKey);
             const decrypted = decrypt(sharedKey, message.content);
+            console.log("💌 message", decrypted);
 
             setDecryptedContent(decrypted);
         }
