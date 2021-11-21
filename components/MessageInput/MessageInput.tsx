@@ -82,7 +82,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         // send message
         const user = await Auth.currentAuthenticatedUser();
         const newMessage = await DataStore.save(new Message({
-            content: message,
+            content: message, // this message should be encrypted
             userID: user.attributes.sub,
             chatroomID: chatRoom?.id,
             status: 'SENT',
