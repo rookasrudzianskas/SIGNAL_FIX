@@ -70,8 +70,6 @@ export const decrypt = (
 
 export const stringToUint8Array = (string) => Uint8Array.from(string.split(',').map(str => parseInt(str)));
 
-const navigation = useNavigation();
-
 export const getMySecretKey = async () => {
         const keyString = await AsyncStorage.getItem(PRIVATE_KEY);
         if (!keyString) {
@@ -81,7 +79,7 @@ export const getMySecretKey = async () => {
                         [
                                 {
                                         text: "Open setting",
-                                        onPress: () => navigation.navigate("Settings"),
+                                        // onPress: () => navigation.navigate("Settings"),
                                 },
                         ]
                 );
