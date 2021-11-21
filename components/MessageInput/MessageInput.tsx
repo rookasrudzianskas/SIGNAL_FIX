@@ -89,7 +89,6 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         const users = (await DataStore.query(ChatRoomUser)).filter(cru => cru.chatroom.id === chatRoom.id).map(cru => cru.user);
         console.log('this is users');
         console.log(users);
-        return;
 
         // for each user, encrypt the content with his or her public key and save it as the new message
 
