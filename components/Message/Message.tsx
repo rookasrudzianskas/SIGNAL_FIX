@@ -96,6 +96,7 @@ const Message = (props) => {
         }
     }
 
+    //@ts-ignore
     useEffect(() => {
         if(!message?.content) {
             return null;
