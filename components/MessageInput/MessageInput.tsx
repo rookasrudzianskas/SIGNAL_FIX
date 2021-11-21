@@ -27,6 +27,7 @@ import {box} from "tweetnacl";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {PRIVATE_KEY} from "../../screens/Settings/Settings";
 import {useNavigation} from "@react-navigation/native";
+import {stringToUint8Array} from "../../utils/crypto";
 
 // @ts-ignore
 const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
@@ -112,7 +113,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
             return;
         }
 
-        const ourSecretKey = Uint8Array.from(ourSecretKeyString.split(',').map(str => parseInt(str)));
+        const ourSecretKey = stringToUint8Array(ourSecretKeyString);
         console.log('private key', ourSecretKey);
         // const sharedKey = box.before(user.publicKey, ourSecretKey);
 
