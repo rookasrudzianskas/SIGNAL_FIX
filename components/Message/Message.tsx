@@ -103,6 +103,8 @@ const Message = (props) => {
 
         // decrypt the message content
 
+        setDecryptedContent('decrypted')
+
     }, [message]);
 
 
@@ -195,9 +197,9 @@ const Message = (props) => {
                 {/*)}*/}
                 {/*<AudioPlayer  soundURI={soundURI}/>*/}
                 <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                    {!!message.content && (
+                    {!!decryptedContent && (
                         <Text style={{color: isMe ? 'black' : 'white'}}>
-                            {isDeleted ? 'message unsent 🚶‍♂️' : message?.content}
+                            {isDeleted ? 'message unsent 🚶‍♂️' : decryptedContent}
                         </Text>
                     )}
                     {/*@ts-ignore*/}
