@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {User as UserModel} from "../../src/models";
 
 
-const PUBLIC_KEY = "PUBLIC_KEY";
+const PRIVATE_KEY = "PRIVATE_KEY";
 
 const SettingsScreen = () => {
 
@@ -24,7 +24,7 @@ const SettingsScreen = () => {
 
         // save private key to async storage
 
-        await AsyncStorage.setItem(PUBLIC_KEY, secretKey.toString());
+        await AsyncStorage.setItem(PRIVATE_KEY, secretKey.toString());
 
         // save public key to UserModel in DataStore
 
