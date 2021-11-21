@@ -131,7 +131,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         const ourSecretKey = stringToUint8Array(ourSecretKeyString);
         console.log('private key', ourSecretKey);
 
-        const sharedKey = box.before(user.publicKey, ourSecretKey);
+        const sharedKey = box.before(stringToUint8Array(user.publicKey), ourSecretKey);
         console.log('This is shared Key 🔥', sharedKey);
 
         const encryptedMessage = encrypt(sharedKey, {message});
