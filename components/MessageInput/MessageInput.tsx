@@ -82,10 +82,15 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         const newMessage = await DataStore.save(new Message({
             content: message, // this message should be encrypted
             userID: fromUserId,
+            // forUserId: user.id,
             chatroomID: chatRoom?.id,
             status: 'SENT',
             replyToMessageID: messageReplyTo?.id,
         }));
+
+
+        // @ts-ignore
+        // updateLastMessage(newMessage);
     }
 
     const sendMessage = async () => {
@@ -116,8 +121,6 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         //     replyToMessageID: messageReplyTo?.id,
         // }));
 
-        // @ts-ignore
-        updateLastMessage(newMessage);
 
         resetFields();
     }
