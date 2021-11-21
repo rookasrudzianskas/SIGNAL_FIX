@@ -6,6 +6,7 @@ import {
         encode as encodeBase64,
 } from "@stablelib/base64";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {Alert} from "react-native";
 
 export const PRIVATE_KEY = "PRIVATE_KEY";
 
