@@ -5,7 +5,7 @@ import chatRoomData from "../../assets/data/Chats";
 import MessageInput from "../../components/MessageInput";
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {ChatRoom, Message as MessageModel} from "../../src/models";
-import {DataStore, SortDirection} from "aws-amplify";
+import {Auth, DataStore, SortDirection} from "aws-amplify";
 
 const ChatRoomScreen = () => {
     const [messages, setMessages] = useState<MessageModel[]>([]);
@@ -57,8 +57,12 @@ const ChatRoomScreen = () => {
         if (!chatRoom) {
             return;
         }
+
+        const authUser = await Auth.currentAuthenticatedUser({ bypassCache: true });
+        const myId = authUser.attributes.sub;
+
         const fetchedMessages = await DataStore.query(MessageModel,
-            message => message.chatroomID("eq", chatRoom?.id),
+            message => message.chatroomID("eq", chatRoom?.id).forUserId("eq", myId),
             {
                 sort: (message) => message.createdAt(SortDirection.DESCENDING),
             }
