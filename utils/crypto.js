@@ -5,11 +5,13 @@ import {
         decode as decodeBase64,
         encode as encodeBase64,
 } from "@stablelib/base64";
-import {PRIVATE_KEY} from "../screens/Settings/Settings";
+// import {PRIVATE_KEY} from "../screens/Settings/Settings";
 import {Alert} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useNavigation} from "@react-navigation/native";
 
+
+export const PRIVATE_KEY = "PRIVATE_KEY";
 
 setPRNG((x, n) => {
         const randomBytes = getRandomBytes(n);
@@ -70,18 +72,21 @@ export const stringToUint8Array = (string) => Uint8Array.from(string.split(',').
 
 const navigation = useNavigation();
 
-export const getMySecretKey = (string) => AsyncStorage.getItem(PRIVATE_KEY);
+export const getMySecretKey = async () => {
+        const keyString = await AsyncStorage.getItem(PRIVATE_KEY);
+        if (!keyString) {
+                Alert.alert(
+                        "You haven't set your keypair yet",
+                        "Go to settings, and generate a new keypair",
+                        [
+                                {
+                                        text: "Open setting",
+                                        onPress: () => navigation.navigate("Settings"),
+                                },
+                        ]
+                );
+                return;
+        }
 
-if(!string) {
-        Alert.alert('Error', 'Private key not found', [
-                {
-                        text: 'Open Settings',
-                        onPress: () => navigation.navigate('SettingsScreen')
-                },
-                {
-                        text: 'Cancel',
-                        style: 'cancel'
-                }
-        ]);
-        return;
-}
+        return stringToUint8Array(keyString);
+};

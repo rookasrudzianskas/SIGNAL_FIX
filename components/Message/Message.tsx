@@ -9,7 +9,7 @@ import AudioPlayer from "../AudioPlayer";
 import {Ionicons} from "@expo/vector-icons";
 import MessageReply from '../MessageReply';
 import {useActionSheet} from "@expo/react-native-action-sheet";
-import {decrypt, stringToUint8Array} from "../../utils/crypto";
+import {decrypt, getMySecretKey, stringToUint8Array} from "../../utils/crypto";
 import {box} from "tweetnacl";
 
 const blue = '#3777f0';
@@ -98,12 +98,14 @@ const Message = (props) => {
     }
 
     //@ts-ignore
-    useEffect(() => {
-        if(!message?.content || user?.publicKey) {
+    useEffect(async () => {
+        if (!message?.content || user?.publicKey) {
             return null;
         }
 
         // decrypt the message content
+
+        const myKey = await getMySecretKey();
 
         const sharedB = box.before(stringToUint8Array(user?.publicKey), pairB.secretKey);
         const decrypted = decrypt(sharedB, encrypted);
