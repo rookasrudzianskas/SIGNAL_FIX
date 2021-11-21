@@ -68,7 +68,7 @@ export const decrypt = (
 };
 
 
-export const stringToUint8Array = (string) => Uint8Array.from(string.split(',').map(str => parseInt(str)));
+export const stringToUint8Array = (content) => Uint8Array.from(content.split(',').map(str => parseInt(str)));
 
 export const getMySecretKey = async () => {
         const keyString = await AsyncStorage.getItem(PRIVATE_KEY);

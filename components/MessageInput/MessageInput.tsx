@@ -99,6 +99,10 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
         const ourSecretKeyString = await getMySecretKey();
 
+        if(!ourSecretKeyString) {
+            return;
+        }
+
 
         if(!user.publicKey) {
             Alert.alert('Error', 'Public key not found', [
@@ -117,7 +121,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         const ourSecretKey = stringToUint8Array(ourSecretKeyString);
         // console.log('private key', ourSecretKey);
 
-        const sharedKey = box.before(stringToUint8Array(user.publicKey), ourSecretKey);
+        const sharedKey = box.before(stringToUint8Array(user.publicKey), ourSecretKeyString);
         // console.log('This is shared Key 🔥', sharedKey);
 
         const encryptedMessage = encrypt(sharedKey, {message});
