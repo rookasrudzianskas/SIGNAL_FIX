@@ -28,17 +28,17 @@ Amplify.configure({
 
 // setPRNG(PRNG);
 
-const obj = { hello: 'world' };
-const pairA = generateKeyPair();
-const pairB = generateKeyPair();
-
-const sharedA = box.before(pairB.publicKey, pairA.secretKey);
-const encrypted = encrypt(sharedA, obj);
-
-const sharedB = box.before(pairA.publicKey, pairB.secretKey);
-const decrypted = decrypt(sharedB, encrypted);
-
-console.log(obj, encrypted, decrypted);
+// const obj = { hello: 'world' };
+// const pairA = generateKeyPair();
+// const pairB = generateKeyPair();
+//
+// const sharedA = box.before(pairB.publicKey, pairA.secretKey);
+// const encrypted = encrypt(sharedA, obj);
+//
+// const sharedB = box.before(pairA.publicKey, pairB.secretKey);
+// const decrypted = decrypt(sharedB, encrypted);
+//
+// console.log(obj, encrypted, decrypted);
 
 const App = () => {
   const isLoadingComplete = useCachedResources();
