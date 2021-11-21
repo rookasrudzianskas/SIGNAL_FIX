@@ -27,7 +27,7 @@ import {box} from "tweetnacl";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {PRIVATE_KEY} from "../../screens/Settings/Settings";
 import {useNavigation} from "@react-navigation/native";
-import {encrypt, stringToUint8Array} from "../../utils/crypto";
+import {encrypt, getMySecretKey, stringToUint8Array} from "../../utils/crypto";
 
 // @ts-ignore
 const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
@@ -97,21 +97,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
     const sendMessageToUser = async (user: any, fromUserId: any) => {
 
-        const ourSecretKeyString = await AsyncStorage.getItem(PRIVATE_KEY);
-
-        if(!ourSecretKeyString) {
-            Alert.alert('Error', 'Private key not found', [
-                {
-                    text: 'Open Settings',
-                    onPress: () => navigation.navigate('SettingsScreen')
-                },
-                {
-                    text: 'Cancel',
-                    style: 'cancel'
-                }
-            ]);
-            return;
-        }
+        const ourSecretKeyString = await getMySecretKey();
 
 
         if(!user.publicKey) {

@@ -5,6 +5,10 @@ import {
         decode as decodeBase64,
         encode as encodeBase64,
 } from "@stablelib/base64";
+import {PRIVATE_KEY} from "../screens/Settings/Settings";
+import {Alert} from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import {useNavigation} from "@react-navigation/native";
 
 
 setPRNG((x, n) => {
@@ -63,3 +67,21 @@ export const decrypt = (
 
 
 export const stringToUint8Array = (string) => Uint8Array.from(string.split(',').map(str => parseInt(str)));
+
+const navigation = useNavigation();
+
+export const getMySecretKey = (string) => AsyncStorage.getItem(PRIVATE_KEY);
+
+if(!string) {
+        Alert.alert('Error', 'Private key not found', [
+                {
+                        text: 'Open Settings',
+                        onPress: () => navigation.navigate('SettingsScreen')
+                },
+                {
+                        text: 'Cancel',
+                        style: 'cancel'
+                }
+        ]);
+        return;
+}
