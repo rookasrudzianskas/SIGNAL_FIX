@@ -9,6 +9,7 @@ import AudioPlayer from "../AudioPlayer";
 import {Ionicons} from "@expo/vector-icons";
 import MessageReply from '../MessageReply';
 import {useActionSheet} from "@expo/react-native-action-sheet";
+import {decrypt} from "../../utils/crypto";
 
 const blue = '#3777f0';
 const grey = 'lightgrey';
@@ -96,8 +97,13 @@ const Message = (props) => {
     }
 
     useEffect(() => {
+        if(!message?.content) {
+            return null;
+        }
 
-    }, []);
+        // decrypt the message content
+
+    }, [message]);
 
 
     if(!user) {
