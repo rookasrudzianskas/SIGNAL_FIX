@@ -82,6 +82,8 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
         // get all the users of this chatRoom
 
+        const users = await DataStore.query(ChatRoom)
+
         // for each user, encrypt the content with his or her public key and save it as the new message
 
         // done 🔥
