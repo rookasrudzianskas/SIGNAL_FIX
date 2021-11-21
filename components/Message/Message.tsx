@@ -108,10 +108,14 @@ const Message = (props) => {
             // decrypt the message content
             const myKey = await getMySecretKey();
 
-            const sharedB = box.before(stringToUint8Array(user?.publicKey), myKey);
-            const decrypted = decrypt(sharedB, encrypted);
+            if(!myKey) {
+                return;
+            }
 
-            setDecryptedContent('decrypted');
+            const sharedKey = box.before(stringToUint8Array(user?.publicKey), myKey);
+            const decrypted = decrypt(sharedKey, message.content);
+
+            setDecryptedContent(decrypted);
         }
 
         decryptContent();
