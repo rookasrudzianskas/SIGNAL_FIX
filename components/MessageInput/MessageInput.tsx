@@ -27,7 +27,7 @@ import {box} from "tweetnacl";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {PRIVATE_KEY} from "../../screens/Settings/Settings";
 import {useNavigation} from "@react-navigation/native";
-import {stringToUint8Array} from "../../utils/crypto";
+import {encrypt, stringToUint8Array} from "../../utils/crypto";
 
 // @ts-ignore
 const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
@@ -119,6 +119,8 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
         const sharedKey = box.before(user.publicKey, ourSecretKey);
         console.log('This is shared Key 🔥', sharedKey);
+
+        const encryptedMessage = encrypt(sharedKey, message);
 
         const newMessage = await DataStore.save(new Message({
             content: message, // this message should be encrypted
