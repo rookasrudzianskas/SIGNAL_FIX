@@ -96,50 +96,43 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
     const navigation = useNavigation();
 
     const sendMessageToUser = async (user: any, fromUserId: any) => {
-
+        // send message
         const ourSecretKey = await getMySecretKey();
-
-        if(!ourSecretKey) {
+        if (!ourSecretKey) {
             return;
         }
 
-
-        if(!user.publicKey) {
-            Alert.alert('Error', 'Public key not found', [
-                {
-                    text: 'Open Settings',
-                    onPress: () => navigation.navigate('SettingsScreen')
-                },
-                {
-                    text: 'Cancel',
-                    style: 'cancel'
-                }
-            ]);
+        if (!user.publicKey) {
+            Alert.alert(
+                "The user haven't set his keypair yet",
+                "Until the user generates the keypair, you cannot securely send him messages"
+            );
             return;
         }
 
-        // const ourSecretKey = stringToUint8Array(ourSecretKeyString);
-        // console.log('private key', ourSecretKey);
+        console.log("private key", ourSecretKey);
 
-        const sharedKey = box.before(stringToUint8Array(user.publicKey), ourSecretKey);
-        // console.log('This is shared Key 🔥', sharedKey);
+        const sharedKey = box.before(
+            stringToUint8Array(user.publicKey),
+            ourSecretKey
+        );
+        console.log("shared key", sharedKey);
 
-        const encryptedMessage = encrypt(sharedKey, {message});
-        // console.log('🔫 encrypted message goes here 👉', encryptedMessage);
+        const encryptedMessage = encrypt(sharedKey, { message });
+        console.log("encrypted message", encryptedMessage);
 
-        const newMessage = await DataStore.save(new Message({
-            content: encryptedMessage, // this message should be encrypted
-            userID: fromUserId,
-            forUserId: user.id,
-            chatroomID: chatRoom?.id,
-            status: 'SENT',
-            replyToMessageID: messageReplyTo?.id,
-        }));
+        const newMessage = await DataStore.save(
+            new Message({
+                content: encryptedMessage, // <- this messages should be encrypted
+                userID: fromUserId,
+                forUserId: user.id,
+                chatroomID: chatRoom.id,
+                replyToMessageID: messageReplyTo?.id,
+            })
+        );
 
-
-        // @ts-ignore
         // updateLastMessage(newMessage);
-    }
+    };
 
     const sendMessage = async () => {
 
