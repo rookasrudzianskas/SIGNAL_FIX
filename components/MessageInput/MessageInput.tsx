@@ -112,9 +112,9 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
             return;
         }
 
-        const ourSecretKey = ourSecretKeyString.;
-        // console.log('private key', ourSecretKey)
-        const sharedKey = box.before(user.publicKey, ourSecretKey);
+        const ourSecretKey = Uint8Array.from(ourSecretKeyString.split(',').map(str => parseInt(str)));
+        console.log('private key', ourSecretKey);
+        // const sharedKey = box.before(user.publicKey, ourSecretKey);
 
         const newMessage = await DataStore.save(new Message({
             content: message, // this message should be encrypted
