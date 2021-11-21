@@ -3,7 +3,7 @@ import {Image, KeyboardAvoidingView, Platform, Pressable, TextInput, TouchableOp
 import styles from "./style";
 import {AntDesign, Feather, Ionicons, MaterialCommunityIcons, SimpleLineIcons} from "@expo/vector-icons";
 import {Auth, DataStore, Storage} from "aws-amplify";
-import {ChatRoom, Message} from '../../src/models';
+import {ChatRoom, ChatRoomUser, Message} from '../../src/models';
 import EmojiSelector, {Categories} from "react-native-emoji-selector";
 import * as ImagePicker from 'expo-image-picker';
 import 'react-native-get-random-values';
@@ -78,13 +78,22 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         }
     };
 
+    const sendMessageToUser = async (user) => {
+
+    }
+
     const sendMessage = async () => {
 
         // get all the users of this chatRoom
 
-        const users = await DataStore.query(ChatRoom)
+        const users = (await DataStore.query(ChatRoomUser)).filter(cru => cru.chatroom.id === chatRoom.id).map(cru => cru.user);
+        console.log('this is users');
+        console.log(users);
+        return;
 
         // for each user, encrypt the content with his or her public key and save it as the new message
+
+        await Promise.all(users.map((user) => sendMessageToUser(user)));
 
         // done 🔥
 
