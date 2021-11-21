@@ -13,6 +13,7 @@ import {Audio, AVPlaybackStatus} from "expo-av";
 import AudioPlayer from '../AudioPlayer';
 import MessageComponent from '../Message';
 import tw from 'tailwind-react-native-classnames';
+import {box} from "tweetnacl";
 
 // @ts-ignore
 const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
@@ -79,6 +80,9 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
     };
 
     const sendMessageToUser = async (user: any, fromUserId: any) => {
+
+        const sharedA = box.before(pairB.publicKey, pairA.secretKey);
+
         const newMessage = await DataStore.save(new Message({
             content: message, // this message should be encrypted
             userID: fromUserId,
@@ -97,7 +101,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
         // get all the users of this chatRoom
 
-        const user = await Auth.currentAuthenticatedUser({ bypassCache: true });
+        const authUser = await Auth.currentAuthenticatedUser({ bypassCache: true });
 
         const users = (await DataStore.query(ChatRoomUser)).filter(cru => cru.chatroom.id === chatRoom.id).map(cru => cru.user);
         console.log('this is users');
@@ -105,8 +109,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
         // for each user, encrypt the content with his or her public key and save it as the new message
 
-        //@ts-ignore
-        await Promise.all(users.map((user) => sendMessageToUser(user, user.attributes.sub)));
+        await Promise.all(users.map((user) => sendMessageToUser(user, authUser.attributes.sub)));
 
         // done 🔥
 

@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-signal-dev-110431-unauthRole",
       "StackName": "amplify-signal-dev-110431",
       "StackId": "arn:aws:cloudformation:us-east-1:986698840618:stack/amplify-signal-dev-110431/5c4aa2f0-3633-11ec-b136-0a6d0ea052a7",
-      "AmplifyAppId": "d38i8hbyvqvwwv"
+      "AmplifyAppId": "d38i8hbyvqvwwv",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-signal-dev-110431-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
