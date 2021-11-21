@@ -95,6 +95,10 @@ const Message = (props) => {
         }
     }
 
+    useEffect(() => {
+
+    }, []);
+
 
     if(!user) {
         return (
