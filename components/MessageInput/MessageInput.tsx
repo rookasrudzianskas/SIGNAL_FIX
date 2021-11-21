@@ -120,7 +120,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         const newMessage = await DataStore.save(new Message({
             content: message, // this message should be encrypted
             userID: fromUserId,
-            // forUserId: user.id,
+            forUserId: user.id,
             chatroomID: chatRoom?.id,
             status: 'SENT',
             replyToMessageID: messageReplyTo?.id,
