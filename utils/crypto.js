@@ -5,11 +5,7 @@ import {
         decode as decodeBase64,
         encode as encodeBase64,
 } from "@stablelib/base64";
-// import {PRIVATE_KEY} from "../screens/Settings/Settings";
-import {Alert} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {useNavigation} from "@react-navigation/native";
-
 
 export const PRIVATE_KEY = "PRIVATE_KEY";
 
@@ -20,15 +16,10 @@ setPRNG((x, n) => {
         }
 });
 
-
 const newNonce = () => getRandomBytes(box.nonceLength);
 export const generateKeyPair = () => box.keyPair();
 
-
-export const encrypt = (
-        secretOrSharedKey,
-        json,
-        key) => {
+export const encrypt = (secretOrSharedKey, json, key) => {
         const nonce = newNonce();
         const messageUint8 = encodeUTF8(JSON.stringify(json));
         const encrypted = key
@@ -39,15 +30,11 @@ export const encrypt = (
         fullMessage.set(nonce);
         fullMessage.set(encrypted, nonce.length);
 
-
         const base64FullMessage = encodeBase64(fullMessage);
         return base64FullMessage;
 };
 
-export const decrypt = (
-        secretOrSharedKey,
-        messageWithNonce,
-        key) => {
+export const decrypt = (secretOrSharedKey, messageWithNonce, key) => {
         const messageWithNonceAsUint8Array = decodeBase64(messageWithNonce);
         const nonce = messageWithNonceAsUint8Array.slice(0, box.nonceLength);
         const message = messageWithNonceAsUint8Array.slice(
@@ -60,19 +47,18 @@ export const decrypt = (
                 : box.open.after(message, nonce, secretOrSharedKey);
 
         if (!decrypted) {
-                throw new Error('Could not decrypt message');
+                throw new Error("Could not decrypt message");
         }
 
         const base64DecryptedMessage = decodeUTF8(decrypted);
         return JSON.parse(base64DecryptedMessage);
 };
 
-
-export const stringToUint8Array = (content) => Uint8Array.from(content.split(',').map(str => parseInt(str)));
+export const stringToUint8Array = (content) =>
+        Uint8Array.from(content.split(",").map((str) => parseInt(str)));
 
 export const getMySecretKey = async () => {
         const keyString = await AsyncStorage.getItem(PRIVATE_KEY);
-        // const navigation = useNavigation();
         if (!keyString) {
                 Alert.alert(
                         "You haven't set your keypair yet",
@@ -80,7 +66,7 @@ export const getMySecretKey = async () => {
                         [
                                 {
                                         text: "Open setting",
-                                        // onPress: () => navigation.navigate("Settings"),
+                                        onPress: () => navigation.navigate("Settings"),
                                 },
                         ]
                 );
