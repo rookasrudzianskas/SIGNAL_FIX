@@ -100,7 +100,7 @@ const Message = (props) => {
     //@ts-ignore
     useEffect(async () => {
 
-        if (!message?.content || user?.publicKey) {
+        if (!message?.content || !user?.publicKey) {
             return null;
         }
 
@@ -122,7 +122,7 @@ const Message = (props) => {
 
         decryptContent();
 
-    }, [message]);
+    }, [message, user]);
 
 
     if(!user) {
