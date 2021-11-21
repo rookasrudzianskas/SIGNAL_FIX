@@ -79,6 +79,14 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
     };
 
     const sendMessage = async () => {
+
+        // get all the users of this chatRoom
+
+        // for each user, encrypt the content with his or her public key and save it as the new message
+
+        // done 🔥
+
+
         // send message
         const user = await Auth.currentAuthenticatedUser();
         const newMessage = await DataStore.save(new Message({
