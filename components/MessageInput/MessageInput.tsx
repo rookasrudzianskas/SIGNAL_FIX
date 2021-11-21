@@ -97,9 +97,9 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
     const sendMessageToUser = async (user: any, fromUserId: any) => {
 
-        const ourSecretKeyString = await getMySecretKey();
+        const ourSecretKey = await getMySecretKey();
 
-        if(!ourSecretKeyString) {
+        if(!ourSecretKey) {
             return;
         }
 
@@ -118,10 +118,10 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
             return;
         }
 
-        const ourSecretKey = stringToUint8Array(ourSecretKeyString);
+        // const ourSecretKey = stringToUint8Array(ourSecretKeyString);
         // console.log('private key', ourSecretKey);
 
-        const sharedKey = box.before(stringToUint8Array(user.publicKey), ourSecretKeyString);
+        const sharedKey = box.before(stringToUint8Array(user.publicKey), ourSecretKey);
         // console.log('This is shared Key 🔥', sharedKey);
 
         const encryptedMessage = encrypt(sharedKey, {message});
