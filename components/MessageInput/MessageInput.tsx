@@ -121,6 +121,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         console.log('This is shared Key 🔥', sharedKey);
 
         const encryptedMessage = encrypt(sharedKey, {message});
+        console.log('🔫 encrypted message goes here 👉', encryptedMessage);
 
         const newMessage = await DataStore.save(new Message({
             content: encryptedMessage, // this message should be encrypted
