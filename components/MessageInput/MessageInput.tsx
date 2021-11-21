@@ -96,9 +96,9 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
     const sendMessageToUser = async (user: any, fromUserId: any) => {
 
-        const ourSecretKey = await AsyncStorage.getItem(PRIVATE_KEY);
+        const ourSecretKeyString = await AsyncStorage.getItem(PRIVATE_KEY);
 
-        if(!ourSecretKey) {
+        if(!ourSecretKeyString) {
             Alert.alert('Error', 'Private key not found', [
                 {
                     text: 'Open Settings',
@@ -112,6 +112,8 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
             return;
         }
 
+        const ourSecretKey = ourSecretKeyString.;
+        // console.log('private key', ourSecretKey)
         const sharedKey = box.before(user.publicKey, ourSecretKey);
 
         const newMessage = await DataStore.save(new Message({
