@@ -100,6 +100,7 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
 
         // for each user, encrypt the content with his or her public key and save it as the new message
 
+        //@ts-ignore
         await Promise.all(users.map((user) => sendMessageToUser(user, user.attributes.sub)));
 
         // done 🔥
