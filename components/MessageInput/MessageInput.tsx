@@ -26,6 +26,7 @@ import tw from 'tailwind-react-native-classnames';
 import {box} from "tweetnacl";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {PRIVATE_KEY} from "../../screens/Settings/Settings";
+import {useNavigation} from "@react-navigation/native";
 
 // @ts-ignore
 const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
@@ -91,12 +92,23 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
         }
     };
 
+    const navigation = useNavigation();
+
     const sendMessageToUser = async (user: any, fromUserId: any) => {
 
         const ourSecretKey = await AsyncStorage.getItem('PRIVATE_KEY');
 
         if(!ourSecretKey) {
-            Alert.alert('Error', 'Private key not found');
+            Alert.alert('Error', 'Private key not found', [
+                {
+                    text: 'Open Settings',
+                    onPress: () => navigation.navigate('SettingsScreen')
+                },
+                {
+                    text: 'Cancel',
+                    style: 'cancel'
+                }
+            ]);
             return;
         }
         const sharedKey = box.before(user.publicKey, ourSecretKey);
