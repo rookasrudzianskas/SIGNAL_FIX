@@ -40,6 +40,8 @@ const SettingsScreen = () => {
             updated.publicKey = publicKey.toString();
         }));
 
+        Alert.alert("Success", "Key pair updated");
+
         console.log(dbUser);
 
 
