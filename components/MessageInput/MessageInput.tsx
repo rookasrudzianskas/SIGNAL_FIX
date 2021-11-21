@@ -113,6 +113,21 @@ const MessageInput = ({chatRoom, messageReplyTo, removeMessageReplyTo}) => {
             return;
         }
 
+
+        if(!user.publicKey) {
+            Alert.alert('Error', 'Public key not found', [
+                {
+                    text: 'Open Settings',
+                    onPress: () => navigation.navigate('SettingsScreen')
+                },
+                {
+                    text: 'Cancel',
+                    style: 'cancel'
+                }
+            ]);
+            return;
+        }
+
         const ourSecretKey = stringToUint8Array(ourSecretKeyString);
 
         console.log('private key', ourSecretKey);
