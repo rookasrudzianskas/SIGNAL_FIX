@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import tw from "tailwind-react-native-classnames";
 import {Auth, DataStore} from "aws-amplify";
 import {generateKeyPair} from "../../utils/crypto";
@@ -31,7 +31,14 @@ const SettingsScreen = () => {
         const userData = await Auth.currentAuthenticatedUser({bypassCache: true});
         const dbUser = await DataStore.query(UserModel, userData.attributes.sub);
 
-        await DataStore.save()
+        if(!dbUser) {
+            Alert.alert("Error", "User not found");
+            return;
+        }
+
+        await DataStore.save(UserModel.copyOf(dbUser, (updated) => {
+            updated.publicKey = publicKey.toString();
+        }));
 
         console.log(dbUser);
 
